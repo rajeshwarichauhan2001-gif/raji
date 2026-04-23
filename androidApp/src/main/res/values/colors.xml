@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raji — XML color tokens for pre-Compose surfaces (splash, status bar).
+     Source of truth: raji-research/UI-UX-PRINCIPLES.md colors. -->
+<resources>
+    <color name="raji_primary">#6750A4</color>
+    <color name="raji_secondary">#FFD166</color>
+    <color name="raji_surface">#0E0E11</color>
+    <color name="raji_on_surface">#E6E1E9</color>
+</resources>

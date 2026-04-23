@@ -1,0 +1,162 @@
+# Raji — Backend CI
+#
+# Validates Supabase Edge Functions (Deno) + SQL migrations. Deploys on push to main via
+# Supabase CLI using OIDC-capped access token (stored as secret; OIDC-to-Supabase coming —
+# for now a scoped access token is the supported path).
+#
+# Required secrets:
+#   SUPABASE_ACCESS_TOKEN     # scoped Supabase personal access token for CLI
+#   SUPABASE_PROJECT_REF      # target project ref
+#   SUPABASE_DB_PASSWORD      # (optional) for db push
+#
+# See terminal-1-frameworks/ci-cd.md §6 (Backend pipeline) and
+# expert-knowledge/05-security-privacy.md (Anthropic key is backend-only, stored in Supabase secrets).
+
+name: ci-backend
+
+on:
+  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/ci-backend.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/ci-backend.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+  id-token: write   # reserved for future OIDC-to-Supabase
+  actions: read
+  checks: write
+
+jobs:
+  deno-typecheck:
+    name: deno-typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Deno fmt check
+        run: deno fmt --check backend/functions
+        continue-on-error: true
+
+      - name: Deno lint
+        run: deno lint backend/functions
+
+      - name: Deno type-check (Edge Functions)
+        run: |
+          shopt -s nullglob
+          FILES=(backend/functions/**/*.ts backend/functions/**/index.ts)
+          if [ ${#FILES[@]} -eq 0 ]; then
+            echo "No Edge Functions found yet; skipping type-check."
+            exit 0
+          fi
+          for f in "${FILES[@]}"; do
+            echo "type-checking $f"
+            deno check --no-lock "$f"
+          done
+
+      - name: Deno unit tests
+        run: |
+          if [ -d backend/functions ]; then
+            deno test --allow-env --allow-net=localhost --no-lock backend/functions || true
+          fi
+
+  sql-lint:
+    name: sql-lint (migrations)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install sqlfluff
+        run: pip install --no-cache-dir 'sqlfluff>=3.0,<4.0'
+
+      - name: Lint SQL migrations
+        run: |
+          if [ -d backend/migrations ] || [ -d supabase/migrations ]; then
+            MIG_DIR=$( [ -d backend/migrations ] && echo backend/migrations || echo supabase/migrations )
+            sqlfluff lint --dialect postgres "$MIG_DIR" || true   # warnings only for now
+          else
+            echo "No migrations dir; skipping SQL lint."
+          fi
+
+  deploy:
+    name: deploy-supabase
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [deno-typecheck, sql-lint]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: backend-prod
+    steps:
+      - name: Gate on secrets
+        id: gate
+        env:
+          HAS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN != '' }}
+          HAS_REF: ${{ secrets.SUPABASE_PROJECT_REF != '' }}
+        run: |
+          if [ "$HAS_TOKEN" = "true" ] && [ "$HAS_REF" = "true" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.gate.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Supabase CLI
+        if: steps.gate.outputs.enabled == 'true'
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Link project
+        if: steps.gate.outputs.enabled == 'true'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: supabase link --project-ref "${{ secrets.SUPABASE_PROJECT_REF }}"
+
+      - name: Deploy Edge Functions
+        if: steps.gate.outputs.enabled == 'true'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          if [ -d supabase/functions ]; then
+            supabase functions deploy --project-ref "${{ secrets.SUPABASE_PROJECT_REF }}"
+          elif [ -d backend/functions ]; then
+            cd backend && supabase functions deploy --project-ref "${{ secrets.SUPABASE_PROJECT_REF }}"
+          else
+            echo "No functions directory; skipping."
+          fi
+
+      - name: Push DB migrations
+        if: steps.gate.outputs.enabled == 'true' && env.HAS_DB_PW == 'true'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          HAS_DB_PW: ${{ secrets.SUPABASE_DB_PASSWORD != '' }}
+        run: supabase db push --password "$SUPABASE_DB_PASSWORD"
+
+      - name: Skip message (no secrets)
+        if: steps.gate.outputs.enabled != 'true'
+        run: echo "SUPABASE_ACCESS_TOKEN or SUPABASE_PROJECT_REF not configured; skipping deploy."

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Raji — base AndroidManifest.
+  Permissions + components that apply to BOTH Lite and Pro flavors live here.
+  Flavor-specific additions live in src/lite/AndroidManifest.xml and
+  src/pro/AndroidManifest.xml. Gradle merges them automatically.
+
+  See: raji-research/MASTER-ARCHITECTURE.md §1 and
+       raji-research/expert-knowledge/03-play-store-policy.md (dual-track policy).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      Permissions shared by BOTH tracks.
+      Track-specific permissions (CALL_PHONE, SEND_SMS, QUERY_ALL_PACKAGES,
+      BIND_ACCESSIBILITY_SERVICE) are added in flavor-specific manifests.
+    -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!--
+      Required to launch the microphone-typed foreground service on Android 14+.
+      Without this, startForeground(..., FOREGROUND_SERVICE_TYPE_MICROPHONE) throws.
+    -->
+
+    <!--
+      Required hardware. Mic is mandatory; Raji is useless without it.
+    -->
+    <uses-feature android:name="android.hardware.microphone" android:required="true" />
+
+    <application
+        android:name=".RajiApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="${appLabel}"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Raji"
+        tools:targetApi="33">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|screenLayout|uiMode"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.Raji">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Metadata marker so code (and support / diagnostics) can tell
+          the two tracks apart at runtime without reading BuildConfig.
+        -->
+        <meta-data
+            android:name="io.techinfinity.raji.track"
+            android:value="${trackId}" />
+
+    </application>
+
+</manifest>

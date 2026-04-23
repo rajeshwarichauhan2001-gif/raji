@@ -1,0 +1,153 @@
+# Raji — Desktop CI (Windows + Linux)
+#
+# Builds Compose Desktop distributables on PRs + pushes to main when desktop paths change.
+# Matrix: windows-latest (MSI via jpackage) + ubuntu-latest (DEB + AppImage).
+#
+# Required secrets (none for build; signing is in release.yml).
+#
+# See terminal-1-frameworks/ci-cd.md §5 (Desktop pipeline).
+
+name: ci-desktop
+
+on:
+  pull_request:
+    paths:
+      - 'desktopApp/**'
+      - 'shared/**'
+      - 'composeApp/**'
+      - 'gradle/**'
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'gradle.properties'
+      - '.github/workflows/ci-desktop.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'desktopApp/**'
+      - 'shared/**'
+      - 'composeApp/**'
+      - 'gradle/**'
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'gradle.properties'
+      - '.github/workflows/ci-desktop.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
+jobs:
+  build:
+    name: desktop-${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'   # Compose Desktop + jpackage target
+
+      - name: Set up Gradle (with cache)
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-read-only: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v3
+
+      - name: Unit tests — shared + desktopApp
+        shell: bash
+        run: ./gradlew :shared:jvmTest :desktopApp:test --build-cache --configuration-cache --stacktrace
+
+      # --- Linux packaging ---
+      - name: Install Linux packaging deps
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fakeroot rpm binutils desktop-file-utils libfuse2 imagemagick
+
+      - name: Build Linux DEB
+        if: runner.os == 'Linux'
+        run: ./gradlew :desktopApp:packageDeb --build-cache --configuration-cache --stacktrace
+
+      - name: Build Linux distributable (image) for AppImage
+        if: runner.os == 'Linux'
+        run: ./gradlew :desktopApp:createDistributable --build-cache --configuration-cache --stacktrace
+
+      - name: Build AppImage
+        if: runner.os == 'Linux'
+        continue-on-error: true   # stub: requires a runtime; can be fully wired later
+        run: |
+          # Fetch appimagetool
+          curl -L -o appimagetool.AppImage \
+            https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool.AppImage
+          DIST_DIR="$(find desktopApp/build/compose/binaries/main/app -maxdepth 1 -mindepth 1 -type d | head -n 1 || true)"
+          if [ -z "$DIST_DIR" ]; then
+            echo "No distributable image found; skipping AppImage."
+            exit 0
+          fi
+          mkdir -p raji.AppDir
+          cp -R "$DIST_DIR/." raji.AppDir/
+          # Minimal AppRun + desktop file (stubs — refined once branding/icons land)
+          cat > raji.AppDir/AppRun <<'EOF'
+          #!/bin/sh
+          HERE="$(dirname "$(readlink -f "$0")")"
+          exec "$HERE/bin/Raji" "$@"
+          EOF
+          chmod +x raji.AppDir/AppRun
+          cat > raji.AppDir/raji.desktop <<'EOF'
+          [Desktop Entry]
+          Name=Raji
+          Exec=AppRun
+          Icon=raji
+          Type=Application
+          Categories=Utility;
+          EOF
+          # Placeholder 1x1 icon until branding lands
+          convert -size 256x256 xc:black raji.AppDir/raji.png || touch raji.AppDir/raji.png
+          ./appimagetool.AppImage raji.AppDir Raji-x86_64.AppImage || echo "AppImage build stub failed; continuing."
+
+      # --- Windows packaging ---
+      - name: Build Windows MSI
+        if: runner.os == 'Windows'
+        shell: pwsh
+        continue-on-error: true   # packageMsi requires WiX on windows-latest; stub if absent.
+        run: |
+          # WiX Toolset v3.11 is preinstalled on windows-latest; if moved, install here.
+          ./gradlew :desktopApp:packageMsi --build-cache --configuration-cache --stacktrace
+
+      - name: Upload desktop artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.os }}
+          path: |
+            desktopApp/build/compose/binaries/main/deb/*.deb
+            desktopApp/build/compose/binaries/main/msi/*.msi
+            Raji-x86_64.AppImage
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-test-reports-${{ matrix.os }}
+          path: |
+            **/build/reports/tests/**
+            **/build/test-results/**
+          if-no-files-found: ignore
+          retention-days: 7

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Raji — data extraction rules (Android 12+).
+  Voice transcripts, biometric enrollments, and conversation history
+  MUST NOT be backed up to Google Drive cloud-backup storage
+  (DPDP compliance — raji-research/expert-knowledge/06-india-compliance.md).
+
+  Full-backup is disabled entirely via android:allowBackup="false" +
+  android:fullBackupContent="false" in the manifest; this file exists for
+  completeness and future-proofing.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </device-transfer>
+</data-extraction-rules>

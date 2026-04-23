@@ -1,0 +1,86 @@
+# Raji — PR hygiene checks
+#
+# Runs on every PR.  Fast, cheap, blocks merge when violated.
+#   - Conventional commit title check
+#   - PR description template compliance
+#   - At least one label required
+#
+# Required secrets: none (GITHUB_TOKEN only).
+
+name: pr-checks
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  conventional-title:
+    name: conventional-commit-title
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Validate PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+            revert
+          requireScope: false
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            PR subject must not start with an uppercase letter.
+            Example: "feat: add wake-word warm cache" — not "Add wake-word warm cache".
+
+  description-template:
+    name: description-template-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check PR body has required sections
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || '';
+            const required = ['## Summary', '## Test plan'];
+            const missing = required.filter(h => !body.includes(h));
+            if (missing.length) {
+              core.setFailed(
+                `PR description is missing required section(s): ${missing.join(', ')}.\n` +
+                `Fill in the PR template (see .github/pull_request_template.md).`
+              );
+            }
+
+  labels-required:
+    name: labels-required
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Require at least one label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request.labels || [];
+            if (labels.length === 0) {
+              core.setFailed(
+                'This PR has no labels. Add at least one (e.g. type:feat, area:android, area:backend, area:desktop).'
+              );
+            }

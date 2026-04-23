@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Raji — Android XML theme (splash + system chrome).
+  Actual UI is Compose; this XML theme exists only so:
+    - the <activity android:theme="..."/> reference resolves at manifest merge
+    - the splash window background is the correct dark near-black
+      while Compose bootstraps (prevents the "white flash" on cold start,
+      critical for the <500ms cold-start target in PERF-BUDGET §cold start)
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Raji" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Near-black surface so there's no white flash before Compose takes over.
+             Must match UI-UX-PRINCIPLES.md surface token #0E0E11. -->
+        <item name="android:windowBackground">@color/raji_surface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="29">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+    </style>
+
+</resources>

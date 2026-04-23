@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Raji Pro — Sideload flavor manifest.
+
+  Permissions policy:
+    - Full Accessibility Service for on-screen automation
+      (WhatsApp, Instagram, Paytm playbooks — Phase 1 Weeks 7-8).
+    - CALL_PHONE + SEND_SMS for direct calls/SMS without user tap.
+    - QUERY_ALL_PACKAGES for exhaustive app discovery.
+    - Distribution: NOT Play Store. Direct APK from raji.app with the
+      user-consent + sideload disclosure flow per
+      raji-research/expert-knowledge/03-play-store-policy.md.
+
+  Every sensitive permission here has a corresponding just-in-time
+  runtime prompt with user-facing WHAT/WHY/REVOKE per
+  raji-research/UI-UX-PRINCIPLES.md (JIT permissions section).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Calls & SMS (Pro only) -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <!-- Exhaustive package visibility (Pro only) -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- System overlay for floating mic bubble (Pro only; optional feature) -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        tools:targetApi="33">
+
+        <!--
+          Accessibility Service declaration (Pro only).
+          The concrete class will be added in Phase 1 Week 7-8 — for now
+          this block is a commented-out placeholder so the scaffold compiles
+          without a dangling component pointer. Uncomment and implement
+          RajiAccessibilityService alongside res/xml/accessibility_service_config.xml
+          which already exists.
+
+          Verbatim disclosure text lives in res/values/strings.xml.
+
+        <service
+            android:name=".service.RajiAccessibilityService"
+            android:exported="false"
+            android:label="@string/raji_accessibility_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+        -->
+
+    </application>
+
+</manifest>

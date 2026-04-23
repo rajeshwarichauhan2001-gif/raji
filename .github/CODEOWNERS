@@ -1,0 +1,28 @@
+# Raji — CODEOWNERS
+#
+# GitHub uses the last matching pattern.  Once a team exists, replace @raji-maintainers with
+# the concrete team handle (e.g. @techinfinity-io/raji-core).
+#
+# Placeholder until teams are set up.  Replace `@raji-maintainers` below.
+
+# Default owner for everything
+*                                   @raji-maintainers
+
+# Platform-specific
+/androidApp/                        @raji-maintainers
+/desktopApp/                        @raji-maintainers
+/shared/                            @raji-maintainers
+/composeApp/                        @raji-maintainers
+
+# Backend
+/backend/                           @raji-maintainers
+/supabase/                          @raji-maintainers
+
+# Infra / CI
+/.github/                           @raji-maintainers
+/.github/workflows/                 @raji-maintainers
+
+# Security-sensitive areas — second reviewer expected
+/shared/safety/                     @raji-maintainers
+/backend/anthropic/                 @raji-maintainers
+/androidApp/src/**/Accessibility*   @raji-maintainers

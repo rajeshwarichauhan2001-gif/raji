@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Raji Lite — Play Store flavor manifest.
+
+  Permissions policy (per raji-research/expert-knowledge/03-play-store-policy.md):
+    - NO CALL_PHONE, READ_PHONE_STATE, CALL_LOG access.
+    - NO SEND_SMS / READ_SMS / RECEIVE_SMS.
+    - NO QUERY_ALL_PACKAGES; instead rely on a tight <queries> allowlist.
+    - NO AccessibilityService declaration — Lite uses Intent-based
+      device control only, positioned as a voice assistant, not
+      an "automation" tool per Play Store policy tightened Jan 28 2026.
+    - NotificationListenerService is allowed on both tracks with
+      proper disclosure (added later in Phase 1).
+
+  Any permission added here must be justified in writing and cleared by
+  privacy counsel review before merging.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      Package visibility (Android 11+). Lite MUST use a tight allowlist
+      in lieu of QUERY_ALL_PACKAGES. Starter set below; will expand to
+      the ~30-app list from raji-research/terminal-4-device/android-intents.md
+      in Phase 1.
+    -->
+    <queries>
+        <package android:name="com.whatsapp" />
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.google.android.dialer" />
+        <package android:name="com.android.dialer" />
+        <package android:name="com.google.android.deskclock" />
+        <package android:name="com.android.deskclock" />
+        <package android:name="com.google.android.gm" />
+
+        <!-- Discovery by action / category also goes via <intent> queries. -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="smsto" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
+
+</manifest>

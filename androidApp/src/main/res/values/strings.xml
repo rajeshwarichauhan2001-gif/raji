@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      String resources. Default locale = English; Hindi will live in res/values-hi/
+      (added Phase 1 alongside Sarvam STT wiring). Target locales capped to
+      en + hi only via resConfigs in build.gradle.kts — APK size discipline.
+    -->
+
+    <!-- App label — overridden per-flavor via manifestPlaceholders.appLabel;
+         this fallback is only used by tools that read the base manifest. -->
+    <string name="app_name">Raji</string>
+
+    <!-- Accessibility Service (Pro) disclosure — the exact wording users see
+         in Settings > Accessibility > Installed apps > Raji Pro.
+         Keep concise and policy-compliant per expert-knowledge/03. -->
+    <string name="raji_accessibility_label">Raji (Device control)</string>
+    <string name="raji_accessibility_description">
+        Raji uses the Accessibility Service to perform on-screen actions you ask for
+        by voice — send WhatsApp messages, navigate apps, and fill standard forms.
+        Raji never reads your screen except for the action you requested. You can
+        turn this off any time from Settings > Accessibility.
+    </string>
+
+    <!-- Foreground service notification channel -->
+    <string name="foreground_channel_name">Raji listening</string>
+    <string name="foreground_channel_description">
+        Shown while Raji is listening for the wake word.
+    </string>
+</resources>

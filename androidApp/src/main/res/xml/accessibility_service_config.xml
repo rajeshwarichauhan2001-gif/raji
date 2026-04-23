@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Raji Pro — Accessibility Service config.
+  Referenced by the (currently commented-out) service declaration in
+  src/pro/AndroidManifest.xml. Uncommented + consumed in Phase 1 Week 7-8.
+
+  Kept minimal here. Production config will be tuned in Phase 1 per
+  raji-research/terminal-4-device/android-accessibility.md.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeViewClicked|typeViewFocused|typeWindowContentChanged|typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagIncludeNotImportantViews|flagReportViewIds|flagRetrieveInteractiveWindows"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/raji_accessibility_description"
+    android:notificationTimeout="100"
+    android:summary="@string/raji_accessibility_label" />

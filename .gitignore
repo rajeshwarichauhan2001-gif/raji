@@ -1,0 +1,77 @@
+# Raji — .gitignore
+# Covers: Gradle, Kotlin/KMP, Android, IntelliJ/Android Studio/VSCode, OS cruft.
+
+# --- Gradle ---
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!gradle/libs.versions.toml
+out/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# --- Kotlin/KMP ---
+kotlin-js-store/
+.kotlin/
+local.properties
+
+# --- Android ---
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+captures/
+*.keystore
+keystore.properties
+release/
+# Do NOT commit raw signing keys; Play App Signing (Lite) + EV cert (Pro) per D-25.
+
+# --- IDE: IntelliJ / Android Studio ---
+.idea/
+!.idea/runConfigurations/
+*.iml
+*.iws
+*.ipr
+.navigation/
+.run/
+
+# --- IDE: VS Code ---
+.vscode/
+.history/
+
+# --- IDE: Fleet ---
+.fleet/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+ehthumbs.db
+ehthumbs_vista.db
+
+# --- Logs / crash ---
+*.log
+hs_err_pid*
+replay_pid*
+
+# --- Native model weights — fetched on demand per D-25 (PERFORMANCE-BUDGET.md) ---
+native/porcupine/
+native/whisper-cpp/
+native/piper/
+*.onnx
+*.tflite
+*.pt
+*.bin
+!**/sample-*.onnx
+
+# --- Secrets / env ---
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.p12
+secrets/

@@ -1,0 +1,97 @@
+# Raji — Dependabot configuration
+#
+# - Security updates: immediate, all ecosystems
+# - Scheduled updates: weekly on Monday morning IST
+#
+# Renovate is considered the primary dependency updater for Gradle version catalogs (per
+# ci-cd.md §9). Dependabot handles GitHub Actions, npm (Edge Functions tooling), and pip.
+
+version: 2
+
+updates:
+  # GitHub Actions versions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Asia/Kolkata
+    labels:
+      - 'area:ci'
+      - 'type:chore'
+    open-pull-requests-limit: 5
+    groups:
+      actions-minor-patch:
+        update-types:
+          - minor
+          - patch
+
+  # Gradle (Kotlin/JVM/Android/desktop)
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Asia/Kolkata
+    labels:
+      - 'area:build'
+      - 'type:chore'
+    open-pull-requests-limit: 10
+    groups:
+      kotlin:
+        patterns:
+          - 'org.jetbrains.kotlin*'
+          - 'org.jetbrains.compose*'
+          - 'androidx.compose*'
+      androidx:
+        patterns:
+          - 'androidx.*'
+        exclude-patterns:
+          - 'androidx.compose*'
+      test-deps:
+        patterns:
+          - '*junit*'
+          - '*mockk*'
+          - '*kotest*'
+          - '*turbine*'
+
+  # npm for Deno Edge Function tooling (if used) + docs site
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Asia/Kolkata
+    labels:
+      - 'area:backend'
+      - 'type:chore'
+    open-pull-requests-limit: 5
+
+  # Backend subfolder npm (if Edge Functions get a package.json)
+  - package-ecosystem: npm
+    directory: /backend
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Asia/Kolkata
+    labels:
+      - 'area:backend'
+      - 'type:chore'
+    open-pull-requests-limit: 5
+
+  # Supabase functions (if nested)
+  - package-ecosystem: npm
+    directory: /supabase
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Asia/Kolkata
+    labels:
+      - 'area:backend'
+      - 'type:chore'
+    open-pull-requests-limit: 5
