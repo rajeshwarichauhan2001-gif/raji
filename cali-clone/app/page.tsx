@@ -4,6 +4,7 @@ import PressMarqueeSection from "@/components/sections/PressMarqueeSection";
 import TaglineBandSection from "@/components/sections/TaglineBandSection";
 import BusinessCoachIntroSection from "@/components/sections/BusinessCoachIntroSection";
 import MissionValuesSection from "@/components/sections/MissionValuesSection";
+import ImpactFlip from "@/components/sections/ImpactFlip";
 import CardsFan from "@/components/sections/CardsFan";
 import ServicesParallax from "@/components/sections/ServicesParallax";
 import ServicesGridSection from "@/components/sections/ServicesGridSection";
@@ -32,6 +33,7 @@ export default function HomePage() {
       <TaglineBandSection />
       <BusinessCoachIntroSection />
       <MissionValuesSection />
+      <ImpactFlip theme="cream" />
       <CardsFan />
       <ServicesParallax />
       <ServicesGridSection />

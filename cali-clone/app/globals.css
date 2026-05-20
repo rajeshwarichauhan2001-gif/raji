@@ -56,6 +56,8 @@
 html, body {
   background: var(--color-bg);
   color: var(--color-text);
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -465,6 +467,10 @@ img, video {
   display: grid;
   grid-template-rows: auto 1fr;
 }
+.impact-section.impact-cream {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
 .impact-heading {
   text-align: center;
   margin: 0;
@@ -477,6 +483,7 @@ img, video {
   letter-spacing: -0.015em;
   line-height: 1.1;
 }
+.impact-cream .impact-heading { color: var(--color-text); }
 .impact-stage {
   position: relative;
   display: flex;
@@ -508,14 +515,12 @@ img, video {
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 22px;
   overflow: hidden;
 }
 .istrip-front {
   background-size: 300% 100%;
   background-repeat: no-repeat;
   filter: saturate(0.95);
-  box-shadow: 0 12px 36px rgba(0,0,0,0.35);
 }
 .istrip-back {
   transform: rotateY(180deg);
@@ -524,7 +529,20 @@ img, video {
   flex-direction: column;
   justify-content: space-between;
   color: #ffffff;
+  border-radius: 22px;
   box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+}
+.istrip:first-child .istrip-inner,
+.istrip:first-child .istrip-front {
+  border-radius: 22px 0 0 22px;
+}
+.istrip:nth-child(2) .istrip-inner,
+.istrip:nth-child(2) .istrip-front {
+  border-radius: 0;
+}
+.istrip:last-child .istrip-inner,
+.istrip:last-child .istrip-front {
+  border-radius: 0 22px 22px 0;
 }
 .istrip-icon { opacity: 0.95; }
 .istrip-body-wrap { display: flex; flex-direction: column; gap: 12px; }
@@ -738,14 +756,26 @@ img, video {
   .raji-nav-hamburger { display: inline-flex; }
 }
 
-/* ===== Dark Footer (Raji) ===== */
+/* ===== Footer (Raji) — matches "Book a call" cocoa ===== */
 .raji-footer {
-  background: #2a2118;
+  background: var(--color-text);
   color: var(--color-bg);
-  border-radius: 32px 32px 0 0;
-  margin-top: 80px;
+  border-radius: 32px;
+  margin: 80px 25px 25px;
   padding: 80px 0 32px;
 }
+.raji-footer a { color: var(--color-bg); }
+.raji-footer-heading { color: rgba(246,239,217,0.55) !important; }
+.raji-footer-tag { color: rgba(246,239,217,0.82) !important; }
+.raji-footer-subtle { color: rgba(246,239,217,0.78) !important; }
+.raji-footer-bottom { color: rgba(246,239,217,0.55) !important; }
+.raji-footer-social { border-color: rgba(246,239,217,0.28) !important; color: rgba(246,239,217,0.85) !important; }
+.raji-footer-social:hover { border-color: var(--color-accent) !important; color: var(--color-accent) !important; }
+.raji-footer-form { border-color: rgba(246,239,217,0.28); }
+.raji-footer-form input { color: var(--color-bg); }
+.raji-footer-form input::placeholder { color: rgba(246,239,217,0.55) !important; }
+.raji-footer-form button { background: var(--color-accent-2) !important; color: var(--color-bg) !important; }
+.raji-footer-form button:hover { background: var(--color-accent) !important; color: var(--color-text) !important; }
 .raji-footer-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -867,7 +897,7 @@ img, video {
   .raji-footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 @media (max-width: 767px) {
-  .raji-footer { padding: 56px 0 28px; border-radius: 24px 24px 0 0; margin-top: 56px; }
+  .raji-footer { padding: 56px 0 28px; border-radius: 24px; margin: 56px 16px 16px; }
   .raji-footer-inner { padding: 0 24px; }
   .raji-footer-grid {
     grid-template-columns: 1fr;
@@ -876,6 +906,36 @@ img, video {
   }
   .raji-footer-tag { max-width: none; }
   .raji-footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ===== Preloader ===== */
+.raji-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: opacity;
+}
+.raji-preloader-ring {
+  position: relative;
+  width: 1px;
+  height: 1px;
+  transform-origin: center center;
+  will-change: transform;
+}
+.raji-preloader-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 999px;
+  background: var(--color-accent-2);
+  will-change: transform, width, height, opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {

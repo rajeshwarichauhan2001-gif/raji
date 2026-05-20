@@ -5,6 +5,7 @@ import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import CookieStrip from "@/components/layout/CookieStrip";
 import FloatingCTA from "@/components/layout/FloatingCTA";
+import Preloader from "@/components/layout/Preloader";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${instrumentSerif.variable} ${dmSans.variable}`}>
       <body>
+        <Preloader />
         <Nav />
         {children}
         <Footer />

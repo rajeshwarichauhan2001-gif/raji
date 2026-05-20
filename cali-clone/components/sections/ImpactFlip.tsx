@@ -74,7 +74,7 @@ function Icon({ kind }: { kind: CardSpec["icon"] }) {
   );
 }
 
-export default function ImpactFlip() {
+export default function ImpactFlip({ theme = "dark" }: { theme?: "dark" | "cream" }) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -125,7 +125,7 @@ export default function ImpactFlip() {
   }, []);
 
   return (
-    <section ref={wrapRef} className="impact-section">
+    <section ref={wrapRef} className={`impact-section${theme === "cream" ? " impact-cream" : ""}`}>
       <h2 className="impact-heading">How We Create Impact</h2>
       <div className="impact-stage">
         {CARDS.map((c, i) => (
