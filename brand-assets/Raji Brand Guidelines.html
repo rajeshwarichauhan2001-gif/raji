@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Raji · Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="deck-stage.js"></script>
+
+<style>
+  :root {
+    /* Butter & Honey palette */
+    --bg:      #f6efd9;   /* butter cream */
+    --surface: #fbf6e3;   /* light butter */
+    --soft:    #f5e2af;   /* pastel butter */
+    --accent:  #f0d181;   /* butter yellow */
+    --accent2: #b8843d;   /* honey */
+    --ink:     #3a2f1a;   /* deep cocoa */
+    --muted:   #897558;   /* dusty taupe */
+    --line:    rgba(58,47,26,0.14);
+    --font-display: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+    --font-body:    "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  html, body {
+    margin: 0; padding: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: #1a1410;
+  }
+  * { box-sizing: border-box; }
+
+  deck-stage section {
+    background: var(--bg);
+    color: var(--ink);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Tiny page chrome — slide number + brand bar bottom-right */
+  .chrome-tl {
+    position: absolute;
+    top: 60px; left: 80px;
+    font-size: 24px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .chrome-tr {
+    position: absolute;
+    top: 60px; right: 80px;
+    font-size: 24px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .chrome-tr .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent2);
+    display: inline-block;
+  }
+  .chrome-br {
+    position: absolute;
+    bottom: 60px; right: 80px;
+    font-size: 24px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; gap: 18px;
+  }
+  .chrome-bl {
+    position: absolute;
+    bottom: 60px; left: 80px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--ink);
+    opacity: 0.65;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .chrome-bl::after {
+    content: '';
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent2);
+  }
+
+  /* The Logo — primary lockup, drawn from raw HTML so it's directly editable */
+  .logo {
+    display: inline-flex;
+    align-items: baseline;
+    line-height: 1;
+    gap: 0;
+  }
+  .logo .word {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .logo .dot {
+    display: inline-block;
+    width: 0.12em; height: 0.12em;
+    border-radius: 50%;
+    background: var(--accent2);
+    margin-left: 0.05em;
+    transform: translateY(-0.06em);
+  }
+  /* Knee-jerk size shortcuts */
+  .logo.s { font-size: 28px; }
+  .logo.m { font-size: 64px; }
+  .logo.l { font-size: 128px; }
+  .logo.xl { font-size: 240px; }
+
+  /* Page sigil — small italic 'r' tucked into corners as a brand mark */
+  .sigil {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent2);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* Eyebrow + big section title pattern reused on most slides */
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 24px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 0 0 28px;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--accent2);
+    display: inline-block;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .title em { color: var(--accent2); font-style: italic; }
+  .title .alt { color: var(--accent2); font-style: italic; }
+  .lede {
+    font-family: var(--font-body);
+    font-size: 24px;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.78;
+    max-width: 720px;
+    margin: 28px 0 0;
+    text-wrap: pretty;
+  }
+  .body { font-family: var(--font-body); }
+
+  /* Slide-specific blocks */
+  .pad { padding: 140px 120px; height: 100%; }
+
+  /* Slide 1 cover */
+  .cover {
+    background:
+      radial-gradient(circle at 20% 80%, rgba(184,132,61,0.10), transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(240,209,129,0.30), transparent 55%),
+      var(--bg);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover .topbar {
+    display: flex; justify-content: space-between;
+    font-size: 24px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cover .center {
+    text-align: center;
+    display: flex; flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .cover .center .word {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 520px;
+    line-height: 0.85;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    position: relative;
+  }
+  .cover .center .word .dotty {
+    position: absolute;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--accent2);
+    right: -32px;
+    bottom: 36px;
+  }
+  .cover .subtitle {
+    font-family: var(--font-body);
+    font-size: 24px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+    display: inline-flex; align-items: center; gap: 18px;
+  }
+  .cover .subtitle::before, .cover .subtitle::after {
+    content: ''; width: 60px; height: 1px;
+    background: var(--ink); opacity: 0.4;
+  }
+
+  /* Sub-grid layouts for content slides */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    height: 100%;
+  }
+  .two-col.left-heavy { grid-template-columns: 1.4fr 1fr; }
+  .two-col.right-heavy { grid-template-columns: 1fr 1.4fr; }
+
+  /* Card pattern — used for swatches, logo variants, do's/don'ts */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Swatch */
+  .swatch {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .swatch .chip {
+    flex: 1;
+    min-height: 200px;
+  }
+  .swatch .meta {
+    padding: 22px 24px;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .swatch .meta .name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .swatch .meta .hex {
+    font-family: var(--font-body);
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .swatch .meta .rgb {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--muted);
+    opacity: 0.7;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .swatch .meta .role {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    background: var(--soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  /* Type specimen rows */
+  .type-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 60px;
+    align-items: baseline;
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+  }
+  .type-row .label {
+    font-size: 16px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .type-row .label span {
+    display: block;
+    color: var(--ink);
+    opacity: 0.85;
+    margin-top: 6px;
+    letter-spacing: 0.15em;
+  }
+  .type-row .specimen-display {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .type-row .specimen-body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* Do / Don't list */
+  .rules {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 32px;
+  }
+  .rules li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+    align-items: start;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink);
+    opacity: 0.85;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+  .rules li .mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1;
+  }
+  .rules.do li .mark { color: var(--accent2); }
+  .rules.dont li .mark { color: var(--ink); opacity: 0.6; }
+  .rules.dont li { text-decoration: line-through; text-decoration-color: rgba(58,47,26,0.25); }
+
+  /* Voice slide — example callouts */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .voice-card {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 36px;
+    border: 1px solid var(--line);
+  }
+  .voice-card .qtype {
+    font-size: 18px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 0 0 18px;
+  }
+  .voice-card .qbody {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 30px;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .voice-card.dont .qbody { color: var(--muted); }
+  .voice-card.dont {
+    position: relative;
+  }
+  .voice-card.dont::after {
+    content: 'NOT THIS';
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--muted);
+  }
+  .voice-card.do {
+    background: var(--soft);
+    border-color: var(--accent2);
+  }
+  .voice-card.do::after {
+    content: 'YES';
+    position: absolute;
+    top: 20px; right: 24px;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--accent2);
+  }
+
+  /* Closing slide */
+  .closing {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .closing .title { color: var(--bg); }
+  .closing .title em { color: var(--accent); }
+  .closing .chrome-tl, .closing .chrome-tr,
+  .closing .chrome-br { color: var(--soft); opacity: 0.6; }
+  .closing .chrome-bl { color: var(--soft); }
+  .closing .logo .word { color: var(--bg); }
+  .closing .logo .dot { background: var(--accent); }
+
+  /* Reusable: a soft horizontal rule */
+  .hr {
+    height: 1px;
+    background: var(--line);
+    margin: 60px 0;
+  }
+</style>
+
+<script type="application/json" id="speaker-notes">[]</script>
+</head>
+<body>
+<deck-stage>
+
+  <!-- ────────────────────────── 01 · COVER ────────────────────────── -->
+  <section data-screen-label="01 Cover" class="cover">
+    <div class="topbar">
+      <span>brand guidelines · vol. 01</span>
+      <span>raji · est. mmxxvi</span>
+    </div>
+
+    <div class="center">
+      <div class="word">
+        raji<span class="dotty"></span>
+      </div>
+      <div class="subtitle">a small book on how we look &amp; sound</div>
+    </div>
+
+    <div class="topbar" style="align-items: flex-end;">
+      <span>mumbai · in</span>
+      <span>2026 / 2027</span>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 02 · ESSENCE ────────────────────────── -->
+  <section data-screen-label="02 Essence">
+    <div class="chrome-tl">02 · essence</div>
+    <div class="chrome-tr"><span class="dot"></span>think &middot; create &middot; lead</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>02 / 14</span></div>
+
+    <div class="pad two-col left-heavy">
+      <div style="display: flex; flex-direction: column; justify-content: center;">
+        <div class="eyebrow">the essence</div>
+        <h1 class="title">a writer who <em>serves.</em></h1>
+        <p class="lede">Raji is a one-woman studio for founders who'd rather be in the kitchen, lab or studio than in their drafts folder. Three years of copy, social and client servicing for D2C beauty, F&amp;B and lifestyle brands. The work is warm, specific and never doing too much.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; justify-content: center; gap: 28px;">
+        <div class="card">
+          <div style="font-size: 22px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent2);">mission</div>
+          <div style="font-family: var(--font-display); font-style: italic; font-size: 40px; line-height: 1.15; color: var(--ink); letter-spacing: -0.02em;">help small brands sound like a friend, not a brochure.</div>
+        </div>
+        <div class="card">
+          <div style="font-size: 22px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent2);">three words</div>
+          <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+            <span style="font-family: var(--font-display); font-style: italic; font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: -0.02em;">warm.</span>
+            <span style="font-family: var(--font-display); font-style: italic; font-size: 56px; line-height: 1; color: var(--accent2); letter-spacing: -0.02em;">specific.</span>
+            <span style="font-family: var(--font-display); font-style: italic; font-size: 56px; line-height: 1; color: var(--ink); letter-spacing: -0.02em;">unhurried.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 03 · LOGO · PRIMARY ────────────────────────── -->
+  <section data-screen-label="03 Logo">
+    <div class="chrome-tl">03 · the mark</div>
+    <div class="chrome-tr"><span class="dot"></span>logo system</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>03 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow">the mark</div>
+      <h1 class="title">soft serif <em>italic.</em></h1>
+
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 80px; align-items: center; margin-top: 80px;">
+        <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 80px; display: flex; align-items: center; justify-content: center; min-height: 380px;">
+          <span class="logo xl">
+            <span class="word">raji</span>
+            <span class="dot"></span>
+          </span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div>
+            <div style="font-size: 22px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px;">wordmark</div>
+            <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink); line-height: 1.3;">Instrument Serif Italic, 400 weight, tracking <span style="color: var(--accent2);">-0.025em</span></div>
+          </div>
+          <div>
+            <div style="font-size: 22px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px;">signature dot</div>
+            <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink); line-height: 1.3;">12% of the cap-height, set in <span style="color: var(--accent2);">honey #b8843d</span>, sits to the right of the 'i' baseline.</div>
+          </div>
+          <div>
+            <div style="font-size: 22px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px;">case</div>
+            <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink); line-height: 1.3;">Always set lowercase. Never typeset 'Raji' or 'RAJI' in the logomark — only in body copy.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 04 · LOGO · LOCKUPS ────────────────────────── -->
+  <section data-screen-label="04 Lockups">
+    <div class="chrome-tl">04 · lockups</div>
+    <div class="chrome-tr"><span class="dot"></span>variations &amp; sizes</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>04 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow">lockups</div>
+      <h1 class="title" style="font-size: 96px;">four ways to <em>show up.</em></h1>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 60px;">
+
+        <!-- Primary -->
+        <div class="card" style="min-height: 280px; justify-content: space-between;">
+          <div style="display: flex; align-items: center; justify-content: center; flex: 1;">
+            <span class="logo l"><span class="word">raji</span><span class="dot"></span></span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent2);">primary</div>
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 24px; margin-top: 6px;">the hero wordmark</div>
+            </div>
+            <div style="font-size: 13px; color: var(--muted); text-align: right; line-height: 1.4;">website hero,<br/>covers, posters</div>
+          </div>
+        </div>
+
+        <!-- Stacked with tagline -->
+        <div class="card" style="min-height: 280px; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 10px;">
+            <span class="logo m"><span class="word">raji</span><span class="dot"></span></span>
+            <div style="display: flex; align-items: center; gap: 14px; width: 70%;">
+              <span style="flex: 1; height: 1px; background: var(--ink); opacity: 0.35;"></span>
+              <span style="font-family: var(--font-body); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--accent2); font-weight: 600;">social · content · servicing</span>
+              <span style="flex: 1; height: 1px; background: var(--ink); opacity: 0.35;"></span>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent2);">stacked lockup</div>
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 24px; margin-top: 6px;">with role descriptors</div>
+            </div>
+            <div style="font-size: 13px; color: var(--muted); text-align: right; line-height: 1.4;">email sigs,<br/>introductions</div>
+          </div>
+        </div>
+
+        <!-- Inline with email -->
+        <div class="card" style="min-height: 280px; justify-content: space-between; background: var(--soft); border-color: var(--accent2);">
+          <div style="display: flex; align-items: center; justify-content: center; flex: 1; gap: 28px;">
+            <span class="logo m"><span class="word">raji</span><span class="dot"></span></span>
+            <span style="font-family: var(--font-display); font-style: italic; font-size: 32px; color: var(--ink); opacity: 0.55;">@</span>
+            <span style="font-family: var(--font-body); font-size: 28px; color: var(--ink); letter-spacing: 0.02em;">hello@raji.studio</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent2);">inline · with mail</div>
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 24px; margin-top: 6px;">contact lockup</div>
+            </div>
+            <div style="font-size: 13px; color: var(--ink); opacity: 0.6; text-align: right; line-height: 1.4;">footers,<br/>print collateral</div>
+          </div>
+        </div>
+
+        <!-- Reversed chip / favicon -->
+        <div class="card" style="min-height: 280px; justify-content: space-between; background: var(--ink); border-color: var(--accent2);">
+          <div style="display: flex; align-items: center; justify-content: center; flex: 1; gap: 28px;">
+            <span class="logo m">
+              <span class="word" style="color: var(--bg);">raji</span>
+              <span class="dot" style="background: var(--accent);"></span>
+            </span>
+            <span style="font-family: var(--font-body); font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--soft); opacity: 0.7; border-left: 1px solid rgba(246,239,217,0.3); padding-left: 18px; line-height: 1.4;">studio<br/>2026</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent);">reversed · dark surface</div>
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 24px; margin-top: 6px; color: var(--bg);">cream-on-ink</div>
+            </div>
+            <div style="font-size: 13px; color: var(--soft); opacity: 0.6; text-align: right; line-height: 1.4;">avatars, favicons,<br/>dark sections</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 05 · LOGO · CLEAR SPACE ────────────────────────── -->
+  <section data-screen-label="05 Clear space">
+    <div class="chrome-tl">05 · breathing room</div>
+    <div class="chrome-tr"><span class="dot"></span>clear space &amp; min size</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>05 / 14</span></div>
+
+    <div class="pad two-col">
+      <div style="display: flex; flex-direction: column; justify-content: center;">
+        <div class="eyebrow">clear space</div>
+        <h1 class="title" style="font-size: 88px;">give the mark <em>room.</em></h1>
+        <p class="lede">Clear space around the wordmark equals the height of the lowercase 'a' — what we call <strong>1x</strong>. Nothing crosses this margin: not headlines, photos, edges of containers, or other logos.</p>
+        <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; gap: 24px; align-items: center;">
+            <div style="font-family: var(--font-display); font-style: italic; font-size: 56px; color: var(--accent2);">1×</div>
+            <div style="font-size: 16px; line-height: 1.5;">clear space on all sides — non-negotiable for prints, hero placements</div>
+          </div>
+          <div style="display: flex; gap: 24px; align-items: center;">
+            <div style="font-family: var(--font-display); font-style: italic; font-size: 56px; color: var(--accent2);">88<span style="font-size: 28px;">px</span></div>
+            <div style="font-size: 16px; line-height: 1.5;">minimum digital size for the primary lockup</div>
+          </div>
+          <div style="display: flex; gap: 24px; align-items: center;">
+            <div style="font-family: var(--font-display); font-style: italic; font-size: 56px; color: var(--accent2);">12<span style="font-size: 28px;">mm</span></div>
+            <div style="font-size: 16px; line-height: 1.5;">minimum print size — never smaller, never. The honey dot disappears.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagram -->
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 80px;">
+        <!-- Clear space diagram -->
+        <div style="position: relative;">
+          <div style="
+            position: relative;
+            padding: 60px;
+            border: 1.5px dashed var(--accent2);
+            border-radius: 8px;
+            background: var(--surface);
+          ">
+            <span class="logo" style="font-size: 96px;"><span class="word">raji</span><span class="dot"></span></span>
+            <!-- 'a' height ref markers -->
+            <span style="position: absolute; top: 10px; left: 10px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent2);">1×</span>
+            <span style="position: absolute; top: 10px; right: 10px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent2);">1×</span>
+            <span style="position: absolute; bottom: 10px; left: 10px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent2);">1×</span>
+            <span style="position: absolute; bottom: 10px; right: 10px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent2);">1×</span>
+          </div>
+          <div style="text-align: center; margin-top: 18px; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted);">clear space</div>
+        </div>
+
+        <!-- Min size ladder -->
+        <div style="display: flex; align-items: flex-end; gap: 40px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+            <span class="logo" style="font-size: 88px;"><span class="word">raji</span><span class="dot"></span></span>
+            <span style="font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted);">88px / 12mm</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+            <span class="logo" style="font-size: 44px;"><span class="word">raji</span><span class="dot"></span></span>
+            <span style="font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted);">44px / 6mm</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.4;">
+            <span class="logo" style="font-size: 24px;"><span class="word">raji</span><span class="dot"></span></span>
+            <span style="font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink);">⨯ too small</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 06 · LOGO · DON'TS ────────────────────────── -->
+  <section data-screen-label="06 Donts">
+    <div class="chrome-tl">06 · don't</div>
+    <div class="chrome-tr"><span class="dot"></span>logo misuse</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>06 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow">misuse</div>
+      <h1 class="title" style="font-size: 88px;">please <em>don't.</em></h1>
+
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px;">
+        <!-- Each misuse cell -->
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; position: relative; padding: 18px;">
+          <span class="logo m" style="font-style: normal; transform: rotate(-12deg);"><span class="word" style="font-style: normal;">raji</span><span class="dot"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-align: center;">don't rotate or<br/>change the style</span>
+        </div>
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; padding: 18px;">
+          <span class="logo m"><span class="word" style="letter-spacing: 0.18em;">r a j i</span><span class="dot" style="margin-left: 0.12em;"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-align: center;">don't stretch or<br/>track-out letters</span>
+        </div>
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; padding: 18px;">
+          <span class="logo m"><span class="word" style="color: #6c32a8;">raji</span><span class="dot" style="background: #29a843;"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-align: center;">don't recolour outside<br/>the brand palette</span>
+        </div>
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; padding: 18px;">
+          <span class="logo m" style="text-shadow: 4px 4px 0 rgba(184,132,61,0.5);"><span class="word">raji</span><span class="dot"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-align: center;">don't add shadows,<br/>strokes or effects</span>
+        </div>
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; padding: 18px; background: linear-gradient(135deg, #ff5e5e, #5e8aff);">
+          <span class="logo m"><span class="word" style="color: white;">raji</span><span class="dot" style="background: white;"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: white; text-align: center; text-shadow: 0 1px 4px rgba(0,0,0,0.3);">don't place on busy or<br/>off-brand backgrounds</span>
+        </div>
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; padding: 18px;">
+          <span class="logo m"><span class="word" style="font-family: var(--font-body); font-style: normal; font-weight: 700; letter-spacing: 0;">raji</span><span class="dot"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-align: center;">don't substitute<br/>the typeface</span>
+        </div>
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; padding: 18px;">
+          <span class="logo m"><span class="word">RAJI</span><span class="dot"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-align: center;">don't set in<br/>uppercase</span>
+        </div>
+        <div class="card" style="aspect-ratio: 1.35; align-items: center; justify-content: center; gap: 10px; padding: 18px;">
+          <span class="logo m"><span class="word">raji</span><span class="dot" style="width: 0.4em; height: 0.4em; background: #b8843d; margin-left: 0.2em;"></span></span>
+          <span style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-align: center;">don't resize the<br/>honey dot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 07 · COLOR · PALETTE ────────────────────────── -->
+  <section data-screen-label="07 Color palette">
+    <div class="chrome-tl">07 · colour</div>
+    <div class="chrome-tr"><span class="dot"></span>butter &amp; honey</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>07 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow">the palette</div>
+      <h1 class="title" style="font-size: 88px;">butter &amp; <em>honey.</em></h1>
+      <p class="lede" style="margin-bottom: 50px;">Six tones, soft to deep. Backgrounds stay in the cream family, honey is the spark, cocoa carries every reader-facing word.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;">
+        <div class="swatch">
+          <div class="chip" style="background: #f6efd9;"></div>
+          <div class="meta">
+            <div class="name">Butter Cream</div>
+            <div class="hex">#f6efd9</div>
+            <div class="rgb">rgb 246 · 239 · 217<br/>cmyk 0 · 3 · 12 · 4</div>
+            <span class="role">background</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background: #fbf6e3;"></div>
+          <div class="meta">
+            <div class="name">Light Butter</div>
+            <div class="hex">#fbf6e3</div>
+            <div class="rgb">rgb 251 · 246 · 227<br/>cmyk 0 · 2 · 10 · 2</div>
+            <span class="role">surface</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background: #f5e2af;"></div>
+          <div class="meta">
+            <div class="name">Pastel Butter</div>
+            <div class="hex">#f5e2af</div>
+            <div class="rgb">rgb 245 · 226 · 175<br/>cmyk 0 · 8 · 29 · 4</div>
+            <span class="role">soft fills</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background: #f0d181;"></div>
+          <div class="meta">
+            <div class="name">Butter Yellow</div>
+            <div class="hex">#f0d181</div>
+            <div class="rgb">rgb 240 · 209 · 129<br/>cmyk 0 · 13 · 46 · 6</div>
+            <span class="role">accent</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background: #b8843d;"></div>
+          <div class="meta">
+            <div class="name">Honey</div>
+            <div class="hex">#b8843d</div>
+            <div class="rgb">rgb 184 · 132 · 61<br/>cmyk 0 · 28 · 67 · 28</div>
+            <span class="role">accent / deep</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background: #3a2f1a;"></div>
+          <div class="meta">
+            <div class="name">Deep Cocoa</div>
+            <div class="hex">#3a2f1a</div>
+            <div class="rgb">rgb 58 · 47 · 26<br/>cmyk 0 · 19 · 55 · 77</div>
+            <span class="role">ink / text</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 08 · COLOR · USAGE ────────────────────────── -->
+  <section data-screen-label="08 Color usage">
+    <div class="chrome-tl">08 · colour usage</div>
+    <div class="chrome-tr"><span class="dot"></span>60 · 25 · 10 · 5</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>08 / 14</span></div>
+
+    <div class="pad two-col">
+      <div style="display: flex; flex-direction: column; justify-content: center;">
+        <div class="eyebrow">proportions</div>
+        <h1 class="title" style="font-size: 84px;">a calm <em>rhythm.</em></h1>
+        <p class="lede">If the page were a hundred parts, this is how the colour falls. Cream first, ink second, honey only where attention is earned.</p>
+
+        <div style="margin-top: 60px; display: flex; flex-direction: column; gap: 28px;">
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <div style="width: 60px; height: 60px; background: #f6efd9; border-radius: 12px; border: 1px solid var(--line); flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink);">60% · Butter Cream</div>
+              <div style="font-size: 14px; color: var(--muted); margin-top: 2px;">backgrounds, large surfaces, breathing room</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <div style="width: 60px; height: 60px; background: #3a2f1a; border-radius: 12px; flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink);">25% · Deep Cocoa</div>
+              <div style="font-size: 14px; color: var(--muted); margin-top: 2px;">all body type, primary buttons, footers</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <div style="width: 60px; height: 60px; background: #f5e2af; border-radius: 12px; flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink);">10% · Pastel Butter</div>
+              <div style="font-size: 14px; color: var(--muted); margin-top: 2px;">soft fills, secondary cards, badges</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <div style="width: 60px; height: 60px; background: #b8843d; border-radius: 12px; flex-shrink: 0;"></div>
+            <div style="flex: 1;">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink);">5% · Honey</div>
+              <div style="font-size: 14px; color: var(--muted); margin-top: 2px;">accent words, links, the logo dot, one CTA per screen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual: stacked proportional bar -->
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div style="
+          width: 320px;
+          height: 640px;
+          border-radius: 24px;
+          overflow: hidden;
+          display: flex; flex-direction: column;
+          border: 1px solid var(--line);
+          box-shadow: 0 24px 60px rgba(58,47,26,0.18);
+        ">
+          <div style="flex: 60; background: #f6efd9; display: flex; align-items: flex-end; padding: 18px;">
+            <div>
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 42px; color: var(--ink); line-height: 1;">60%</div>
+              <div style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-top: 6px;">butter cream</div>
+            </div>
+          </div>
+          <div style="flex: 25; background: #3a2f1a; color: var(--bg); display: flex; align-items: flex-end; padding: 18px;">
+            <div>
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 36px; line-height: 1;">25%</div>
+              <div style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.7; margin-top: 6px;">deep cocoa</div>
+            </div>
+          </div>
+          <div style="flex: 10; background: #f5e2af; display: flex; align-items: center; padding: 18px;">
+            <div>
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 24px; color: var(--ink); line-height: 1;">10%</div>
+              <div style="font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">pastel</div>
+            </div>
+          </div>
+          <div style="flex: 5; background: #b8843d; color: var(--bg); display: flex; align-items: center; padding: 18px;">
+            <div style="font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.9;">5% · honey</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 09 · TYPOGRAPHY ────────────────────────── -->
+  <section data-screen-label="09 Typography">
+    <div class="chrome-tl">09 · type</div>
+    <div class="chrome-tr"><span class="dot"></span>instrument &amp; dm</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>09 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow">typography</div>
+      <h1 class="title" style="font-size: 88px;">two faces, <em>one feeling.</em></h1>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px;">
+        <!-- Display -->
+        <div>
+          <div style="font-family: var(--font-display); font-style: italic; font-size: 200px; line-height: 1; color: var(--ink); letter-spacing: -0.03em;">Aa</div>
+          <div style="font-family: var(--font-body); font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent2); margin-top: 24px;">display · headlines</div>
+          <div style="font-family: var(--font-display); font-style: italic; font-size: 36px; color: var(--ink); margin-top: 8px; letter-spacing: -0.02em;">Instrument Serif</div>
+          <div style="font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6;">Italic, regular weight (400). Always italic in display use. Tight tracking (-0.025em). Free, on Google Fonts.</div>
+          <div style="border-top: 1px solid var(--line); margin-top: 28px; padding-top: 22px; display: flex; gap: 18px; font-family: var(--font-display); color: var(--ink);">
+            <span style="font-style: italic; font-size: 32px;">abcdefghijklm</span>
+          </div>
+          <div style="display: flex; gap: 18px; font-family: var(--font-display); color: var(--ink);">
+            <span style="font-style: italic; font-size: 32px;">nopqrstuvwxyz</span>
+          </div>
+          <div style="display: flex; gap: 18px; font-family: var(--font-display); color: var(--ink);">
+            <span style="font-style: italic; font-size: 32px;">0 1 2 3 4 5 6 7 8 9</span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div>
+          <div style="font-family: var(--font-body); font-weight: 500; font-size: 200px; line-height: 1; color: var(--ink); letter-spacing: -0.04em;">Aa</div>
+          <div style="font-family: var(--font-body); font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent2); margin-top: 24px;">body · ui</div>
+          <div style="font-family: var(--font-body); font-size: 36px; font-weight: 500; color: var(--ink); margin-top: 8px; letter-spacing: -0.02em;">DM Sans</div>
+          <div style="font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6;">Regular (400), Medium (500), Semibold (600). Line-height 1.55–1.7 for paragraphs. Free, on Google Fonts.</div>
+          <div style="border-top: 1px solid var(--line); margin-top: 28px; padding-top: 22px; display: flex; gap: 18px; color: var(--ink);">
+            <span style="font-size: 26px;">abcdefghijklm</span>
+          </div>
+          <div style="display: flex; gap: 18px; color: var(--ink);">
+            <span style="font-size: 26px;">nopqrstuvwxyz</span>
+          </div>
+          <div style="display: flex; gap: 18px; color: var(--ink);">
+            <span style="font-size: 26px; font-weight: 600;">0 1 2 3 4 5 6 7 8 9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 10 · TYPE SCALE ────────────────────────── -->
+  <section data-screen-label="10 Type scale">
+    <div class="chrome-tl">10 · type scale</div>
+    <div class="chrome-tr"><span class="dot"></span>hierarchy</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>10 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: flex-start; padding: 110px 120px 100px;">
+      <div class="eyebrow">scale</div>
+      <h1 class="title" style="font-size: 56px; margin: 0 0 24px;">six sizes, <em>one rhythm.</em></h1>
+
+      <div>
+        <div class="type-row">
+          <div class="label">H1 · hero<span>96 / 1.0</span></div>
+          <div class="specimen-display" style="font-size: 96px;">words that land softly.</div>
+        </div>
+        <div class="type-row">
+          <div class="label">H2 · section<span>64 / 1.05</span></div>
+          <div class="specimen-display" style="font-size: 64px;">recent chapters.</div>
+        </div>
+        <div class="type-row">
+          <div class="label">H3 · card<span>36 / 1.15</span></div>
+          <div class="specimen-display" style="font-size: 36px;">a launch that actually launched.</div>
+        </div>
+        <div class="type-row">
+          <div class="label">Lede · intro<span>26 / 1.55</span></div>
+          <div class="specimen-body" style="font-size: 26px;">A short, warm paragraph that explains what's about to happen.</div>
+        </div>
+        <div class="type-row">
+          <div class="label">Body · default<span>20 / 1.65</span></div>
+          <div class="specimen-body" style="font-size: 20px;">The default reading size for the website, newsletters, and case studies.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 11 · VOICE & TONE ────────────────────────── -->
+  <section data-screen-label="11 Voice">
+    <div class="chrome-tl">11 · voice</div>
+    <div class="chrome-tr"><span class="dot"></span>how we sound</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>11 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow">voice &amp; tone</div>
+      <h1 class="title" style="font-size: 88px;">like a friend who <em>writes well.</em></h1>
+
+      <div style="display: flex; gap: 40px; margin-top: 36px; align-items: flex-start;">
+        <div style="flex: 1; font-size: 18px; line-height: 1.7; color: var(--ink); opacity: 0.85; max-width: 580px;">
+          Lowercase by default. Sentence case for everything except product names. Em-dashes, not semicolons. One idea per sentence. Real specifics over corporate adjectives. Never "elevate," never "robust," never "synergy."
+        </div>
+        <div style="flex: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+          <div style="background: var(--soft); padding: 14px 20px; border-radius: 999px; font-size: 14px; color: var(--ink); text-align: center;">specific</div>
+          <div style="background: var(--soft); padding: 14px 20px; border-radius: 999px; font-size: 14px; color: var(--ink); text-align: center;">unhurried</div>
+          <div style="background: var(--soft); padding: 14px 20px; border-radius: 999px; font-size: 14px; color: var(--ink); text-align: center;">warm</div>
+          <div style="background: var(--soft); padding: 14px 20px; border-radius: 999px; font-size: 14px; color: var(--ink); text-align: center;">precise</div>
+          <div style="background: var(--ink); color: var(--bg); padding: 14px 20px; border-radius: 999px; font-size: 14px; text-align: center;">never · "salesy"</div>
+          <div style="background: var(--ink); color: var(--bg); padding: 14px 20px; border-radius: 999px; font-size: 14px; text-align: center;">never · jargon</div>
+        </div>
+      </div>
+
+      <div class="voice-grid">
+        <div class="voice-card do">
+          <div class="qtype">caption · launch post</div>
+          <p class="qbody">finally — three months of testing, eleven shade tweaks, one quiet drop. lipgloss no. 1 is here. tell me your favourite name in the comments &amp; i'll send you a free one.</p>
+        </div>
+        <div class="voice-card dont">
+          <div class="qtype">caption · launch post</div>
+          <p class="qbody">We are thrilled to announce the launch of our revolutionary new lipgloss! Crafted with passion, designed for the modern woman. Don't miss out — limited stock available!</p>
+        </div>
+        <div class="voice-card do">
+          <div class="qtype">cold email · opener</div>
+          <p class="qbody">hi anaya — saw your essential oil launch on hauterrfly last month. love the bottle. i wrote this short thing about how your newsletter could sound if we let it. ten minute read.</p>
+        </div>
+        <div class="voice-card dont">
+          <div class="qtype">cold email · opener</div>
+          <p class="qbody">Dear Ms. Anaya, I hope this email finds you well. I am reaching out to discuss potential collaboration opportunities that could elevate your brand's digital presence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 12 · IMAGERY & MOTIFS ────────────────────────── -->
+  <section data-screen-label="12 Imagery">
+    <div class="chrome-tl">12 · imagery</div>
+    <div class="chrome-tr"><span class="dot"></span>texture &amp; motif</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>12 / 14</span></div>
+
+    <div class="pad two-col">
+      <div style="display: flex; flex-direction: column; justify-content: center;">
+        <div class="eyebrow">imagery</div>
+        <h1 class="title" style="font-size: 80px;">soft light, <em>real hands.</em></h1>
+        <p class="lede">Warm daylight. Linen, ceramic, paper, hand-knit. Real hands holding real objects. No corporate stock, no fluorescent lighting, no perfect grids of products. Subjects: studios mid-work, half-finished cups of chai, handwritten notes, packaging in golden hour.</p>
+
+        <ul class="rules do" style="grid-template-columns: 1fr;">
+          <li><span class="mark">·</span>Crop close. Hands and small objects beat full-room shots.</li>
+          <li><span class="mark">·</span>Use the curved-bottom mask for portraits (top circle, bottom square corners).</li>
+          <li><span class="mark">·</span>Photos always sit on cream — never on white, never on the honey accent.</li>
+          <li><span class="mark">·</span>One tinted overlay only when matching the cocoa duotone for moody sections.</li>
+        </ul>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; height: 100%; align-content: center; padding-top: 60px;">
+        <!-- Image placeholders -->
+        <div style="background: linear-gradient(135deg, #f5e2af 0%, #b8843d 100%); border-radius: 50% 50% 16px 16px / 35% 35% 16px 16px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px; color: var(--ink); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;">curved portrait</div>
+        <div style="background: linear-gradient(160deg, #d4a574 0%, #8b6332 100%); border-radius: 16px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px; color: var(--bg); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;">studio detail</div>
+        <div style="background: linear-gradient(135deg, #f6efd9 0%, #f0d181 100%); border-radius: 16px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px; color: var(--ink); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;">paper · note</div>
+        <div style="background: linear-gradient(160deg, #3a2f1a 0%, #897558 100%); border-radius: 16px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px; color: var(--bg); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;">cocoa duotone</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 13 · APPLICATIONS ────────────────────────── -->
+  <section data-screen-label="13 Applications">
+    <div class="chrome-tl">13 · applications</div>
+    <div class="chrome-tr"><span class="dot"></span>in the wild</div>
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>13 / 14</span></div>
+
+    <div class="pad" style="display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow">applications</div>
+      <h1 class="title" style="font-size: 88px;">in the <em>wild.</em></h1>
+
+      <div style="display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 24px; margin-top: 56px;">
+        <!-- Business card stack -->
+        <div class="card" style="background: var(--soft); border-color: var(--accent2); aspect-ratio: 1; padding: 36px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent2);">· business card</div>
+          <div style="display: flex; align-items: center; justify-content: center; position: relative; flex: 1;">
+            <!-- back card -->
+            <div style="
+              position: absolute;
+              width: 70%; aspect-ratio: 16/9;
+              background: var(--accent2);
+              border-radius: 12px;
+              transform: rotate(5deg) translate(15px, 15px);
+              box-shadow: 0 20px 40px rgba(58,47,26,0.2);
+              padding: 18px 22px;
+              color: var(--bg);
+              display: flex; flex-direction: column; justify-content: space-between;
+            ">
+              <div style="font-family: var(--font-display); font-style: italic; font-size: 22px; line-height: 1.05; letter-spacing: -0.02em;">words that<br/>land softly.</div>
+              <div style="font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; display: flex; justify-content: space-between;"><span>hello@raji.studio</span><span>@raji.studio</span></div>
+            </div>
+            <!-- front card -->
+            <div style="
+              position: relative;
+              width: 70%; aspect-ratio: 16/9;
+              background: var(--bg);
+              border-radius: 12px;
+              transform: rotate(-4deg);
+              box-shadow: 0 20px 40px rgba(58,47,26,0.18);
+              padding: 18px 22px;
+              display: flex; flex-direction: column; justify-content: space-between;
+              z-index: 2;
+            ">
+              <span class="logo" style="font-size: 32px;"><span class="word">raji</span><span class="dot"></span></span>
+              <div>
+                <div style="font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--ink);">Raji</div>
+                <div style="font-size: 7px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">social · content · servicing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social tile -->
+        <div class="card" style="aspect-ratio: 1; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <span class="logo" style="font-size: 22px;"><span class="word">raji</span><span class="dot"></span></span>
+            <div style="font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted);">vol · 04</div>
+          </div>
+          <div style="text-align: center;">
+            <h3 style="font-family: var(--font-display); font-style: italic; font-size: 44px; line-height: 0.98; letter-spacing: -0.025em; color: var(--ink); margin: 0;">your caption is <span style="color: var(--accent2);">doing</span> too much.</h3>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 10px;">
+            <div style="font-size: 10px; color: var(--muted);">a 30-sec read on writing for socials</div>
+            <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent2); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 12px;">→</div>
+          </div>
+        </div>
+
+        <!-- Email signature -->
+        <div class="card" style="aspect-ratio: 1; padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent2);">· email signature</div>
+          <div style="padding-left: 16px; border-left: 2px solid var(--accent2);">
+            <span class="logo" style="font-size: 38px;"><span class="word">raji</span><span class="dot"></span></span>
+            <div style="margin-top: 14px; font-size: 14px; color: var(--ink); line-height: 1.6;">
+              <div style="font-weight: 600;">Raji</div>
+              <div style="color: var(--muted);">social · content · client servicing</div>
+              <div style="margin-top: 8px;">hello@raji.studio · @raji.studio</div>
+              <div style="color: var(--muted); margin-top: 8px; font-style: italic; font-family: var(--font-display); font-size: 16px;">— words that land softly</div>
+            </div>
+          </div>
+          <div style="font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase;">use in gmail / superhuman</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────── 14 · CLOSING ────────────────────────── -->
+  <section data-screen-label="14 Closing" class="closing">
+    <div class="chrome-tl">14 · fin</div>
+    <div class="chrome-tr"><span class="dot" style="background: var(--accent);"></span>thanks for reading</div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div class="eyebrow" style="color: var(--accent);">· contact &amp; credits</div>
+      <h1 class="title" style="font-size: 124px;">that's all <em>for now.</em></h1>
+      <p class="lede" style="color: var(--soft); opacity: 0.85; max-width: 760px; margin-top: 36px;">This book is version 1.0 of the Raji brand — a small studio for client servicing, social media &amp; content writing. Print it, screenshot it, share it with anyone you're working with on Raji. Feedback &amp; revisions go to the email below.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; max-width: 1100px;">
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">contact</div>
+          <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--bg);">hello@raji.studio</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">social</div>
+          <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--bg);">@raji.studio</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">version</div>
+          <div style="font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--bg);">v 1.0 · may 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chrome-bl"><span class="logo s"><span class="word">raji</span><span class="dot"></span></span></div>
+    <div class="chrome-br"><span>brand book</span><span>14 / 14</span></div>
+  </section>
+
+</deck-stage>
+</body>
+</html>

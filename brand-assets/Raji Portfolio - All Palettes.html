@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Raji · All Palettes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f0eee9;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+  a { color: inherit; }
+
+  /* Marquee */
+  @keyframes raji-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: raji-marquee 28s linear infinite;
+  }
+
+  /* Sticky top bar with quick-jump dots */
+  .palette-jump {
+    position: fixed;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 10px;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(12px);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .palette-jump a {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.12);
+    transition: transform .2s, border-color .2s;
+    display: block;
+  }
+  .palette-jump a:hover {
+    transform: scale(1.2);
+    border-color: rgba(0,0,0,0.35);
+  }
+  .palette-jump a span {
+    display: block;
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 10px;
+    background: rgba(20,20,20,0.9);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .15s;
+  }
+  .palette-jump a:hover span { opacity: 1; }
+
+  /* Each palette instance is its own positioning context so the sticky nav
+     inside scrolls off when its palette section ends. */
+  .palette-frame {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Section ribbon divider between palettes */
+  .palette-divider {
+    background: #15110d;
+    color: #f6efe6;
+    padding: 22px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .palette-divider .swatches {
+    display: flex; gap: 6px;
+  }
+  .palette-divider .swatches span {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: inline-block;
+  }
+  .palette-divider .num {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    opacity: 0.55;
+  }
+  .palette-divider .title {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+
+  /* Comparison page header */
+  .comparison-header {
+    padding: 70px 40px 50px;
+    text-align: center;
+    background: #f0eee9;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .comparison-header h1 {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(48px, 6vw, 80px);
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+    color: #2a2018;
+    text-wrap: balance;
+  }
+  .comparison-header p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6a5d52;
+    max-width: 560px;
+    margin: 0 auto;
+    text-wrap: pretty;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="brand-tokens.js"></script>
+<script src="image-slot.js"></script>
+<script type="text/babel" src="logos.jsx"></script>
+<script type="text/babel" src="portfolio-components.jsx"></script>
+
+<script type="text/babel">
+const { useMemo } = React;
+
+// Render one full portfolio instance in the given palette. We use the
+// editorial hero (no image-slot) for every instance, plus a condensed
+// section sequence that's enough to see how the palette behaves end-to-end.
+function PortfolioInstance({ palette }) {
+  const Logo = window.RAJI_LOGOS[0].Component; // serif italic — hero direction
+
+  return (
+    <div className="palette-frame" style={{ background: palette.bg, color: palette.ink }}>
+      <Nav palette={palette} Logo={Logo} />
+      <Hero
+        palette={palette}
+        Logo={Logo}
+        headline="i make brands sound like a friend, not a brochure."
+        showCapsules={true}
+      />
+      <Marquee palette={palette} />
+      <Services palette={palette} />
+      <Work palette={palette} />
+      <Quote palette={palette} />
+      <Footer palette={palette} Logo={Logo} />
+    </div>
+  );
+}
+
+function PaletteRibbon({ palette, idx }) {
+  return (
+    <div
+      className="palette-divider"
+      id={`palette-${palette.id}`}
+      style={{ background: palette.ink, color: palette.bg }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+        <span className="num">0{idx + 1}</span>
+        <div>
+          <div className="title">{palette.name}</div>
+          <div style={{
+            fontSize: 11, letterSpacing: '0.22em',
+            opacity: 0.6, marginTop: 4,
+          }}>{palette.subtitle}</div>
+        </div>
+      </div>
+      <div className="swatches">
+        <span style={{ background: palette.bg }}></span>
+        <span style={{ background: palette.surface }}></span>
+        <span style={{ background: palette.soft }}></span>
+        <span style={{ background: palette.accent }}></span>
+        <span style={{ background: palette.accent2 }}></span>
+        <span style={{ background: palette.ink, border: '1px solid rgba(255,255,255,0.35)' }}></span>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const palettes = window.RAJI_PALETTES;
+
+  return (
+    <>
+      <header className="comparison-header">
+        <div style={{
+          fontSize: 11, letterSpacing: '0.32em', textTransform: 'uppercase',
+          color: '#c97b5b', marginBottom: 20,
+        }}>raji portfolio · side by side</div>
+        <h1>same site, five <em>moods</em>.</h1>
+        <p>
+          The Raji portfolio rendered in each of the five pastel palettes — scroll through to compare end to end, or use the dots on the right to jump between them. The logo direction is fixed to <em>Soft Serif Italic</em> for a fair comparison.
+        </p>
+      </header>
+
+      {/* quick-jump dots */}
+      <nav className="palette-jump" aria-label="Jump to palette">
+        {palettes.map((p) => (
+          <a key={p.id} href={`#palette-${p.id}`}
+             style={{ background: p.accent2 }}
+             aria-label={p.name}>
+            <span>{p.name}</span>
+          </a>
+        ))}
+      </nav>
+
+      {palettes.map((p, i) => (
+        <React.Fragment key={p.id}>
+          <PaletteRibbon palette={p} idx={i} />
+          <PortfolioInstance palette={p} />
+        </React.Fragment>
+      ))}
+
+      {/* footer note */}
+      <div style={{
+        padding: '60px 40px 80px',
+        textAlign: 'center',
+        background: '#15110d',
+        color: '#bfae9c',
+        fontSize: 13,
+        lineHeight: 1.6,
+      }}>
+        <p style={{ margin: 0 }}>
+          Want to play live? Open <a href="Raji Portfolio.html" style={{ color: '#e8a88a', textDecoration: 'underline' }}>Raji Portfolio.html</a> &amp; use the Tweaks toolbar.
+        </p>
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

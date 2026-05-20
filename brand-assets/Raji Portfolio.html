@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Raji · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg, #f6efe6);
+    color: var(--ink, #3a2a22);
+    -webkit-font-smoothing: antialiased;
+    transition: background .35s ease, color .35s ease;
+  }
+  * { box-sizing: border-box; }
+  a { color: inherit; }
+  ::selection { background: var(--accent2, #c97b5b); color: var(--bg, #f6efe6); }
+
+  /* Marquee */
+  @keyframes raji-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: raji-marquee 28s linear infinite;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  // Default tweak state — host parses this JSON & rewrites it when the user
+  // toggles values, so changes survive a reload.
+  window.RAJI_TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "paletteId": "peach-mocha",
+    "logoId": "serif-italic",
+    "headline": "i make brands sound like a friend, not a brochure.",
+    "heroStyle": "editorial",
+    "showCapsules": true,
+    "darkSurface": false
+  }/*EDITMODE-END*/;
+</script>
+
+<script src="brand-tokens.js"></script>
+<script src="image-slot.js"></script>
+<script type="text/babel" src="logos.jsx"></script>
+<script type="text/babel" src="portfolio-components.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+
+// ─────────────────────────────────────────────────────────────
+// Tweaks panel
+// ─────────────────────────────────────────────────────────────
+function RajiTweaks({ t, setTweak, palette }) {
+  const palettes = window.RAJI_PALETTES;
+  const logos = window.RAJI_LOGOS;
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Palette">
+        <TweakSelect
+          label="Palette"
+          value={t.paletteId}
+          onChange={(v) => setTweak('paletteId', v)}
+          options={palettes.map((p) => ({ value: p.id, label: p.name }))}
+        />
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)',
+          gap: 4, padding: '4px 0 8px',
+        }}>
+          {[palette.bg, palette.surface, palette.soft, palette.accent, palette.accent2, palette.ink].map((c, i) => (
+            <div key={i} style={{
+              aspectRatio: '1 / 1', background: c,
+              borderRadius: 6, border: '1px solid rgba(0,0,0,0.06)',
+            }}></div>
+          ))}
+        </div>
+      </TweakSection>
+
+      <TweakSection label="Logo">
+        <TweakSelect
+          label="Logo direction"
+          value={t.logoId}
+          onChange={(v) => setTweak('logoId', v)}
+          options={logos.map((l) => ({ value: l.id, label: l.name }))}
+        />
+      </TweakSection>
+
+      <TweakSection label="Layout">
+        <TweakRadio
+          label="Hero style"
+          value={t.heroStyle}
+          onChange={(v) => setTweak('heroStyle', v)}
+          options={[
+            { value: 'editorial', label: 'Editorial' },
+            { value: 'centered', label: 'Centered' },
+            { value: 'split', label: 'Split' },
+          ]}
+        />
+        <TweakToggle
+          label="Show inline image capsules"
+          value={t.showCapsules}
+          onChange={(v) => setTweak('showCapsules', v)}
+        />
+        <TweakToggle
+          label="Dark surface (night mode)"
+          value={t.darkSurface}
+          onChange={(v) => setTweak('darkSurface', v)}
+        />
+      </TweakSection>
+
+      <TweakSection label="Content">
+        <TweakText
+          label="Hero headline"
+          value={t.headline}
+          onChange={(v) => setTweak('headline', v)}
+        />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// App
+// ─────────────────────────────────────────────────────────────
+function App() {
+  const [t, setTweak] = useTweaks(window.RAJI_TWEAKS_DEFAULTS);
+  const palettes = window.RAJI_PALETTES;
+  const logos = window.RAJI_LOGOS;
+
+  const basePalette = useMemo(() =>
+    palettes.find((p) => p.id === t.paletteId) || palettes[0],
+    [t.paletteId]
+  );
+  const palette = useMemo(() =>
+    t.darkSurface ? darkenPalette(basePalette) : basePalette,
+    [basePalette, t.darkSurface]
+  );
+  const logo = useMemo(() =>
+    logos.find((l) => l.id === t.logoId) || logos[0],
+    [t.logoId]
+  );
+
+  useEffect(() => { applyPalette(palette); }, [palette]);
+
+  const Logo = logo.Component;
+
+  return (
+    <>
+      <Nav palette={palette} Logo={Logo} />
+      <HeroRouter palette={palette} Logo={Logo}
+        heroStyle={t.heroStyle}
+        headline={t.headline}
+        showCapsules={t.showCapsules} />
+      <Marquee palette={palette} />
+      <About palette={palette} />
+      <Services palette={palette} />
+      <Work palette={palette} />
+      <Quote palette={palette} />
+      <Contact palette={palette} />
+      <Footer palette={palette} Logo={Logo} />
+      <RajiTweaks t={t} setTweak={setTweak} palette={palette} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

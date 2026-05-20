@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Raji — Brand Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  html, body { margin: 0; padding: 0; background: #f0eee9; }
+  body { font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="brand-tokens.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="logos.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+/* ───────────────────────── Logo Artboard ──────────────────────────────────
+   Each artboard previews a single logo on the brand's hero cream background. */
+function LogoArtboard({ logo, palette, idx }) {
+  const Comp = logo.Component;
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: palette.bg,
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'relative',
+    }}>
+      {/* badge with index */}
+      <div style={{
+        position: 'absolute', top: 16, left: 18,
+        fontFamily: '"DM Sans", sans-serif',
+        fontSize: 10, letterSpacing: '0.32em',
+        color: palette.muted,
+        textTransform: 'uppercase',
+      }}>0{idx + 1} · logo</div>
+      <div style={{
+        position: 'absolute', top: 16, right: 18,
+        fontFamily: '"DM Sans", sans-serif',
+        fontSize: 10, letterSpacing: '0.3em',
+        color: palette.muted,
+        textTransform: 'uppercase',
+      }}>{logo.name}</div>
+
+      {/* logo centered */}
+      <div style={{
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '60px 40px 30px',
+      }}>
+        <Comp palette={palette} size={1} />
+      </div>
+
+      {/* note strip */}
+      <div style={{
+        padding: '18px 24px 22px',
+        borderTop: `1px solid ${palette.line}`,
+        fontFamily: '"DM Sans", sans-serif',
+        fontSize: 12.5,
+        lineHeight: 1.55,
+        color: palette.ink,
+        background: palette.surface,
+        textWrap: 'pretty',
+      }}>
+        <span style={{ color: palette.accent2, fontWeight: 600 }}>·  </span>
+        {logo.note}
+      </div>
+    </div>
+  );
+}
+
+/* ───────────────────────── Palette Artboard ───────────────────────────────
+   Five colour cards, each showing the palette in use with sample type. */
+function PaletteArtboard({ palette, idx }) {
+  const swatches = [
+    { label: 'background', value: palette.bg },
+    { label: 'surface', value: palette.surface },
+    { label: 'soft', value: palette.soft },
+    { label: 'accent', value: palette.accent },
+    { label: 'accent / deep', value: palette.accent2 },
+    { label: 'ink', value: palette.ink },
+  ];
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: palette.bg,
+      display: 'flex', flexDirection: 'column',
+      position: 'relative',
+      color: palette.ink,
+    }}>
+      <div style={{ padding: '32px 36px 12px' }}>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 10, letterSpacing: '0.32em',
+          color: palette.muted,
+          textTransform: 'uppercase',
+          marginBottom: 14,
+        }}>0{idx + 1} · palette</div>
+        <h3 style={{
+          fontFamily: '"Instrument Serif", serif',
+          fontStyle: 'italic',
+          fontWeight: 400,
+          fontSize: 48,
+          margin: 0,
+          letterSpacing: '-0.02em',
+          lineHeight: 1,
+          color: palette.ink,
+        }}>{palette.name}</h3>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 12,
+          color: palette.muted,
+          marginTop: 8,
+          letterSpacing: '0.05em',
+        }}>{palette.subtitle}</div>
+      </div>
+
+      {/* swatch strip */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(6, 1fr)',
+        gap: 0,
+        margin: '8px 36px 0',
+        borderRadius: 14,
+        overflow: 'hidden',
+        border: `1px solid ${palette.line}`,
+      }}>
+        {swatches.map((s, i) => (
+          <div key={i} style={{
+            background: s.value,
+            aspectRatio: '1 / 1.15',
+            display: 'flex',
+            alignItems: 'flex-end',
+            padding: 10,
+          }}>
+            <div style={{
+              fontFamily: '"DM Sans", sans-serif',
+              fontSize: 9,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: i >= 4 ? '#fff' : palette.muted,
+              opacity: 0.95,
+              lineHeight: 1.2,
+            }}>
+              {s.label}<br/>
+              <span style={{ opacity: 0.7 }}>{s.value.toUpperCase()}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* sample treatment */}
+      <div style={{
+        margin: '20px 36px 28px',
+        padding: '26px 26px 28px',
+        background: palette.surface,
+        borderRadius: 16,
+        border: `1px solid ${palette.line}`,
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}>
+        <div>
+          <div style={{
+            fontFamily: '"DM Sans", sans-serif',
+            fontSize: 10, letterSpacing: '0.3em',
+            color: palette.accent2,
+            textTransform: 'uppercase',
+            marginBottom: 12,
+          }}>portfolio · raji</div>
+          <h4 style={{
+            fontFamily: '"Instrument Serif", serif',
+            fontStyle: 'italic',
+            fontSize: 34,
+            lineHeight: 1.05,
+            margin: 0,
+            letterSpacing: '-0.02em',
+            color: palette.ink,
+            textWrap: 'balance',
+          }}>hello, i'm <span style={{ color: palette.accent2 }}>raji</span> — i help brands sound human.</h4>
+          <p style={{
+            fontFamily: '"DM Sans", sans-serif',
+            fontSize: 13,
+            color: palette.muted,
+            marginTop: 12,
+            marginBottom: 0,
+            lineHeight: 1.55,
+            maxWidth: 380,
+          }}>Client servicing, social media &amp; copy that earns attention without shouting for it.</p>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 22 }}>
+          <button style={{
+            background: palette.ink,
+            color: palette.bg,
+            border: 0,
+            padding: '10px 20px',
+            borderRadius: 999,
+            fontFamily: '"DM Sans", sans-serif',
+            fontSize: 12,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+          }}>work with me</button>
+          <button style={{
+            background: 'transparent',
+            color: palette.ink,
+            border: `1px solid ${palette.ink}`,
+            padding: '10px 20px',
+            borderRadius: 999,
+            fontFamily: '"DM Sans", sans-serif',
+            fontSize: 12,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            cursor: 'pointer',
+          }}>see writing</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ───────────────────────── Applied: Business Card ─────────────────────────── */
+function BusinessCardArtboard({ palette, logo }) {
+  const Logo = logo.Component;
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: '#e8e3da',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 40,
+      position: 'relative',
+    }}>
+      {/* front card */}
+      <div style={{
+        width: 360, height: 220,
+        background: palette.bg,
+        borderRadius: 12,
+        boxShadow: '0 24px 60px rgba(40,30,20,0.18), 0 2px 6px rgba(40,30,20,0.10)',
+        padding: '28px 30px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        transform: 'rotate(-3deg) translate(-30px, -10px)',
+        position: 'relative',
+        zIndex: 2,
+      }}>
+        <div style={{ transform: 'scale(0.55)', transformOrigin: 'top left' }}>
+          <Logo palette={palette} size={1} />
+        </div>
+        <div>
+          <div style={{
+            fontFamily: '"Instrument Serif", serif',
+            fontStyle: 'italic',
+            fontSize: 22,
+            color: palette.ink,
+            lineHeight: 1,
+          }}>Raji</div>
+          <div style={{
+            fontFamily: '"DM Sans", sans-serif',
+            fontSize: 10,
+            color: palette.muted,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginTop: 6,
+          }}>social · content · client servicing</div>
+        </div>
+      </div>
+      {/* back card */}
+      <div style={{
+        width: 360, height: 220,
+        background: palette.accent2,
+        borderRadius: 12,
+        boxShadow: '0 24px 60px rgba(40,30,20,0.18)',
+        padding: '28px 30px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        transform: 'rotate(4deg) translate(30px, 20px)',
+        position: 'absolute',
+        zIndex: 1,
+      }}>
+        <div style={{
+          fontFamily: '"Instrument Serif", serif',
+          fontStyle: 'italic',
+          fontSize: 28,
+          color: palette.bg,
+          lineHeight: 1.1,
+          letterSpacing: '-0.02em',
+          textWrap: 'balance',
+        }}>words that <br/>land softly.</div>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 10,
+          color: palette.bg,
+          opacity: 0.85,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}>
+          <span>hello@raji.studio</span>
+          <span>@raji.studio</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ───────────────────────── Applied: Social Tile ─────────────────────────── */
+function SocialTileArtboard({ palette, logo }) {
+  const Logo = logo.Component;
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: palette.bg,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '36px 36px 32px',
+      position: 'relative',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div style={{ transform: 'scale(0.55)', transformOrigin: 'top left' }}>
+          <Logo palette={palette} size={1} />
+        </div>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 10, letterSpacing: '0.25em',
+          textTransform: 'uppercase', color: palette.muted,
+        }}>vol · 04</div>
+      </div>
+
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <h2 style={{
+          fontFamily: '"Instrument Serif", serif',
+          fontStyle: 'italic',
+          fontWeight: 400,
+          fontSize: 82,
+          lineHeight: 0.95,
+          letterSpacing: '-0.025em',
+          color: palette.ink,
+          margin: 0,
+          textAlign: 'center',
+          textWrap: 'balance',
+        }}>
+          your caption is{' '}
+          <span style={{ color: palette.accent2 }}>doing</span>{' '}
+          <br/>
+          too much.
+        </h2>
+      </div>
+
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderTop: `1px solid ${palette.line}`,
+        paddingTop: 14,
+      }}>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 11, color: palette.muted,
+          letterSpacing: '0.05em',
+        }}>a 30-sec read on writing for socials</div>
+        <div style={{
+          width: 36, height: 36,
+          borderRadius: '50%',
+          background: palette.accent2,
+          color: palette.bg,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 16,
+        }}>→</div>
+      </div>
+    </div>
+  );
+}
+
+/* ───────────────────────── Notes (brief / rec / next) ─────────────────────── */
+function NoteCard({ palette, eyebrow, title, body, accent }) {
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: palette.surface,
+      padding: '32px 32px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      gap: 14,
+      borderLeft: `4px solid ${accent || palette.accent2}`,
+    }}>
+      <div style={{
+        fontFamily: '"DM Sans", sans-serif',
+        fontSize: 10, letterSpacing: '0.32em',
+        color: palette.accent2,
+        textTransform: 'uppercase',
+      }}>{eyebrow}</div>
+      <h3 style={{
+        fontFamily: '"Instrument Serif", serif',
+        fontStyle: 'italic',
+        fontWeight: 400,
+        fontSize: 32,
+        margin: 0,
+        lineHeight: 1.1,
+        color: palette.ink,
+        letterSpacing: '-0.02em',
+        textWrap: 'balance',
+      }}>{title}</h3>
+      <div style={{
+        fontFamily: '"DM Sans", sans-serif',
+        fontSize: 13.5,
+        lineHeight: 1.55,
+        color: palette.ink,
+        opacity: 0.8,
+        textWrap: 'pretty',
+      }}>{body}</div>
+    </div>
+  );
+}
+
+function BriefNote({ palette }) {
+  return (
+    <NoteCard
+      palette={palette}
+      eyebrow="brief"
+      title="Minimal, warm, editorial."
+      body={<>
+        <strong>Who:</strong> Raji — Client Servicing · Social Media · Content Writer.<br/>
+        <strong>Vibe:</strong> minimal &amp; clean, warm &amp; friendly. Pastel-soft palette, lowercase serif italics + clean grotesk, cream backgrounds.<br/>
+        <strong>Avoid:</strong> trendy gradients, heavy iconography, anything corporate. Cali-inspired direction.
+      </>}
+    />
+  );
+}
+
+function RecNote({ palette }) {
+  return (
+    <NoteCard
+      palette={palette}
+      eyebrow="recommended"
+      title="01 · Soft Serif Italic + Peach Mocha"
+      body={<>The applied mock uses this pairing by default — the most "Raji-coded" combination. Tweaks panel lets you swap to any of the other 5 logos &times; 5 palettes (30 combinations).</>}
+    />
+  );
+}
+
+function NextLinkNote({ palette }) {
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: palette.ink,
+      color: palette.bg,
+      padding: '32px 32px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+    }}>
+      <div>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 10, letterSpacing: '0.32em',
+          color: palette.accent,
+          textTransform: 'uppercase',
+        }}>next →</div>
+        <h3 style={{
+          fontFamily: '"Instrument Serif", serif',
+          fontStyle: 'italic',
+          fontWeight: 400,
+          fontSize: 36,
+          margin: '12px 0 14px',
+          lineHeight: 1.05,
+          letterSpacing: '-0.02em',
+          textWrap: 'balance',
+        }}>see it in context — full portfolio landing page.</h3>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 13, lineHeight: 1.5,
+          opacity: 0.75,
+        }}>Toggle <em>Tweaks</em> in the toolbar to swap logo &amp; palette in real time on the mock.</div>
+      </div>
+      <a href="Raji Portfolio.html" style={{
+        alignSelf: 'flex-start',
+        background: palette.accent,
+        color: palette.ink,
+        textDecoration: 'none',
+        padding: '12px 22px',
+        borderRadius: 999,
+        fontFamily: '"DM Sans", sans-serif',
+        fontSize: 12,
+        letterSpacing: '0.18em',
+        textTransform: 'uppercase',
+        fontWeight: 600,
+      }}>open portfolio mock →</a>
+    </div>
+  );
+}
+
+function AllPalettesNote({ palette }) {
+  const palettes = window.RAJI_PALETTES;
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      background: palette.bg,
+      color: palette.ink,
+      padding: '28px 32px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      borderLeft: `4px solid ${palette.accent2}`,
+    }}>
+      <div>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 10, letterSpacing: '0.32em',
+          color: palette.accent2,
+          textTransform: 'uppercase',
+        }}>side-by-side</div>
+        <h3 style={{
+          fontFamily: '"Instrument Serif", serif',
+          fontStyle: 'italic',
+          fontWeight: 400,
+          fontSize: 30,
+          margin: '12px 0 14px',
+          lineHeight: 1.05,
+          letterSpacing: '-0.02em',
+          color: palette.ink,
+          textWrap: 'balance',
+        }}>the portfolio in all five palettes, stacked.</h3>
+        <div style={{
+          fontFamily: '"DM Sans", sans-serif',
+          fontSize: 13, lineHeight: 1.5,
+          color: palette.muted,
+          textWrap: 'pretty',
+        }}>One long scroll, five complete moods — scroll the whole thing or use the dots on the right to jump. Logo stays fixed on the hero direction so you can compare colour only.</div>
+      </div>
+
+      {/* mini palette dots row */}
+      <div style={{ display: 'flex', gap: 10, margin: '20px 0' }}>
+        {palettes.map((p) => (
+          <div key={p.id} style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+          }}>
+            <div style={{
+              display: 'flex', borderRadius: 999, overflow: 'hidden',
+              border: `1px solid ${palette.line}`,
+            }}>
+              {[p.bg, p.accent, p.accent2, p.ink].map((c, i) => (
+                <span key={i} style={{
+                  width: 12, height: 24, background: c, display: 'block',
+                }}></span>
+              ))}
+            </div>
+            <span style={{
+              fontSize: 8, letterSpacing: '0.12em',
+              textTransform: 'uppercase', color: palette.muted,
+              textAlign: 'center', maxWidth: 60, lineHeight: 1.2,
+            }}>{p.name.split(' ')[0]}</span>
+          </div>
+        ))}
+      </div>
+
+      <a href={"Raji Portfolio — All Palettes.html"} style={{
+        alignSelf: 'flex-start',
+        background: palette.ink,
+        color: palette.bg,
+        textDecoration: 'none',
+        padding: '12px 22px',
+        borderRadius: 999,
+        fontFamily: '"DM Sans", sans-serif',
+        fontSize: 12,
+        letterSpacing: '0.18em',
+        textTransform: 'uppercase',
+        fontWeight: 600,
+      }}>open comparison →</a>
+    </div>
+  );
+}
+
+/* ───────────────────────── App ──────────────────────────────────────────── */
+function App() {
+  const palettes = window.RAJI_PALETTES;
+  const logos = window.RAJI_LOGOS;
+  // Hero palette for the logo previews is peach-mocha (the "primary" rec).
+  const heroPalette = palettes[0];
+  // Hero logo for the applied artboards.
+  const heroLogo = logos[0]; // serif italic
+
+  return (
+    <DesignCanvas>
+
+      {/* ───── Brief ───── */}
+      <DCSection id="brief" title="Raji — Brand Explorations"
+        subtitle="Logo directions + pastel palettes for the portfolio. Open any artboard in focus mode (↗) to preview. The applied mock lives in a separate file — link at the bottom.">
+        <DCArtboard id="brief-note" label="The brief" width={520} height={300}>
+          <BriefNote palette={heroPalette} />
+        </DCArtboard>
+        <DCArtboard id="rec-note" label="Recommended pairing" width={420} height={300}>
+          <RecNote palette={heroPalette} />
+        </DCArtboard>
+      </DCSection>
+
+      {/* ───── Logos ───── */}
+      <DCSection id="logos" title="Logo directions" subtitle="Six explorations of the 'raji' wordmark. Each is rendered with the hero peach-mocha palette so you can compare like-for-like.">
+        {logos.map((logo, i) => (
+          <DCArtboard key={logo.id} id={logo.id} label={`${String(i+1).padStart(2,'0')} · ${logo.name}`} width={420} height={460}>
+            <LogoArtboard logo={logo} palette={heroPalette} idx={i} />
+          </DCArtboard>
+        ))}
+      </DCSection>
+
+      {/* ───── Palettes ───── */}
+      <DCSection id="palettes" title="Color palettes" subtitle="Five pastel-soft directions. All keep cream/oat backgrounds + a deep ink for legibility, varying the accent.">
+        {palettes.map((p, i) => (
+          <DCArtboard key={p.id} id={`pal-${p.id}`} label={`${String(i+1).padStart(2,'0')} · ${p.name}`} width={500} height={580}>
+            <PaletteArtboard palette={p} idx={i} />
+          </DCArtboard>
+        ))}
+      </DCSection>
+
+      {/* ───── Applied previews ───── */}
+      <DCSection id="applied" title="Applied — in context" subtitle="A peek at the hero logo + palette on touchpoints. The full clickable portfolio mock is the next file.">
+        <DCArtboard id="card" label="Business card" width={520} height={420}>
+          <BusinessCardArtboard palette={heroPalette} logo={heroLogo} />
+        </DCArtboard>
+        <DCArtboard id="social-1" label="Social tile · 1:1" width={420} height={420}>
+          <SocialTileArtboard palette={heroPalette} logo={heroLogo} />
+        </DCArtboard>
+        <DCArtboard id="social-2" label="Social tile · sage" width={420} height={420}>
+          <SocialTileArtboard palette={palettes[1]} logo={heroLogo} />
+        </DCArtboard>
+        <DCArtboard id="social-3" label="Social tile · lilac" width={420} height={420}>
+          <SocialTileArtboard palette={palettes[4]} logo={heroLogo} />
+        </DCArtboard>
+      </DCSection>
+
+      {/* ───── Next ───── */}
+      <DCSection id="next" title="Full portfolio mock" subtitle="A clickable landing page using the hero direction. Open Tweaks (top-right toggle) to swap logo & palette live.">
+        <DCArtboard id="next-link" label="→ Open tweakable mock" width={520} height={300}>
+          <NextLinkNote palette={heroPalette} />
+        </DCArtboard>
+        <DCArtboard id="all-palettes-link" label="→ All 5 palettes, side-by-side" width={520} height={300}>
+          <AllPalettesNote palette={heroPalette} />
+        </DCArtboard>
+      </DCSection>
+
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
