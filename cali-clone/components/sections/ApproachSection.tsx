@@ -31,11 +31,11 @@ export default function ApproachSection() {
         <div className="approach-media">
           <div className="approach-img-wrap">
             <Image
-              src="/images/raji-portrait.png"
+              src="/images/raji-portrait.jpg"
               alt="Rajeshwari Chauhan portrait"
               fill
               sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 480px"
-              style={{ objectFit: "cover", objectPosition: "center top" }}
+              style={{ objectFit: "cover", objectPosition: "center 20%" }}
               priority
             />
             <span className="approach-img-dot" aria-hidden />
