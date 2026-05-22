@@ -1,21 +1,40 @@
 "use client";
+import Image from "next/image";
+import { unsplashUrl } from "@/lib/unsplash";
 
 const PILLARS = [
   {
     title: "Strategic Content Planning & Calendar Management",
     body: "Purposeful calendars that align every post with brand goals, audience rhythms, and platform behaviour.",
+    img: "photo-1611605698335-8b1569810432",
   },
   {
     title: "Social Media Advertising & Performance Tracking",
     body: "Paid campaigns engineered for reach, retention, and return — measured against the metrics that matter.",
+    img: "photo-1551288049-bebda4e38f71",
   },
   {
     title: "Audience Growth & Engagement Strategy",
     body: "Steady, authentic community building that turns followers into champions of your brand.",
+    img: "photo-1542206395-9feb3edaa68d",
   },
   {
     title: "Brand Storytelling Through Visuals & Copy",
     body: "Story-led visuals and copy crafted to sound like you and convert like clockwork.",
+    img: "photo-1455390582262-044cdead277a",
+  },
+];
+
+const SUB_CARDS = [
+  {
+    title: "Strategic Clarity in Execution",
+    body: "True excellence begins with clear planning and thoughtful execution.",
+    img: "photo-1542038784456-1ea8e935640e",
+  },
+  {
+    title: "Dedication Beyond the Clock",
+    body: "Social media success demands commitment that extends beyond traditional hours.",
+    img: "photo-1499636136210-6f4ee915583e",
   },
 ];
 
@@ -31,6 +50,15 @@ export default function EdgeSection() {
         <div className="edge-grid">
           {PILLARS.map((p) => (
             <div key={p.title} className="edge-pillar">
+              <div className="edge-pillar-img">
+                <Image
+                  src={unsplashUrl(p.img, 240)}
+                  alt=""
+                  fill
+                  sizes="56px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
               <h3 className="edge-pillar-title">{p.title}</h3>
               <p className="edge-pillar-body">{p.body}</p>
             </div>
@@ -38,18 +66,23 @@ export default function EdgeSection() {
         </div>
 
         <div className="edge-sub-grid">
-          <div className="edge-sub-card">
-            <h4 className="edge-sub-title">Strategic Clarity in Execution</h4>
-            <p className="edge-sub-body">
-              True excellence begins with clear planning and thoughtful execution.
-            </p>
-          </div>
-          <div className="edge-sub-card">
-            <h4 className="edge-sub-title">Dedication Beyond the Clock</h4>
-            <p className="edge-sub-body">
-              Social media success demands commitment that extends beyond traditional hours.
-            </p>
-          </div>
+          {SUB_CARDS.map((c) => (
+            <div key={c.title} className="edge-sub-card">
+              <div className="edge-sub-img">
+                <Image
+                  src={unsplashUrl(c.img, 800)}
+                  alt=""
+                  fill
+                  sizes="(max-width: 767px) 100vw, 320px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="edge-sub-text">
+                <h4 className="edge-sub-title">{c.title}</h4>
+                <p className="edge-sub-body">{c.body}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
