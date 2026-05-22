@@ -2,7 +2,7 @@
 import BoomerangVideoBg from "./BoomerangVideoBg";
 
 const BG_VIDEO =
-  "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4";
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4";
 
 export default function HeroSection() {
   return (
