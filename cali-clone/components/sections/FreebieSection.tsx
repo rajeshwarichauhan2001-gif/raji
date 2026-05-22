@@ -23,7 +23,7 @@ export default function FreebieSection() {
             fill
             priority
             sizes="(max-width: 767px) 100vw, 50vw"
-            style={{ objectFit: "cover", objectPosition: "center bottom" }}
+            style={{ objectFit: "contain", objectPosition: "center center" }}
           />
         </div>
         <div className="freebie-copy">
