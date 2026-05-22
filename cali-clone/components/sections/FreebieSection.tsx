@@ -20,10 +20,11 @@ export default function FreebieSection() {
           <Image
             src="/images/raji-library.png"
             alt="Raji at her creative workspace"
-            fill
+            width={941}
+            height={1672}
             priority
             sizes="(max-width: 767px) 100vw, 50vw"
-            style={{ objectFit: "contain", objectPosition: "center center" }}
+            style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }}
           />
         </div>
         <div className="freebie-copy">
