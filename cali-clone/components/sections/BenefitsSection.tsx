@@ -6,7 +6,7 @@ const BENEFITS = [
   {
     title: "Clear and Prompt Communication",
     body: "We ensure clear, prompt, and honest communication, keeping you informed every step of the way.",
-    img: "photo-1551836022-d5d88e9218df",
+    img: "photo-1573164713714-d95e436ab8d6",
   },
   {
     title: "Accelerate Growth",
@@ -16,12 +16,12 @@ const BENEFITS = [
   {
     title: "Responsive and Scalable Solutions",
     body: "Our solutions adapt seamlessly to your needs, ensuring flexibility, efficiency, and long-term growth.",
-    img: "photo-1542038784456-1ea8e935640e",
+    img: "photo-1556761175-5973dc0f32e7",
   },
   {
     title: "Premium Support",
     body: "Explore our comprehensive help desk services, ensuring seamless IT support and swift resolution to keep your operations running smoothly.",
-    img: "photo-1521737604893-d14cc237f11d",
+    img: "photo-1542038784456-1ea8e935640e",
   },
 ];
 
@@ -38,8 +38,8 @@ export default function BenefitsSection() {
             <div key={b.title} className="benefits-card">
               <div className="benefits-card-img">
                 <Image
-                  src={unsplashUrl(b.img, 600)}
-                  alt=""
+                  src={unsplashUrl(b.img, 800)}
+                  alt={b.title}
                   fill
                   sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"
                   style={{ objectFit: "cover" }}

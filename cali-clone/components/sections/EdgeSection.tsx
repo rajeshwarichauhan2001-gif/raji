@@ -6,17 +6,17 @@ const PILLARS = [
   {
     title: "Strategic Content Planning & Calendar Management",
     body: "Purposeful calendars that align every post with brand goals, audience rhythms, and platform behaviour.",
-    img: "photo-1611605698335-8b1569810432",
+    img: "photo-1611224885990-ab7363d7f2a9",
   },
   {
     title: "Social Media Advertising & Performance Tracking",
     body: "Paid campaigns engineered for reach, retention, and return — measured against the metrics that matter.",
-    img: "photo-1551288049-bebda4e38f71",
+    img: "photo-1551836022-d5d88e9218df",
   },
   {
     title: "Audience Growth & Engagement Strategy",
     body: "Steady, authentic community building that turns followers into champions of your brand.",
-    img: "photo-1542206395-9feb3edaa68d",
+    img: "photo-1521737604893-d14cc237f11d",
   },
   {
     title: "Brand Storytelling Through Visuals & Copy",
@@ -29,7 +29,7 @@ const SUB_CARDS = [
   {
     title: "Strategic Clarity in Execution",
     body: "True excellence begins with clear planning and thoughtful execution.",
-    img: "photo-1542038784456-1ea8e935640e",
+    img: "photo-1517842645767-c639042777db",
   },
   {
     title: "Dedication Beyond the Clock",

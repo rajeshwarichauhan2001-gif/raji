@@ -7,19 +7,19 @@ const STEPS = [
     no: "01",
     title: "Get a Free Consultation",
     body: "Strategic planning session to understand your brand goals, target audience, and marketing objectives — completely complimentary.",
-    img: "photo-1494790108377-be9c29b29330",
+    img: "photo-1507003211169-0a1dd7228f2d",
   },
   {
     no: "02",
     title: "Instant Chat Support",
     body: "Real-time communication to discuss campaign strategies, content requirements, and answer all your social media queries promptly.",
-    img: "photo-1556761175-5973dc0f32e7",
+    img: "photo-1611605698335-8b1569810432",
   },
   {
     no: "03",
     title: "Wireframe & Development",
     body: "Develop customized content calendars and campaign blueprints that align perfectly with your brand identity and business goals.",
-    img: "photo-1521737604893-d14cc237f11d",
+    img: "photo-1517842645767-c639042777db",
   },
   {
     no: "04",
