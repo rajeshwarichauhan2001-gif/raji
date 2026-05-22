@@ -2,7 +2,6 @@
 import { useState, FormEvent } from "react";
 import Image from "next/image";
 import { useImageReveal } from "@/hooks/useImageReveal";
-import { unsplashUrl } from "@/lib/unsplash";
 
 export default function FreebieSection() {
   const img = useImageReveal();
@@ -19,11 +18,12 @@ export default function FreebieSection() {
       <div className="freebie-grid">
         <div ref={img as React.Ref<HTMLDivElement>} className="freebie-media">
           <Image
-            src={unsplashUrl("photo-1487412720507-e7ab37603c6f", 1200)}
-            alt="Let's connect"
+            src="/images/raji-library.png"
+            alt="Raji at her creative workspace"
             fill
+            priority
             sizes="(max-width: 767px) 100vw, 50vw"
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", objectPosition: "center top" }}
           />
         </div>
         <div className="freebie-copy">
