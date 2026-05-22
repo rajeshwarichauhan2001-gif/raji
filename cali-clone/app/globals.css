@@ -1744,23 +1744,46 @@ img, video {
 }
 
 /* ===== Freebie / Lead Capture ===== */
+/* ===== Freebie / Connect section ===== */
+.freebie-section {
+  padding: 100px 0;
+  overflow: hidden;
+}
 .freebie-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 72px;
   align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 .freebie-media {
   width: 100%;
-  border-radius: 24px;
-  overflow: hidden;
 }
-.freebie-media img { border-radius: 24px; display: block; }
+/* RIGHT sticky panel */
 .freebie-copy {
+  position: sticky;
+  top: calc(var(--nav-h, 72px) + 48px);
+}
+.freebie-copy-inner {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 480px;
+  gap: 24px;
+}
+.freebie-heading {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.5vw, 64px);
+  line-height: 1.1;
+  color: var(--color-text);
+  margin: 0;
+}
+.freebie-body {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 420px;
 }
 .freebie-form {
   display: flex;
@@ -1768,11 +1791,35 @@ img, video {
   gap: 20px;
   margin-top: 8px;
 }
+.freebie-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-bottom: 1.5px solid var(--color-text);
+  padding: 14px 0;
+  font-size: 16px;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  outline: none;
+}
+.freebie-input::placeholder { color: var(--color-text-muted); }
+.freebie-btn { align-self: flex-start; }
+.freebie-msg { font-size: 14px; margin: 0; }
+.freebie-msg--ok  { color: var(--color-accent-2); }
+.freebie-msg--err { color: #b03a2e; }
+.freebie-legal {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
 @media (max-width: 1199px) {
-  .freebie-grid { gap: 40px; }
+  .freebie-grid { gap: 48px; padding: 0 28px; }
 }
 @media (max-width: 767px) {
-  .freebie-grid { grid-template-columns: 1fr; gap: 36px; }
+  .freebie-grid { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+  .freebie-copy { position: static; }
+  .freebie-section { padding: 72px 0; }
 }
 
 /* ===== Sticky-nav clearance for anchor sections ===== */
