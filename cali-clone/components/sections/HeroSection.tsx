@@ -1,63 +1,53 @@
 "use client";
-import { VIDEOS, IMG, unsplashUrl } from "@/lib/unsplash";
-import { useHeroIntro } from "@/hooks/useHeroIntro";
-import EyebrowText from "@/components/ui/EyebrowText";
+import { Play, Sparkles } from "lucide-react";
+import BoomerangVideoBg from "./BoomerangVideoBg";
+
+const BG_VIDEO =
+  "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4";
 
 export default function HeroSection() {
-  const ref = useHeroIntro();
   return (
-    <section
-      ref={ref as React.Ref<HTMLElement>}
-      className="relative overflow-hidden"
-      style={{ minHeight: "100vh", paddingTop: "var(--nav-h)" }}
-    >
-      <div className="container-x grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-10 items-center" style={{ minHeight: "calc(100vh - var(--nav-h))" }}>
-        <div className="relative flex flex-col gap-6 py-10">
-          <span className="hero-eyebrow eyebrow-italic">Welcome to Raji</span>
-          <h1
-            className="hero-h1"
-            style={{
-              fontSize: "clamp(44px, 9vw, 140px)",
-              lineHeight: 0.95,
-              letterSpacing: "-0.02em",
-              maxWidth: "13ch",
-            }}
-          >
-            Strategy for service providers &amp; coaches
-          </h1>
-          <span
-            className="scroll-cue absolute"
-            style={{
-              left: 0,
-              bottom: 20,
-              transform: "rotate(-90deg)",
-              transformOrigin: "left bottom",
-              fontSize: 11,
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              color: "var(--color-text-muted)",
-            }}
-          >
-            scroll ↓
+    <section className="hero-boom">
+      <BoomerangVideoBg src={BG_VIDEO} className="hero-boom-bg" />
+      <div className="hero-boom-veil" />
+
+      <div className="hero-boom-copy">
+        <h1 className="hero-boom-title">
+          Calm strategy{" "}
+          <span className="hero-boom-accent">
+            shaped for women
+            <br className="hidden sm:block" /> who build with intention
+          </span>
+        </h1>
+        <p className="hero-boom-sub">
+          Steady content, story-first social, no chasing trends — for service
+          providers and coaches who want growth that holds.
+        </p>
+      </div>
+
+      <div className="hero-boom-cta">
+        <div className="hero-boom-cta-tag">
+          <Sparkles className="hero-boom-cta-icon" />
+          <span>
+            StoryStudio<sup>™</sup>
           </span>
         </div>
-        <div className="relative w-full h-[60vh] md:h-[80vh] rounded-sm overflow-hidden bg-[color:var(--color-bg-alt)]">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster={unsplashUrl(IMG.hero, 1600)}
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src={VIDEOS.hero} type="video/mp4" />
-          </video>
-          <div
-            className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none"
-            style={{ background: "linear-gradient(to top, var(--color-bg), transparent)" }}
-          />
+        <p className="hero-boom-cta-body">
+          Raji weaves your offers, voice, and audience into one calm content
+          system — so showing up online stops feeling like a daily emergency.
+        </p>
+        <div className="hero-boom-cta-row">
+          <button className="hero-boom-btn-primary">Book a call</button>
+          <button className="hero-boom-btn-ghost">See the work.</button>
         </div>
+      </div>
+
+      <div className="hero-boom-video-link">
+        <button className="hero-boom-play" aria-label="play process video">
+          <Play className="hero-boom-play-icon" />
+        </button>
+        <span className="hero-boom-play-label">How we work?</span>
+        <span className="hero-boom-play-dur">1:35</span>
       </div>
     </section>
   );

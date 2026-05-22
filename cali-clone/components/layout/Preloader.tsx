@@ -1,111 +1,86 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "@/lib/gsap";
 
-const DOT_COUNT = 5;
-const STORAGE_KEY = "raji-preloader-seen";
+const DOT_START_SIZE = 28;
+
+type Stage = "enter" | "pulse" | "fly" | "fade";
 
 export default function Preloader() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
+  const [stage, setStage] = useState<Stage>("enter");
+  const [target, setTarget] = useState<{ x: number; y: number; scale: number } | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
-  const ringRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
-    setShow(true);
-  }, []);
+  const dotRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!show) return;
-    const overlay = overlayRef.current;
-    const ring = ringRef.current;
-    if (!overlay || !ring) return;
-    const dots = Array.from(overlay.querySelectorAll<HTMLElement>(".raji-preloader-dot"));
-    if (dots.length === 0) return;
-
     document.documentElement.style.overflow = "hidden";
 
-    const radius = 64;
-    dots.forEach((dot, i) => {
-      const angle = (i / dots.length) * Math.PI * 2 - Math.PI / 2;
-      gsap.set(dot, {
-        x: Math.cos(angle) * radius,
-        y: Math.sin(angle) * radius,
-        scale: 0,
-        opacity: 0,
-      });
-    });
-
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-      onComplete: () => {
-        sessionStorage.setItem(STORAGE_KEY, "1");
-        document.documentElement.style.overflow = "";
-        setShow(false);
-      },
-    });
-
-    tl.to(dots, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.35,
-      stagger: 0.05,
-      ease: "back.out(2)",
-    }, 0.1);
-
-    tl.to(ring, { rotation: 540, duration: 1.2, ease: "power2.inOut" }, 0.3);
-
-    const logoDot = document.querySelector<HTMLElement>(".raji-nav .logo .logo-dot");
-    const startDotSize = 18;
-    const ringRect = ring.getBoundingClientRect();
-    const ringCenterX = ringRect.left + ringRect.width / 2;
-    const ringCenterY = ringRect.top + ringRect.height / 2;
-    let targetX = -ringCenterX + 60;
-    let targetY = -ringCenterY + 40;
-    let targetScale = 0.4;
-    if (logoDot) {
-      const r = logoDot.getBoundingClientRect();
-      targetX = r.left + r.width / 2 - ringCenterX;
-      targetY = r.top + r.height / 2 - ringCenterY;
-      targetScale = Math.max(r.width / startDotSize, 0.2);
-    }
-
-    tl.to(dots.slice(1), {
-      x: 0,
-      y: 0,
-      scale: 0,
-      opacity: 0,
-      duration: 0.45,
-      ease: "power3.in",
-      stagger: 0.04,
-    }, 1.5);
-
-    tl.to(dots[0], {
-      x: targetX,
-      y: targetY,
-      scale: targetScale,
-      duration: 0.75,
-      ease: "expo.inOut",
-    }, 1.55);
-
-    tl.to(overlay, { opacity: 0, duration: 0.35, ease: "power2.in" }, "-=0.15");
+    const t1 = window.setTimeout(() => setStage("pulse"), 60);
+    const t2 = window.setTimeout(() => {
+      const dot = dotRef.current;
+      const logoDot = document.querySelector<HTMLElement>(".raji-nav .logo .logo-dot");
+      if (dot && logoDot) {
+        const dRect = dot.getBoundingClientRect();
+        const lRect = logoDot.getBoundingClientRect();
+        const dx = (lRect.left + lRect.width / 2) - (dRect.left + dRect.width / 2);
+        const dy = (lRect.top + lRect.height / 2) - (dRect.top + dRect.height / 2);
+        const scale = Math.max(lRect.width / DOT_START_SIZE, 0.15);
+        setTarget({ x: dx, y: dy, scale });
+      } else {
+        setTarget({ x: -window.innerWidth / 2 + 60, y: -window.innerHeight / 2 + 40, scale: 0.2 });
+      }
+      setStage("fly");
+    }, 1700);
+    const t3 = window.setTimeout(() => setStage("fade"), 2700);
+    const t4 = window.setTimeout(() => {
+      document.documentElement.style.overflow = "";
+      setShow(false);
+    }, 3300);
 
     return () => {
-      tl.kill();
-      document.documentElement.style.overflow = "";
+      [t1, t2, t3, t4].forEach(clearTimeout);
     };
   }, [show]);
 
   if (!show) return null;
 
+  const overlayStyle: React.CSSProperties = {
+    opacity: stage === "fade" ? 0 : 1,
+    transition: "opacity 600ms cubic-bezier(0.4, 0, 1, 1)",
+  };
+
+  let dotStyle: React.CSSProperties = {
+    transform: "translate(0,0) scale(0)",
+    opacity: 0,
+    transition: "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 500ms ease-out",
+  };
+  if (stage === "pulse") {
+    dotStyle = {
+      transform: "translate(0,0) scale(1)",
+      opacity: 1,
+      animation: "raji-preloader-pulse 1.2s ease-in-out 1",
+    };
+  }
+  if (stage === "fly" && target) {
+    dotStyle = {
+      transform: `translate(${target.x}px, ${target.y}px) scale(${target.scale})`,
+      opacity: 1,
+      transition:
+        "transform 1100ms cubic-bezier(0.87, 0, 0.13, 1), opacity 1100ms ease-out",
+    };
+  }
+  if (stage === "fade" && target) {
+    dotStyle = {
+      transform: `translate(${target.x}px, ${target.y}px) scale(${target.scale})`,
+      opacity: 0,
+      transition: "opacity 500ms ease-in",
+    };
+  }
+
   return (
-    <div ref={overlayRef} className="raji-preloader" aria-hidden="true">
-      <div ref={ringRef} className="raji-preloader-ring">
-        {Array.from({ length: DOT_COUNT }, (_, i) => (
-          <div key={i} className="raji-preloader-dot" />
-        ))}
-      </div>
+    <div ref={overlayRef} className="raji-preloader" aria-hidden="true" style={overlayStyle}>
+      <div ref={dotRef} className="raji-preloader-dot" style={dotStyle} />
     </div>
   );
 }

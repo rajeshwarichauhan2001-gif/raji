@@ -43,18 +43,70 @@ export default function ServicesParallax() {
     const root = sectionRef.current;
     if (!root) return;
     const cards = Array.from(root.querySelectorAll<HTMLElement>(".pcard"));
-    const tweens: ScrollTrigger[] = [];
+    if (cards.length === 0) return;
+
+    const triggers: ScrollTrigger[] = [];
 
     cards.forEach((card, i) => {
-      const img = card.querySelector<HTMLElement>(".pcard-img");
-      const text = card.querySelector<HTMLElement>(".pcard-text");
-      if (!img || !text) return;
+      const baseY = i * 12;
+      const scale = 1 - i * 0.04;
+      gsap.set(card, {
+        y: baseY,
+        scale,
+        zIndex: cards.length - i,
+        opacity: 1,
+      });
+    });
 
-      const st = gsap.fromTo(
-        img,
-        { yPercent: -18 },
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: root,
+        start: "top top",
+        end: `+=${cards.length * 90}%`,
+        scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+      defaults: { ease: "power2.inOut" },
+    });
+    if (tl.scrollTrigger) triggers.push(tl.scrollTrigger);
+
+    cards.forEach((card, i) => {
+      if (i === cards.length - 1) return;
+      tl.to(
+        card,
         {
-          yPercent: 18,
+          yPercent: -120,
+          opacity: 0,
+          duration: 1,
+        },
+        i
+      );
+      cards.forEach((other, j) => {
+        if (j > i && j <= cards.length - 1) {
+          tl.to(
+            other,
+            {
+              y: (j - i - 1) * 12,
+              scale: 1 - (j - i - 1) * 0.04,
+              duration: 1,
+            },
+            i
+          );
+        }
+      });
+    });
+
+    cards.forEach((card) => {
+      const img = card.querySelector<HTMLElement>(".pcard-img");
+      if (!img) return;
+      const t = gsap.fromTo(
+        img,
+        { yPercent: -10 },
+        {
+          yPercent: 10,
           ease: "none",
           scrollTrigger: {
             trigger: card,
@@ -64,45 +116,14 @@ export default function ServicesParallax() {
           },
         }
       );
-      if (st.scrollTrigger) tweens.push(st.scrollTrigger);
-
-      if (i < cards.length - 1) {
-        const next = cards[i + 1];
-        const stack = gsap.to(card, {
-          scale: 0.92,
-          y: -30,
-          ease: "none",
-          scrollTrigger: {
-            trigger: next,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
-          },
-        });
-        if (stack.scrollTrigger) tweens.push(stack.scrollTrigger);
-      }
-
-      const reveal = ScrollTrigger.create({
-        trigger: card,
-        start: "top 85%",
-        once: true,
-        onEnter: () => {
-          gsap.from(text.children, {
-            y: 30,
-            opacity: 0,
-            duration: 0.7,
-            stagger: 0.08,
-            ease: "power3.out",
-          });
-        },
-      });
-      tweens.push(reveal);
+      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
     });
 
     requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => {
-      tweens.forEach((t) => t.kill());
+      triggers.forEach((t) => t.kill());
+      tl.kill();
     };
   }, []);
 
