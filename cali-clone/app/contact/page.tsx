@@ -1,8 +1,43 @@
+import PageHeader from "@/components/sections/PageHeader";
+import ContactForm from "@/components/sections/ContactForm";
+import ContactInfo from "@/components/sections/ContactInfo";
+import RotatingPhraseBand from "@/components/sections/RotatingPhraseBand";
+
+function ContactBody() {
+  return (
+    <section className="contact-grid">
+      <div className="contact-grid-inner">
+        <ContactForm />
+        <ContactInfo />
+      </div>
+    </section>
+  );
+}
+
 export default function Page() {
   return (
-    <main className="container-x" style={{ minHeight: "60vh", paddingTop: 200, paddingBottom: 120 }}>
-      <h1 style={{ fontSize: "clamp(40px, 6vw, 80px)" }}>contact</h1>
-      <p style={{ marginTop: 16, color: "var(--color-text-muted)" }}>coming soon.</p>
+    <main>
+      <PageHeader
+        eyebrow="Get in touch"
+        title="Contact Us"
+        subtitle={
+          <>
+            <p>
+              Start the conversation to build a strong relationship and a
+              successful business.
+            </p>
+            <p className="page-header-italic">
+              Effortless Communication, Worldwide Influence.
+            </p>
+            <p>
+              Seamless and effective communication that transcends borders,
+              empowering global connections and impact.
+            </p>
+          </>
+        }
+      />
+      <ContactBody />
+      <RotatingPhraseBand />
     </main>
   );
 }

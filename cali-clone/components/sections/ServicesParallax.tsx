@@ -16,23 +16,37 @@ const CARDS: Card[] = [
   {
     no: "01",
     label: "service one",
-    title: "Client Servicing",
-    body: "Account ownership, brief writing, weekly check-ins and the kind of calm communication that keeps a brand moving forward without chaos.",
-    img: "photo-1573497019940-1c28c88b4f3e",
+    title: "Social Media Strategy & Management",
+    body: "Complete end-to-end management of your social media accounts across all major platforms. I develop comprehensive content calendars, strategically schedule posts, manage daily operations, and ensure your brand voice remains consistent. From Instagram and Facebook to LinkedIn and YouTube, I handle every aspect with expertise, keeping your audience engaged and your brand top-of-mind.",
+    img: "photo-1611605698335-8b1569810432",
   },
   {
     no: "02",
     label: "service two",
-    title: "Social Media",
-    body: "Roadmaps, content calendars, posting cadence and the daily reality of running an Instagram, LinkedIn or YouTube presence that actually grows.",
-    img: "photo-1611605698335-8b1569810432",
+    title: "Content Creation & Curation",
+    body: "Designing visually compelling posts, crafting engaging stories, and creating scroll-stopping content that captures attention. I blend creativity with strategy to produce visuals and copy that resonate deeply with your target audience. Whether showcasing products, sharing behind-the-scenes moments, or running promotional campaigns, every post is purposefully crafted to drive engagement and reflect your brand identity.",
+    img: "photo-1455390582262-044cdead277a",
   },
   {
     no: "03",
     label: "service three",
-    title: "Content Writing",
-    body: "Captions, scripts, blog posts and brand-voice copy — written in your tone, edited for clarity, and structured so people read to the end.",
-    img: "photo-1455390582262-044cdead277a",
+    title: "Community Management & Engagement",
+    body: "Building meaningful relationships one interaction at a time. I actively monitor your social channels, respond to comments and messages promptly, and engage authentically with your audience. By fostering genuine conversations and addressing concerns professionally, I transform casual followers into loyal brand advocates who champion your business organically.",
+    img: "photo-1573497019940-1c28c88b4f3e",
+  },
+  {
+    no: "04",
+    label: "service four",
+    title: "Influencer Collaboration Management",
+    body: "We craft personalized email campaigns that enhance customer relationships, increase engagement, and drive conversions through targeted messaging. Strategic planning and seamless execution of influencer partnerships that amplify your reach. From identifying the right creators who align with your brand values to coordinating campaigns, managing deliverables, and measuring impact, I handle the entire collaboration process.",
+    img: "photo-1542206395-9feb3edaa68d",
+  },
+  {
+    no: "05",
+    label: "service five",
+    title: "Analytics & Performance Tracking",
+    body: "Data-driven insights that tell your success story. I track key performance metrics, analyze engagement patterns, identify growth opportunities, and provide clear, actionable reports. These insights translate complex numbers into strategic recommendations, guiding decision-making and ensuring continuous improvement. Regular updates keep you informed about campaign performance and ROI.",
+    img: "photo-1551288049-bebda4e38f71",
   },
 ];
 
@@ -131,7 +145,7 @@ export default function ServicesParallax() {
     <section ref={sectionRef} className="services-parallax">
       <div className="services-parallax-head">
         <p className="eyebrow">what i do</p>
-        <h2>Services</h2>
+        <h2>Where Strategy Meets Social Media Success</h2>
       </div>
       <div className="services-parallax-stack">
         {CARDS.map((c) => (
@@ -154,7 +168,7 @@ export default function ServicesParallax() {
               <span className="pcard-label">{c.label}</span>
               <h3 className="pcard-title">{c.title}</h3>
               <p className="pcard-body">{c.body}</p>
-              <span className="pcard-arrow">explore →</span>
+              <span className="pcard-arrow">learn more →</span>
             </div>
           </article>
         ))}

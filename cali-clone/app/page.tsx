@@ -1,38 +1,34 @@
 import HeroSection from "@/components/sections/HeroSection";
-import FilmstripSlider from "@/components/sections/FilmstripSlider";
-import HeyImRajiIntroSection from "@/components/sections/HeyImRajiIntroSection";
-import PressMarqueeSection from "@/components/sections/PressMarqueeSection";
-import TaglineBandSection from "@/components/sections/TaglineBandSection";
-import BusinessCoachIntroSection from "@/components/sections/BusinessCoachIntroSection";
-import ImpactFlip from "@/components/sections/ImpactFlip";
-import CardsFan from "@/components/sections/CardsFan";
+import ClientLogoMarquee from "@/components/sections/ClientLogoMarquee";
+import ApproachSection from "@/components/sections/ApproachSection";
+import QuoteBand from "@/components/sections/QuoteBand";
+import EdgeSection from "@/components/sections/EdgeSection";
+import StatsSectionV2 from "@/components/sections/StatsSectionV2";
 import ServicesParallax from "@/components/sections/ServicesParallax";
-import RajiShopSection from "@/components/sections/RajiShopSection";
-import WelcomeRecapSection from "@/components/sections/WelcomeRecapSection";
-import PodcastSection from "@/components/sections/PodcastSection";
+import ProcessSection from "@/components/sections/ProcessSection";
+import ImpactFlip from "@/components/sections/ImpactFlip";
+import BenefitsSection from "@/components/sections/BenefitsSection";
+import CardsFan from "@/components/sections/CardsFan";
 import ClientLoveSection from "@/components/sections/ClientLoveSection";
-import PlanLikeABossMarquee from "@/components/sections/PlanLikeABossMarquee";
-import BlogPreviewSection from "@/components/sections/BlogPreviewSection";
+import FAQSection from "@/components/sections/FAQSection";
 import FreebieSection from "@/components/sections/FreebieSection";
 
 export default function HomePage() {
   return (
     <main>
       <HeroSection />
-      <FilmstripSlider />
-      <HeyImRajiIntroSection />
-      <PressMarqueeSection />
-      <TaglineBandSection />
-      <BusinessCoachIntroSection />
-      <ImpactFlip theme="cream" />
-      <CardsFan />
+      <ClientLogoMarquee />
+      <ApproachSection />
+      <QuoteBand />
+      <EdgeSection />
+      <StatsSectionV2 />
       <ServicesParallax />
-      <RajiShopSection />
-      <WelcomeRecapSection />
-      <PodcastSection />
+      <ProcessSection />
+      <ImpactFlip theme="cream" />
+      <BenefitsSection />
+      <CardsFan />
       <ClientLoveSection />
-      <PlanLikeABossMarquee />
-      <BlogPreviewSection />
+      <FAQSection />
       <FreebieSection />
     </main>
   );

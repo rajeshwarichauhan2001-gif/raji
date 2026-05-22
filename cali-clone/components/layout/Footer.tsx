@@ -4,30 +4,36 @@ import Logo from "@/components/ui/Logo";
 
 const services = [
   { label: "Client Servicing", href: "#" },
-  { label: "Social Media", href: "#" },
+  { label: "Social Media Manager", href: "#" },
   { label: "Content Writing", href: "#" },
-  { label: "Brand Strategy", href: "#" },
-  { label: "Analytics", href: "#" },
 ];
 
 const company = [
-  { label: "About", href: "/about" },
-  { label: "Process", href: "#" },
-  { label: "Success Stories", href: "/success-stories" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Footer() {
   return (
     <footer className="raji-footer">
       <div className="raji-footer-inner">
+        <div className="raji-footer-hero">
+          <h2 className="raji-footer-hello">HELLO! WE&apos;RE LISTENING</h2>
+          <p className="raji-footer-rotate">
+            Let&apos;s talk about <em>your project</em> <span>·</span>{" "}
+            <em>your idea</em> <span>·</span> <em>your vision</em>
+          </p>
+          <a href="/contact" className="raji-footer-cta">
+            Sounds Good? Let&apos;s connect
+          </a>
+        </div>
+
         <div className="raji-footer-grid">
           <div className="raji-footer-brand">
             <Logo style={{ fontSize: 56 }} variant="inverse" />
             <p className="raji-footer-tag">
-              Strategy, content and steady community building for service providers
-              and coaches who would rather grow with intention than chase trends.
+              Social media strategy, content and steady community building for
+              brands that want growth with intention.
             </p>
             <div className="raji-footer-socials">
               {[
@@ -55,7 +61,7 @@ export default function Footer() {
           </div>
 
           <div className="raji-footer-col">
-            <p className="raji-footer-heading">Company</p>
+            <p className="raji-footer-heading">Quick Links</p>
             <ul>
               {company.map((c) => (
                 <li key={c.label}>
@@ -68,7 +74,8 @@ export default function Footer() {
           <div className="raji-footer-col">
             <p className="raji-footer-heading">Stay Informed</p>
             <p className="raji-footer-subtle">
-              Monthly notes on content, growth and the calm side of building a brand online.
+              Monthly notes on social media, growth and the calm side of
+              building a brand online.
             </p>
             <form
               className="raji-footer-form"
@@ -81,7 +88,7 @@ export default function Footer() {
         </div>
 
         <div className="raji-footer-bottom">
-          <span>© 2026 Raji · Social Media Strategist · Mumbai</span>
+          <span>Copyright © 2025 Rajeshwari Chauhan</span>
           <span>Privacy · Terms</span>
         </div>
       </div>
