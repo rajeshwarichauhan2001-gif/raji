@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { unsplashUrl } from "@/lib/unsplash";
 
 export default function ApproachSection() {
   return (
@@ -32,11 +31,12 @@ export default function ApproachSection() {
         <div className="approach-media">
           <div className="approach-img-wrap">
             <Image
-              src={unsplashUrl("photo-1573497019940-1c28c88b4f3e", 900)}
-              alt="Editorial portrait"
+              src="/images/raji-portrait.png"
+              alt="Rajeshwari Chauhan portrait"
               fill
               sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 480px"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+              priority
             />
             <span className="approach-img-dot" aria-hidden />
           </div>
