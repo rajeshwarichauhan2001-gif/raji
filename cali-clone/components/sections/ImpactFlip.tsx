@@ -12,30 +12,30 @@ type CardSpec = {
 
 const CARDS: CardSpec[] = [
   {
-    title: "Product Foundation",
-    body: "We structure your product experience from the ground up — aligning user needs, business goals, and scalable design systems.",
-    bg: "linear-gradient(160deg, #d8dad9 0%, #b6b9b7 100%)",
-    accent: "#f1f3f2",
+    title: "Content Strategy",
+    body: "Every post has a purpose. I craft data-backed content calendars that align with your brand voice, audience behaviour, and business goals.",
+    bg: "linear-gradient(160deg, #b8843d 0%, #8a5e26 100%)",
+    accent: "#f0d181",
     icon: "wave",
   },
   {
-    title: "Performance Optimization",
-    body: "Through thoughtful iteration and system-level improvements, we refine your product to perform smoothly at scale.",
-    bg: "linear-gradient(160deg, #6dbe55 0%, #4ea03c 100%)",
-    accent: "#c8e8bb",
+    title: "Brand Growth",
+    body: "From zero to community. I build genuine audience relationships through storytelling, consistent engagement, and trend-led creative direction.",
+    bg: "linear-gradient(160deg, #3a2f1a 0%, #5a4828 100%)",
+    accent: "#f0d181",
     icon: "clover",
   },
   {
-    title: "Focused Execution",
-    body: "When speed matters, we step in with precise solutions that remove friction and keep your team moving forward.",
-    bg: "linear-gradient(160deg, #5fa8e3 0%, #3b85c4 100%)",
-    accent: "#c5e0f3",
+    title: "Analytics & Results",
+    body: "Numbers tell the real story. I translate performance data into actionable insights that continuously improve reach, engagement, and ROI.",
+    bg: "linear-gradient(160deg, #897558 0%, #5c4d35 100%)",
+    accent: "#f6efd9",
     icon: "diamond",
   },
 ];
 
 const IMG_URL =
-  "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1800&q=80&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1800&q=80&auto=format&fit=crop";
 
 function Icon({ kind }: { kind: CardSpec["icon"] }) {
   if (kind === "wave") {
@@ -126,7 +126,7 @@ export default function ImpactFlip({ theme = "dark" }: { theme?: "dark" | "cream
 
   return (
     <section ref={wrapRef} className={`impact-section${theme === "cream" ? " impact-cream" : ""}`}>
-      <h2 className="impact-heading">How We Create Impact</h2>
+      <h2 className="impact-heading">How I Create Impact</h2>
       <div className="impact-stage">
         {CARDS.map((c, i) => (
           <div key={c.title} className="istrip">
