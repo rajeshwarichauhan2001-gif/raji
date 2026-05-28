@@ -3269,15 +3269,13 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
   gap: 12px;
   color: var(--color-accent);
   box-shadow: 0 2px 12px rgba(58,47,26,0.07);
-  /* start hidden; JS reveals */
-  opacity: 0;
-  transform: scale(0.92);
-  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.3s ease;
+  transition: translate 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
+  will-change: transform, opacity;
 }
 .bp-gallery-box--span2 { grid-row: span 2; }
 .bp-gallery-box:hover {
-  transform: scale(1.02);
+  translate: 0 -4px;
   box-shadow: 0 20px 60px rgba(58,47,26,0.15);
 }
 

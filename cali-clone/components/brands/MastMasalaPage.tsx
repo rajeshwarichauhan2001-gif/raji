@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 /* ─── Types ─────────────────────────────────────────── */
 type Tab = "content" | "social" | "servicing";
@@ -154,126 +154,174 @@ export default function MastMasalaPage() {
     obs.observe(ulEl);
   }, []);
 
-  /* ── Gallery staggered scale reveal ─────────────────── */
+  /* ── Gallery ─────────────────────────────────────────── */
   const galleryRef   = useRef<HTMLDivElement>(null);
   const galleryBoxes = useRef<HTMLDivElement[]>([]);
-  const galStarted   = useRef(false);
 
   useEffect(() => {
     const el = galleryRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !galStarted.current) {
-          galStarted.current = true;
-          const boxes = galleryBoxes.current.filter(Boolean);
-          boxes.forEach((box, idx) => {
-            setTimeout(() => {
-              box.style.transform = "scale(1)";
-              box.style.opacity   = "1";
-            }, idx * 80);
-          });
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const title = el.querySelector<HTMLElement>(".bp-section-title");
+    const boxes = galleryBoxes.current.filter(Boolean);
+    const triggers: ScrollTrigger[] = [];
+
+    const tTitle = gsap.from(title, {
+      y: 24, opacity: 0, duration: 0.6, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 80%" },
+    });
+    if (tTitle.scrollTrigger) triggers.push(tTitle.scrollTrigger);
+
+    const tBoxes = gsap.from(boxes, {
+      scale: 0.88, opacity: 0, duration: 0.6, stagger: 0.07, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 72%" },
+      onComplete: () => boxes.forEach(b => gsap.set(b, { clearProps: "transform,opacity" })),
+    });
+    if (tBoxes.scrollTrigger) triggers.push(tBoxes.scrollTrigger);
+
+    return () => triggers.forEach(t => t.kill());
   }, []);
 
   /* ── Brand Story split entrance ──────────────────────── */
   const storyLeft  = useRef<HTMLDivElement>(null);
   const storyRight = useRef<HTMLDivElement>(null);
-  const storyStarted = useRef(false);
-
-  /* ── Approach section ─────────────────────────────── */
-  const approachRef     = useRef<HTMLDivElement>(null);
-  const approachStarted = useRef(false);
-
-  /* ── Philosophy section ───────────────────────────── */
-  const philoLeft     = useRef<HTMLDivElement>(null);
-  const philoRight    = useRef<HTMLDivElement>(null);
-  const philoStarted  = useRef(false);
-
-  /* ── Delivered section ────────────────────────────── */
-  const deliveredRef     = useRef<HTMLDivElement>(null);
-  const deliveredCards   = useRef<HTMLDivElement[]>([]);
-  const deliveredStarted = useRef(false);
 
   useEffect(() => {
     const el = storyLeft.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !storyStarted.current) {
-          storyStarted.current = true;
-          gsap.to(storyLeft.current,  { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" });
-          gsap.to(storyRight.current, { x: 0, opacity: 1, duration: 0.7, ease: "power3.out", delay: 0.1 });
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const triggers: ScrollTrigger[] = [];
+
+    const tL = gsap.to(el, {
+      x: 0, opacity: 1, duration: 0.75, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 76%" },
+    });
+    const tR = gsap.to(storyRight.current, {
+      x: 0, opacity: 1, duration: 0.75, ease: "power3.out", delay: 0.12,
+      scrollTrigger: { trigger: el, start: "top 76%" },
+    });
+    if (tL.scrollTrigger) triggers.push(tL.scrollTrigger);
+    if (tR.scrollTrigger) triggers.push(tR.scrollTrigger);
+
+    return () => triggers.forEach(t => t.kill());
   }, []);
 
-  /* ── Approach fade-up ───────────────────────────── */
+  /* ── Approach section ─────────────────────────────── */
+  const approachRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const el = approachRef.current;
     if (!el) return;
-    const items = el.querySelectorAll<HTMLElement>(".bp-approach-item");
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !approachStarted.current) {
-          approachStarted.current = true;
-          gsap.from(items, { y: 48, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out" });
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const eyebrow = el.querySelector<HTMLElement>(".bp-approach-eyebrow");
+    const heading = el.querySelector<HTMLElement>(".bp-approach-heading");
+    const items   = el.querySelectorAll<HTMLElement>(".bp-approach-item");
+    const triggers: ScrollTrigger[] = [];
+
+    const tHead = gsap.from([eyebrow, heading], {
+      y: 28, opacity: 0, duration: 0.65, stagger: 0.1, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 78%" },
+    });
+    const tItems = gsap.from(items, {
+      y: 50, opacity: 0, duration: 0.7, stagger: 0.13, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 65%" },
+    });
+    if (tHead.scrollTrigger)  triggers.push(tHead.scrollTrigger);
+    if (tItems.scrollTrigger) triggers.push(tItems.scrollTrigger);
+
+    return () => triggers.forEach(t => t.kill());
   }, []);
 
-  /* ── Philosophy split entrance ──────────────────── */
+  /* ── Philosophy section ───────────────────────────── */
+  const philoLeft  = useRef<HTMLDivElement>(null);
+  const philoRight = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const el = philoLeft.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !philoStarted.current) {
-          philoStarted.current = true;
-          gsap.to(philoLeft.current,  { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
-          gsap.to(philoRight.current, { x: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.15 });
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const left  = philoLeft.current;
+    const right = philoRight.current;
+    if (!left || !right) return;
+    const triggers: ScrollTrigger[] = [];
+
+    const tL = gsap.to(left, {
+      x: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+      scrollTrigger: { trigger: left, start: "top 76%" },
+    });
+    const tR = gsap.to(right, {
+      x: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.15,
+      scrollTrigger: { trigger: left, start: "top 76%" },
+    });
+    if (tL.scrollTrigger) triggers.push(tL.scrollTrigger);
+    if (tR.scrollTrigger) triggers.push(tR.scrollTrigger);
+
+    return () => triggers.forEach(t => t.kill());
   }, []);
 
-  /* ── Delivered stagger reveal ───────────────────── */
+  /* ── Delivered section ────────────────────────────── */
+  const deliveredRef   = useRef<HTMLDivElement>(null);
+  const deliveredCards = useRef<HTMLDivElement[]>([]);
+
   useEffect(() => {
     const el = deliveredRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !deliveredStarted.current) {
-          deliveredStarted.current = true;
-          const cards = deliveredCards.current.filter(Boolean);
-          gsap.from(cards, { y: 60, opacity: 0, duration: 0.7, stagger: 0.18, ease: "power3.out" });
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const eyebrow = el.querySelector<HTMLElement>(".bp-delivered-eyebrow");
+    const heading = el.querySelector<HTMLElement>(".bp-delivered-heading");
+    const cards   = deliveredCards.current.filter(Boolean);
+    const triggers: ScrollTrigger[] = [];
+
+    const tHead = gsap.from([eyebrow, heading], {
+      y: 28, opacity: 0, duration: 0.65, stagger: 0.1, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 78%" },
+    });
+    const tCards = gsap.from(cards, {
+      y: 64, scale: 0.96, opacity: 0, duration: 0.75, stagger: 0.18, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 70%" },
+    });
+    if (tHead.scrollTrigger)  triggers.push(tHead.scrollTrigger);
+    if (tCards.scrollTrigger) triggers.push(tCards.scrollTrigger);
+
+    return () => triggers.forEach(t => t.kill());
+  }, []);
+
+  /* ── Featured video ───────────────────────────────── */
+  const featuredRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = featuredRef.current;
+    if (!el) return;
+    const eyebrow = el.querySelector<HTMLElement>(".bp-featured-eyebrow");
+    const heading = el.querySelector<HTMLElement>(".bp-featured-heading");
+    const wrap    = el.querySelector<HTMLElement>(".bp-featured-video-wrap");
+    const glass   = el.querySelector<HTMLElement>(".bp-featured-glass");
+    const triggers: ScrollTrigger[] = [];
+
+    const tHead = gsap.from([eyebrow, heading], {
+      y: 28, opacity: 0, duration: 0.65, stagger: 0.1, ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 80%" },
+    });
+    const tWrap = gsap.from(wrap, {
+      scale: 0.94, opacity: 0, duration: 0.9, ease: "power3.out",
+      scrollTrigger: { trigger: wrap, start: "top 82%" },
+    });
+    const tGlass = gsap.from(glass, {
+      y: 20, opacity: 0, duration: 0.6, ease: "power3.out",
+      scrollTrigger: { trigger: wrap, start: "top 70%" },
+    });
+    if (tHead.scrollTrigger)  triggers.push(tHead.scrollTrigger);
+    if (tWrap.scrollTrigger)  triggers.push(tWrap.scrollTrigger);
+    if (tGlass.scrollTrigger) triggers.push(tGlass.scrollTrigger);
+
+    return () => triggers.forEach(t => t.kill());
+  }, []);
+
+  /* ── CTA Strip ────────────────────────────────────── */
+  const ctaRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ctaRef.current;
+    if (!el) return;
+    const items = el.querySelectorAll<HTMLElement>(".bp-cta-sub, .bp-cta-btn");
+    const tween = gsap.from(items, {
+      y: 24, opacity: 0, scale: 0.97, duration: 0.65, stagger: 0.13, ease: "back.out(1.4)",
+      scrollTrigger: { trigger: el, start: "top 85%" },
+    });
+    return () => tween.scrollTrigger?.kill();
   }, []);
 
   /* ── Tabs with sliding indicator ────────────────────── */
@@ -532,7 +580,7 @@ export default function MastMasalaPage() {
       </section>
 
       {/* ── Section 7: Featured Video ───────────────────── */}
-      <section className="bp-featured-video-section">
+      <section className="bp-featured-video-section" ref={featuredRef}>
         <div className="bp-featured-video-inner">
           <p className="bp-featured-eyebrow">CAMPAIGN REEL</p>
           <h2 className="bp-featured-heading">
@@ -639,7 +687,7 @@ export default function MastMasalaPage() {
       </section>
 
       {/* ── Section 10: CTA Strip ───────────────────────── */}
-      <section className="bp-cta-strip">
+      <section className="bp-cta-strip" ref={ctaRef}>
         <div className="bp-cta-inner">
           <p className="bp-cta-sub">Want results like these?</p>
           <Link href="/contact" className="bp-cta-btn">
