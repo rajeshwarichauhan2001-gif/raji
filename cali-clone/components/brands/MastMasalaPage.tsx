@@ -58,12 +58,12 @@ const MOM = [
 
 /* ─── Gallery images ─────────────────────────────────── */
 const GALLERY_IMGS = [
-  { src: `${BASE}/2025/12/Mast_Masala.png`,              alt: "Mast Masala brand",        span2: true  },
-  { src: `${BASE}/2025/12/Mast-Masala_Gandhi-Jayanti.jpg`, alt: "Gandhi Jayanti post",    span2: false },
-  { src: `${BASE}/2025/12/mast-masala-dashera_-2.jpg`,   alt: "Dussehra festive post",    span2: false },
-  { src: `${BASE}/2025/12/Mast-Masala-Dhanteras_1.jpg`,  alt: "Dhanteras festive post",   span2: false },
-  { src: `${BASE}/2025/12/Mast-Masala-Oct-22-post.jpg`,  alt: "October content post",     span2: false },
-  { src: `${BASE}/2025/12/15.-Biryani-Masala.jpg`,       alt: "Biryani Masala product",   span2: false },
+  { src: `${BASE}/2025/12/Mast-Masala_Gandhi-Jayanti.jpg`, alt: "Gandhi Jayanti post"   },
+  { src: `${BASE}/2025/12/mast-masala-dashera_-2.jpg`,     alt: "Dussehra post"         },
+  { src: `${BASE}/2025/12/Mast-Masala-Dhanteras_1.jpg`,    alt: "Dhanteras post"        },
+  { src: `${BASE}/2025/12/Mast-Masala-Oct-22-post.jpg`,    alt: "October post"          },
+  { src: `${BASE}/2025/12/Mast-Masala-Oct-21-post.jpg`,    alt: "October post 2"        },
+  { src: `${BASE}/2025/12/happy-makar-sankrant.jpg`,        alt: "Makar Sankranti post"  },
 ];
 
 
@@ -530,14 +530,14 @@ export default function MastMasalaPage() {
             {GALLERY_IMGS.map((img, i) => (
               <div
                 key={i}
-                className={`bp-gallery-box${img.span2 ? " bp-gallery-box--span2" : ""}`}
+                className="bp-gallery-box"
                 ref={el => { if (el) galleryBoxes.current[i] = el; }}
               >
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
-                  sizes={img.span2 ? "(max-width:767px) 100vw, 66vw" : "(max-width:767px) 50vw, 33vw"}
+                  sizes="(max-width:767px) 50vw, 33vw"
                   style={{ objectFit: "cover" }}
                 />
               </div>
