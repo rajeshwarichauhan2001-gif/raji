@@ -187,6 +187,20 @@ export default function MastMasalaPage() {
   const storyRight = useRef<HTMLDivElement>(null);
   const storyStarted = useRef(false);
 
+  /* ── Approach section ─────────────────────────────── */
+  const approachRef     = useRef<HTMLDivElement>(null);
+  const approachStarted = useRef(false);
+
+  /* ── Philosophy section ───────────────────────────── */
+  const philoLeft     = useRef<HTMLDivElement>(null);
+  const philoRight    = useRef<HTMLDivElement>(null);
+  const philoStarted  = useRef(false);
+
+  /* ── Delivered section ────────────────────────────── */
+  const deliveredRef     = useRef<HTMLDivElement>(null);
+  const deliveredCards   = useRef<HTMLDivElement[]>([]);
+  const deliveredStarted = useRef(false);
+
   useEffect(() => {
     const el = storyLeft.current;
     if (!el) return;
@@ -200,6 +214,63 @@ export default function MastMasalaPage() {
         }
       },
       { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  /* ── Approach fade-up ───────────────────────────── */
+  useEffect(() => {
+    const el = approachRef.current;
+    if (!el) return;
+    const items = el.querySelectorAll<HTMLElement>(".bp-approach-item");
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !approachStarted.current) {
+          approachStarted.current = true;
+          gsap.from(items, { y: 48, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out" });
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  /* ── Philosophy split entrance ──────────────────── */
+  useEffect(() => {
+    const el = philoLeft.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !philoStarted.current) {
+          philoStarted.current = true;
+          gsap.to(philoLeft.current,  { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
+          gsap.to(philoRight.current, { x: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.15 });
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  /* ── Delivered stagger reveal ───────────────────── */
+  useEffect(() => {
+    const el = deliveredRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !deliveredStarted.current) {
+          deliveredStarted.current = true;
+          const cards = deliveredCards.current.filter(Boolean);
+          gsap.from(cards, { y: 60, opacity: 0, duration: 0.7, stagger: 0.18, ease: "power3.out" });
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -433,7 +504,141 @@ export default function MastMasalaPage() {
         </div>
       </section>
 
-      {/* ── Section 6: CTA Strip ────────────────────────── */}
+      {/* ── Section 6: Our Approach ─────────────────────── */}
+      <section className="bp-approach-section" ref={approachRef}>
+        <div className="bp-approach-inner">
+          <p className="bp-approach-eyebrow">HOW WE WORK</p>
+          <h2 className="bp-approach-heading">
+            Crafted for <em>Growth</em>
+          </h2>
+          <div className="bp-approach-grid">
+            <div className="bp-approach-item">
+              <span className="bp-approach-num">01</span>
+              <h3 className="bp-approach-item-title">Deep Brand Audit</h3>
+              <p className="bp-approach-item-body">We begin by understanding the brand&apos;s voice, audience, and existing content performance before we strategise.</p>
+            </div>
+            <div className="bp-approach-item">
+              <span className="bp-approach-num">02</span>
+              <h3 className="bp-approach-item-title">Content Architecture</h3>
+              <p className="bp-approach-item-body">Every post is mapped to a goal — awareness, engagement, or conversion — and slotted into a structured monthly calendar.</p>
+            </div>
+            <div className="bp-approach-item">
+              <span className="bp-approach-num">03</span>
+              <h3 className="bp-approach-item-title">Execute &amp; Iterate</h3>
+              <p className="bp-approach-item-body">We launch, track performance metrics weekly, and refine based on what the data tells us — no guesswork, only growth.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 7: Featured Video ───────────────────── */}
+      <section className="bp-featured-video-section">
+        <div className="bp-featured-video-inner">
+          <p className="bp-featured-eyebrow">CAMPAIGN REEL</p>
+          <h2 className="bp-featured-heading">
+            Campaigns That <em>Convert</em>
+          </h2>
+          <div className="bp-featured-video-wrap">
+            <video
+              className="bp-featured-video"
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260402_054547_9875cfc5-155a-4229-8ec8-b7ba7125cbf8.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            <div className="bp-featured-glass liquid-glass-warm">
+              <p className="bp-featured-glass-label">Featured Work</p>
+              <p className="bp-featured-glass-text">Mast Masala festive campaign — building brand recall through storytelling-led content.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 8: Philosophy ───────────────────────── */}
+      <section className="bp-philosophy-section">
+        <div className="bp-philosophy-inner">
+          <div
+            className="bp-philosophy-video-col"
+            ref={philoLeft}
+            style={{ transform: "translateX(-60px)", opacity: 0 }}
+          >
+            <video
+              className="bp-philosophy-video"
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          <div
+            className="bp-philosophy-text-col"
+            ref={philoRight}
+            style={{ transform: "translateX(60px)", opacity: 0 }}
+          >
+            <p className="bp-philosophy-eyebrow">OUR PHILOSOPHY</p>
+            <h2 className="bp-philosophy-heading">
+              Strategy <em>×</em> Results
+            </h2>
+            <div className="bp-philosophy-divider" />
+            <p className="bp-philosophy-body">
+              Great content isn&apos;t just creative — it&apos;s calculated. For Mast Masala, we merged authentic cultural storytelling with data-driven posting strategies to achieve measurable growth across Instagram and Facebook.
+            </p>
+            <p className="bp-philosophy-body">
+              From festive reels to daily engagement posts, every deliverable was aligned with the brand&apos;s 60-year legacy while connecting with a modern, digital-first audience.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 9: What We Delivered ────────────────── */}
+      <section className="bp-delivered-section" ref={deliveredRef}>
+        <div className="bp-delivered-inner">
+          <p className="bp-delivered-eyebrow">DELIVERABLES</p>
+          <h2 className="bp-delivered-heading">
+            What We <em>Delivered</em>
+          </h2>
+          <div className="bp-delivered-grid">
+            <div
+              className="bp-delivered-card"
+              ref={el => { if (el) deliveredCards.current[0] = el; }}
+            >
+              <video
+                className="bp-delivered-video"
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+              <div className="bp-delivered-overlay liquid-glass-warm">
+                <h3 className="bp-delivered-card-title">Content Strategy</h3>
+                <p className="bp-delivered-card-body">Monthly calendar, 30+ posts, 6+ reels with cultural hooks and festive themes.</p>
+              </div>
+            </div>
+            <div
+              className="bp-delivered-card"
+              ref={el => { if (el) deliveredCards.current[1] = el; }}
+            >
+              <video
+                className="bp-delivered-video"
+                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_151826_c7188672-6e92-402c-9e45-f1e0f454bdc4.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+              <div className="bp-delivered-overlay liquid-glass-warm">
+                <h3 className="bp-delivered-card-title">Growth &amp; Analytics</h3>
+                <p className="bp-delivered-card-body">+22% reach, 29.4M impressions, and +21% engagement rate in festive quarter.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 10: CTA Strip ───────────────────────── */}
       <section className="bp-cta-strip">
         <div className="bp-cta-inner">
           <p className="bp-cta-sub">Want results like these?</p>
