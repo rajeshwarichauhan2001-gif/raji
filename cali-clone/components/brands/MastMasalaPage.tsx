@@ -344,7 +344,6 @@ export default function MastMasalaPage() {
       if (!el) return;
       const t = gsap.from(el, {
         clipPath: "inset(0 0 100% 0)",
-        y: 24,
         duration: 1.05,
         ease: "expo.out",
         scrollTrigger: { trigger: el, start: "top 94%", once: true },
