@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 /* ─── Types ─────────────────────────────────────────── */
@@ -52,16 +53,16 @@ const MOM = [
   "Success Metrics Defined",
 ];
 
-/* ─── Camera icon SVG ────────────────────────────────── */
-function CameraIcon() {
-  return (
-    <svg width="36" height="36" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <rect x="4" y="8" width="24" height="18" rx="3" stroke="currentColor" strokeWidth="1.5"/>
-      <circle cx="12" cy="15" r="2.5" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M4 22l6-5 5 4 4-3 9 7" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-    </svg>
-  );
-}
+/* ─── Gallery images ─────────────────────────────────── */
+const BASE = "https://rajeshwarichauhan.in/wp-content/uploads";
+const GALLERY_IMGS = [
+  { src: `${BASE}/2025/12/Mast_Masala.png`,                          alt: "Mast Masala brand",        span2: true  },
+  { src: `${BASE}/2025/12/Growth.png`,                               alt: "Reach growth chart",       span2: false },
+  { src: `${BASE}/2025/12/Engagements.png`,                          alt: "Engagement analytics",     span2: false },
+  { src: `${BASE}/2025/12/Ctr-Left.png`,                             alt: "CTR performance",          span2: false },
+  { src: `${BASE}/2026/01/ChatGPT-Image-Jan-5-2026-05_37_59-PM.png`, alt: "Content planning session", span2: false },
+];
+
 
 /* ═══════════════════════════════════════════════════════ */
 export default function MastMasalaPage() {
@@ -520,16 +521,19 @@ export default function MastMasalaPage() {
         <div className="bp-gallery-inner" ref={galleryRef}>
           <h2 className="bp-section-title">Creative Gallery</h2>
           <div className="bp-gallery-grid">
-            {[0, 1, 2, 3, 4, 5].map(i => (
+            {GALLERY_IMGS.map((img, i) => (
               <div
                 key={i}
-                className={`bp-gallery-box${i === 0 ? " bp-gallery-box--span2" : ""}`}
+                className={`bp-gallery-box${img.span2 ? " bp-gallery-box--span2" : ""}`}
                 ref={el => { if (el) galleryBoxes.current[i] = el; }}
               >
-                <span className="bp-gallery-icon">
-                  <CameraIcon />
-                </span>
-                <span className="bp-gallery-placeholder">Image Coming Soon</span>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes={img.span2 ? "(max-width:767px) 100vw, 66vw" : "(max-width:767px) 50vw, 33vw"}
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             ))}
           </div>

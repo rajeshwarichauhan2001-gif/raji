@@ -3269,7 +3269,8 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
   box-shadow: 0 2px 12px rgba(58,47,26,0.07);
   transition: translate 0.3s ease, box-shadow 0.3s ease;
   cursor: default;
-  will-change: transform, opacity;
+  position: relative;
+  overflow: hidden;
 }
 .bp-gallery-box--span2 { grid-row: span 2; }
 .bp-gallery-box:hover {

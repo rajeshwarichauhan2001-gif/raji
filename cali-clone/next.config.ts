@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "cdn.coverr.co" },
+      { protocol: "https", hostname: "rajeshwarichauhan.in" },
     ],
   },
 };
