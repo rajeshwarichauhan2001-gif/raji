@@ -324,6 +324,37 @@ export default function MastMasalaPage() {
     return () => tween.scrollTrigger?.kill();
   }, []);
 
+  /* ── Section-level clip-path wipe reveals ────────────── */
+  useEffect(() => {
+    const SELS = [
+      ".bp-stats",
+      ".bp-tabs-section",
+      ".bp-gallery-section",
+      ".bp-story-section",
+      ".bp-approach-section",
+      ".bp-featured-video-section",
+      ".bp-philosophy-section",
+      ".bp-delivered-section",
+      ".bp-cta-strip",
+    ];
+    const triggers: ScrollTrigger[] = [];
+
+    SELS.forEach(sel => {
+      const el = document.querySelector<HTMLElement>(sel);
+      if (!el) return;
+      const t = gsap.from(el, {
+        clipPath: "inset(0 0 100% 0)",
+        y: 24,
+        duration: 1.05,
+        ease: "expo.out",
+        scrollTrigger: { trigger: el, start: "top 94%", once: true },
+      });
+      if (t.scrollTrigger) triggers.push(t.scrollTrigger);
+    });
+
+    return () => triggers.forEach(t => t.kill());
+  }, []);
+
   /* ── Tabs with sliding indicator ────────────────────── */
   const [tab, setTab]         = useState<Tab>("content");
   const tabsNavRef            = useRef<HTMLDivElement>(null);

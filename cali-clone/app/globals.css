@@ -3459,6 +3459,19 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 /* ═══════════════════════════════════════════
    SECTION 6 — Our Approach
 ═══════════════════════════════════════════ */
+/* Section wipe — GPU hint for all dark panels */
+.bp-stats,
+.bp-tabs-section,
+.bp-gallery-section,
+.bp-story-section,
+.bp-approach-section,
+.bp-featured-video-section,
+.bp-philosophy-section,
+.bp-delivered-section,
+.bp-cta-strip {
+  will-change: clip-path, transform;
+}
+
 .bp-approach-section {
   background: #1a1208;
   padding: 100px var(--gutter-desktop);
