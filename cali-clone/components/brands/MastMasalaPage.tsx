@@ -4,6 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
+/* ─── Image base URL ─────────────────────────────────── */
+const BASE = "https://rajeshwarichauhan.in/wp-content/uploads";
+
 /* ─── Types ─────────────────────────────────────────── */
 type Tab = "content" | "social" | "servicing";
 
@@ -37,10 +40,10 @@ const CAL_ROWS = [
 
 /* ─── Social analytics cards ─────────────────────────── */
 const ANALYTICS = [
-  { stat: "+22%", label: "Reach Growth",  sub: "29.4M Impressions" },
-  { stat: "+21%", label: "Engagement",    sub: "2.1% Engagement Rate" },
-  { stat: "+20%", label: "CTR",           sub: "214 Link Clicks" },
-  { stat: "+5%",  label: "Followers",     sub: "4,305 Total" },
+  { stat: "+22%", label: "Reach Growth",  sub: "29.4M Impressions",    img: `${BASE}/2025/12/reach-growth-8.png`  },
+  { stat: "+21%", label: "Engagement",    sub: "2.1% Engagement Rate", img: `${BASE}/2025/12/engagement-8.png`    },
+  { stat: "+20%", label: "CTR",           sub: "214 Link Clicks",      img: `${BASE}/2025/12/ctrleft-4.png`       },
+  { stat: "+18%", label: "Retention",     sub: "Avg. watch time up",   img: `${BASE}/2025/12/retension-3.png`     },
 ];
 
 /* ─── MoM bullets ────────────────────────────────────── */
@@ -54,13 +57,13 @@ const MOM = [
 ];
 
 /* ─── Gallery images ─────────────────────────────────── */
-const BASE = "https://rajeshwarichauhan.in/wp-content/uploads";
 const GALLERY_IMGS = [
-  { src: `${BASE}/2025/12/Mast_Masala.png`,                          alt: "Mast Masala brand",        span2: true  },
-  { src: `${BASE}/2025/12/Growth.png`,                               alt: "Reach growth chart",       span2: false },
-  { src: `${BASE}/2025/12/Engagements.png`,                          alt: "Engagement analytics",     span2: false },
-  { src: `${BASE}/2025/12/Ctr-Left.png`,                             alt: "CTR performance",          span2: false },
-  { src: `${BASE}/2026/01/ChatGPT-Image-Jan-5-2026-05_37_59-PM.png`, alt: "Content planning session", span2: false },
+  { src: `${BASE}/2025/12/Mast_Masala.png`,              alt: "Mast Masala brand",        span2: true  },
+  { src: `${BASE}/2025/12/Mast-Masala_Gandhi-Jayanti.jpg`, alt: "Gandhi Jayanti post",    span2: false },
+  { src: `${BASE}/2025/12/mast-masala-dashera_-2.jpg`,   alt: "Dussehra festive post",    span2: false },
+  { src: `${BASE}/2025/12/Mast-Masala-Dhanteras_1.jpg`,  alt: "Dhanteras festive post",   span2: false },
+  { src: `${BASE}/2025/12/Mast-Masala-Oct-22-post.jpg`,  alt: "October content post",     span2: false },
+  { src: `${BASE}/2025/12/15.-Biryani-Masala.jpg`,       alt: "Biryani Masala product",   span2: false },
 ];
 
 
@@ -486,6 +489,9 @@ export default function MastMasalaPage() {
                 <div className="bp-analytics-grid">
                   {ANALYTICS.map(a => (
                     <div key={a.label} className="bp-analytics-card">
+                      <div className="bp-analytics-img-wrap">
+                        <Image src={a.img} alt={a.label} fill style={{ objectFit: "contain" }} />
+                      </div>
                       <span className="bp-analytics-stat">{a.stat}</span>
                       <span className="bp-analytics-label">{a.label}</span>
                       <span className="bp-analytics-sub">{a.sub}</span>
