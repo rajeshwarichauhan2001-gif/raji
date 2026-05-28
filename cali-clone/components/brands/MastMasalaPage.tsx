@@ -105,9 +105,11 @@ export default function MastMasalaPage() {
           statsStarted.current = true;
 
           // slide cards up
-          gsap.from(statCards.current.filter(Boolean), {
-            y: 40, opacity: 0, duration: 0.6, stagger: 0.15, ease: "power3.out",
-          });
+          gsap.fromTo(
+            statCards.current.filter(Boolean),
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" }
+          );
 
           // count-up
           const t0 = performance.now();

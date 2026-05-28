@@ -2973,8 +2973,6 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
   border-radius: 16px;
   backdrop-filter: blur(8px);
   background: rgba(255,255,255,0.02);
-  /* start hidden for GSAP slide-up */
-  opacity: 0;
 }
 
 .bp-stat-num {
