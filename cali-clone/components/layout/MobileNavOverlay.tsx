@@ -3,9 +3,9 @@ import { useGSAP } from "@gsap/react";
 import { useRef, RefObject } from "react";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
+import type { LinkItem } from "@/lib/site";
 
-type Link = { label: string; href: string };
-type Props = { open: boolean; onClose: () => void; links: Link[] };
+type Props = { open: boolean; onClose: () => void; links: LinkItem[] };
 
 export default function MobileNavOverlay({ open, onClose, links }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);

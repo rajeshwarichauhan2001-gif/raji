@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# admin CMS data (content + uploads) — lives on Railway volume in prod
+/data
+
 # dependencies
 /node_modules
 /.pnp

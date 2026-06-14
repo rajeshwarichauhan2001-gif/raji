@@ -12,23 +12,27 @@ import CardsFan from "@/components/sections/CardsFan";
 import ClientLoveSection from "@/components/sections/ClientLoveSection";
 import FAQSection from "@/components/sections/FAQSection";
 import FreebieSection from "@/components/sections/FreebieSection";
+import { getContent } from "@/lib/content.server";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const content = await getContent();
   return (
     <main>
-      <HeroSection />
+      <HeroSection data={content.hero} />
       <ClientLogoMarquee />
-      <ApproachSection />
+      <ApproachSection data={content.approach} />
       <QuoteBand />
       <EdgeSection />
-      <StatsSectionV2 />
+      <StatsSectionV2 data={content.stats} />
       <ServicesParallax />
       <ProcessSection />
       <ImpactFlip theme="cream" />
       <BenefitsSection />
       <CardsFan />
-      <ClientLoveSection />
-      <FAQSection />
+      <ClientLoveSection data={content.testimonials} />
+      <FAQSection data={content.faq} />
       <FreebieSection />
     </main>
   );

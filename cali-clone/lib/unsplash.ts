@@ -11,7 +11,7 @@ export const IMG = {
   portrait5: "photo-1544005313-94ddf0286df2",
   portrait6: "photo-1554151228-14d9def656e4",
   portrait7: "photo-1487412720507-e7ab37603c6f",
-  desk1: "photo-1611224885990-ab7363d7f2a9",
+  desk1: "photo-1611162617213-7d7a39e9b1d7",
   desk2: "photo-1542038784456-1ea8e935640e",
   desk3: "photo-1551836022-d5d88e9218df",
   desk4: "photo-1611162617213-7d7a39e9b1d7",

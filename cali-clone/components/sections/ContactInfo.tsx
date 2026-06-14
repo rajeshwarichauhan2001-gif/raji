@@ -1,9 +1,14 @@
 import { Mail, Clock, MapPin } from "lucide-react";
+import { DEFAULT_CONTACT, type ContactData } from "@/lib/contact";
 
-export default function ContactInfo() {
+export default function ContactInfo({
+  data = DEFAULT_CONTACT.info,
+}: {
+  data?: ContactData["info"];
+}) {
   return (
     <div className="contact-info">
-      <p className="eyebrow contact-info-eyebrow">Reach out directly</p>
+      <p className="eyebrow contact-info-eyebrow">{data.eyebrow}</p>
       <div className="contact-info-rows">
         <div className="contact-info-row">
           <span className="contact-info-icon" aria-hidden="true">
@@ -11,11 +16,8 @@ export default function ContactInfo() {
           </span>
           <div className="contact-info-text">
             <span className="contact-info-label">Email</span>
-            <a
-              className="contact-info-value"
-              href="mailto:rajeshwarichauhan2001@gmail.com"
-            >
-              rajeshwarichauhan2001@gmail.com
+            <a className="contact-info-value" href={`mailto:${data.email}`}>
+              {data.email}
             </a>
           </div>
         </div>
@@ -24,10 +26,8 @@ export default function ContactInfo() {
             <Clock size={18} strokeWidth={1.5} />
           </span>
           <div className="contact-info-text">
-            <span className="contact-info-label">Working Hours</span>
-            <span className="contact-info-value">
-              Monday – Friday · 07am – 09pm
-            </span>
+            <span className="contact-info-label">{data.hoursLabel}</span>
+            <span className="contact-info-value">{data.hours}</span>
           </div>
         </div>
         <div className="contact-info-row">
@@ -35,14 +35,12 @@ export default function ContactInfo() {
             <MapPin size={18} strokeWidth={1.5} />
           </span>
           <div className="contact-info-text">
-            <span className="contact-info-label">Location</span>
-            <span className="contact-info-value">Mumbai, India</span>
+            <span className="contact-info-label">{data.locationLabel}</span>
+            <span className="contact-info-value">{data.location}</span>
           </div>
         </div>
       </div>
-      <p className="contact-info-note">
-        I usually reply within 24 hours.
-      </p>
+      <p className="contact-info-note">{data.note}</p>
     </div>
   );
 }

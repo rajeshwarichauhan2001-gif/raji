@@ -2,41 +2,41 @@ import PageHeader from "@/components/sections/PageHeader";
 import ContactForm from "@/components/sections/ContactForm";
 import ContactInfo from "@/components/sections/ContactInfo";
 import RotatingPhraseBand from "@/components/sections/RotatingPhraseBand";
+import { DEFAULT_CONTACT, type ContactData } from "@/lib/contact";
+import { getDoc } from "@/lib/store";
 
-function ContactBody() {
+export const dynamic = "force-dynamic";
+
+function ContactBody({ data }: { data: ContactData }) {
   return (
     <section className="contact-grid">
       <div className="contact-grid-inner">
-        <ContactForm />
-        <ContactInfo />
+        <ContactForm data={data.form} />
+        <ContactInfo data={data.info} />
       </div>
     </section>
   );
 }
 
-export default function Page() {
+export default async function Page() {
+  const contact = await getDoc<ContactData>("contact", DEFAULT_CONTACT);
+
   return (
     <main>
       <PageHeader
-        eyebrow="Get in touch"
-        title="Contact Us"
+        eyebrow={contact.header.eyebrow}
+        title={contact.header.title}
         subtitle={
           <>
-            <p>
-              Start the conversation to build a strong relationship and a
-              successful business.
-            </p>
-            <p className="page-header-italic">
-              Effortless Communication, Worldwide Influence.
-            </p>
-            <p>
-              Seamless and effective communication that transcends borders,
-              empowering global connections and impact.
-            </p>
+            {contact.header.paragraphs.map((p, i) => (
+              <p key={i} className={p.italic ? "page-header-italic" : undefined}>
+                {p.text}
+              </p>
+            ))}
           </>
         }
       />
-      <ContactBody />
+      <ContactBody data={contact} />
       <RotatingPhraseBand />
     </main>
   );

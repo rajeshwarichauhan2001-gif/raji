@@ -2829,6 +2829,11 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 
 /* ── Page wrapper ─────────────────────────────────────── */
 .bp-page {
+  --bp-primary: #e2231a;
+  --bp-bg: #f6efd9;
+  --bp-bg-soft: #fbf6e3;
+  --bp-ink: #1a1208;
+  --bp-accent: #f0d181;
   background: var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
@@ -2878,7 +2883,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--bp-primary);
   margin: 0;
 }
 
@@ -2909,7 +2914,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-hero-accent-line {
   width: 120px;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--bp-primary);
   transform: scaleX(0);
   transform-origin: left center;
   margin-top: -4px;
@@ -2951,7 +2956,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 
 /* ── Section 2: Stats ────────────────────────────────── */
 .bp-stats {
-  background: #1a1208;
+  background: var(--bp-ink);
   padding: 72px var(--gutter-desktop);
 }
 
@@ -2979,7 +2984,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(40px, 4.5vw, 64px);
-  color: var(--color-accent);
+  color: var(--bp-primary);
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -3032,14 +3037,14 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
   transition: color 0.25s ease;
 }
 .bp-tab-btn:hover { color: var(--color-text); }
-.bp-tab-btn--active { color: var(--color-accent); font-weight: 600; }
+.bp-tab-btn--active { color: var(--bp-primary); font-weight: 600; }
 
 /* Sliding underline indicator */
 .bp-tab-indicator {
   position: absolute;
   bottom: -2px;
   height: 2px;
-  background: var(--color-accent);
+  background: var(--bp-primary);
   transition: left 0.28s cubic-bezier(0.4,0,0.2,1), width 0.28s cubic-bezier(0.4,0,0.2,1);
   border-radius: 2px;
 }
@@ -3373,7 +3378,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
   height: 52px;
   padding: 0 32px;
   border-radius: 999px;
-  background: var(--color-accent-2);
+  background: var(--bp-primary);
   color: #ffffff;
   font-family: var(--font-body);
   font-size: 15px;
@@ -3474,7 +3479,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
    SECTION 6 — Our Approach
 ═══════════════════════════════════════════ */
 .bp-approach-section {
-  background: #1a1208;
+  background: var(--bp-ink);
   padding: 100px var(--gutter-desktop);
 }
 .bp-approach-inner {
@@ -3484,20 +3489,20 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-approach-eyebrow {
   font: 500 11px/1 var(--font-mono, monospace);
   letter-spacing: 0.2em;
-  color: var(--color-accent, #f0d181);
+  color: var(--bp-primary);
   margin-bottom: 20px;
   text-transform: uppercase;
 }
 .bp-approach-heading {
   font-size: clamp(40px, 5vw, 72px);
   font-weight: 700;
-  color: #f6efd9;
+  color: var(--bp-bg);
   line-height: 1.1;
   margin-bottom: 64px;
 }
 .bp-approach-heading em {
   font-style: italic;
-  color: var(--color-accent, #f0d181);
+  color: var(--color-accent, var(--bp-accent));
 }
 .bp-approach-grid {
   display: grid;
@@ -3511,14 +3516,14 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-approach-num {
   display: block;
   font: 700 13px/1 var(--font-mono, monospace);
-  color: var(--color-accent, #f0d181);
+  color: var(--color-accent, var(--bp-accent));
   letter-spacing: 0.1em;
   margin-bottom: 16px;
 }
 .bp-approach-item-title {
   font-size: 20px;
   font-weight: 600;
-  color: #f6efd9;
+  color: var(--bp-bg);
   margin-bottom: 12px;
   line-height: 1.3;
 }
@@ -3532,7 +3537,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
    SECTION 7 — Featured Video
 ═══════════════════════════════════════════ */
 .bp-featured-video-section {
-  background: #0e0b05;
+  background: var(--bp-ink);
   padding: 100px var(--gutter-desktop);
 }
 .bp-featured-video-inner {
@@ -3542,20 +3547,20 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-featured-eyebrow {
   font: 500 11px/1 var(--font-mono, monospace);
   letter-spacing: 0.2em;
-  color: var(--color-accent, #f0d181);
+  color: var(--bp-primary);
   text-transform: uppercase;
   margin-bottom: 20px;
 }
 .bp-featured-heading {
   font-size: clamp(36px, 4.5vw, 64px);
   font-weight: 700;
-  color: #f6efd9;
+  color: var(--bp-bg);
   line-height: 1.1;
   margin-bottom: 48px;
 }
 .bp-featured-heading em {
   font-style: italic;
-  color: var(--color-accent, #f0d181);
+  color: var(--color-accent, var(--bp-accent));
 }
 .bp-featured-video-wrap {
   position: relative;
@@ -3580,7 +3585,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-featured-glass-label {
   font: 600 11px/1 var(--font-mono, monospace);
   letter-spacing: 0.15em;
-  color: var(--color-accent, #f0d181);
+  color: var(--color-accent, var(--bp-accent));
   text-transform: uppercase;
   margin-bottom: 8px;
 }
@@ -3594,7 +3599,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
    SECTION 8 — Philosophy
 ═══════════════════════════════════════════ */
 .bp-philosophy-section {
-  background: #1a1208;
+  background: var(--bp-ink);
   padding: 100px var(--gutter-desktop);
 }
 .bp-philosophy-inner {
@@ -3619,25 +3624,25 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-philosophy-eyebrow {
   font: 500 11px/1 var(--font-mono, monospace);
   letter-spacing: 0.2em;
-  color: var(--color-accent, #f0d181);
+  color: var(--bp-primary);
   text-transform: uppercase;
   margin-bottom: 20px;
 }
 .bp-philosophy-heading {
   font-size: clamp(36px, 4vw, 60px);
   font-weight: 700;
-  color: #f6efd9;
+  color: var(--bp-bg);
   line-height: 1.1;
   margin-bottom: 28px;
 }
 .bp-philosophy-heading em {
   font-style: normal;
-  color: var(--color-accent, #f0d181);
+  color: var(--color-accent, var(--bp-accent));
 }
 .bp-philosophy-divider {
   width: 60px;
   height: 2px;
-  background: var(--color-accent, #f0d181);
+  background: var(--color-accent, var(--bp-accent));
   margin-bottom: 28px;
   border-radius: 2px;
 }
@@ -3653,7 +3658,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
    SECTION 9 — What We Delivered
 ═══════════════════════════════════════════ */
 .bp-delivered-section {
-  background: #0e0b05;
+  background: var(--bp-ink);
   padding: 100px var(--gutter-desktop);
 }
 .bp-delivered-inner {
@@ -3663,20 +3668,20 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-delivered-eyebrow {
   font: 500 11px/1 var(--font-mono, monospace);
   letter-spacing: 0.2em;
-  color: var(--color-accent, #f0d181);
+  color: var(--bp-primary);
   text-transform: uppercase;
   margin-bottom: 20px;
 }
 .bp-delivered-heading {
   font-size: clamp(36px, 4.5vw, 64px);
   font-weight: 700;
-  color: #f6efd9;
+  color: var(--bp-bg);
   line-height: 1.1;
   margin-bottom: 56px;
 }
 .bp-delivered-heading em {
   font-style: italic;
-  color: var(--color-accent, #f0d181);
+  color: var(--color-accent, var(--bp-accent));
 }
 .bp-delivered-grid {
   display: grid;
@@ -3706,7 +3711,7 @@ a.contact-info-value:hover { color: var(--color-accent-2); }
 .bp-delivered-card-title {
   font-size: 18px;
   font-weight: 600;
-  color: #f6efd9;
+  color: var(--bp-bg);
   margin-bottom: 8px;
 }
 .bp-delivered-card-body {

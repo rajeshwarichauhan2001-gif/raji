@@ -1,34 +1,32 @@
 "use client";
 import BoomerangVideoBg from "./BoomerangVideoBg";
+import { DEFAULT_CONTENT, HeroContent } from "@/lib/content";
 
-const BG_VIDEO =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_131941_d136af49-e243-493a-be14-6ff3f24e09e6.mp4";
+const styleClass: Record<string, string> = {
+  primary: "hero-boom-btn-primary",
+  outline: "hero-boom-btn-outline",
+  ghost: "hero-boom-btn-ghost",
+};
 
-export default function HeroSection() {
+export default function HeroSection({ data = DEFAULT_CONTENT.hero }: { data?: HeroContent }) {
   return (
     <section className="hero-boom">
-      <BoomerangVideoBg src={BG_VIDEO} className="hero-boom-bg" />
+      <BoomerangVideoBg src={data.bgVideo} className="hero-boom-bg" />
       <div className="hero-boom-veil" />
 
       <div className="hero-boom-copy">
-        <p className="hero-boom-eyebrow">SOCIAL MEDIA STRATEGIST</p>
+        <p className="hero-boom-eyebrow">{data.eyebrow}</p>
         <h1 className="hero-boom-title">
-          Transforming Brands Through{" "}
-          <span className="hero-boom-accent">
-            Strategic Social Media Excellence
-          </span>
+          {data.title}{" "}
+          <span className="hero-boom-accent">{data.titleAccent}</span>
         </h1>
-        <p className="hero-boom-sub">
-          Social media professional with proven expertise in managing and growing brand presence
-          across diverse digital platforms. Specialized in content creation, community engagement,
-          influencer collaborations, and leveraging analytics to optimize performance and drive
-          measurable growth. I combine strategic planning with creative execution to build
-          meaningful connections between brands and their audiences.
-        </p>
+        <p className="hero-boom-sub">{data.sub}</p>
         <div className="hero-boom-actions">
-          <a href="#services" className="hero-boom-btn-primary">View My Work</a>
-          <a href="#resume" className="hero-boom-btn-outline">Resume</a>
-          <a href="#contact" className="hero-boom-btn-ghost">Let&apos;s Collaborate</a>
+          {data.actions.map((a, i) => (
+            <a key={i} href={a.href} className={styleClass[a.style] || "hero-boom-btn-ghost"}>
+              {a.label}
+            </a>
+          ))}
         </div>
       </div>
     </section>

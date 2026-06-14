@@ -4,19 +4,24 @@ import AboutQuoteSplit from "@/components/sections/AboutQuoteSplit";
 import StatsSectionV2 from "@/components/sections/StatsSectionV2";
 import WhyUsSection from "@/components/sections/WhyUsSection";
 import FAQSection from "@/components/sections/FAQSection";
+import { DEFAULT_ABOUT } from "@/lib/about";
+import { getDoc } from "@/lib/store";
 
-export default function Page() {
+export const dynamic = "force-dynamic";
+
+export default async function Page() {
+  const about = await getDoc("about", DEFAULT_ABOUT);
   return (
     <main>
       <PageHeader
-        eyebrow="Our story"
-        title="About Us"
-        subtitle="Strategy, storytelling and steady community building for brands that want growth with intention."
+        eyebrow={about.header.eyebrow}
+        title={about.header.title}
+        subtitle={about.header.subtitle}
       />
       <ApproachSection />
-      <AboutQuoteSplit />
+      <AboutQuoteSplit data={about.quote} />
       <StatsSectionV2 />
-      <WhyUsSection />
+      <WhyUsSection data={about.whyUs} />
       <FAQSection />
     </main>
   );

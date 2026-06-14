@@ -4,15 +4,9 @@ import Link from "next/link";
 import Logo from "@/components/ui/Logo";
 import MobileNavOverlay from "./MobileNavOverlay";
 import { useNavScroll } from "@/hooks/useNavScroll";
+import { DEFAULT_SITE, type SiteChrome } from "@/lib/site";
 
-const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "About", href: "/about" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "/contact" },
-];
-
-export default function Nav() {
+export default function Nav({ data = DEFAULT_SITE.nav }: { data?: SiteChrome["nav"] }) {
   const scrolled = useNavScroll();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -25,7 +19,7 @@ export default function Nav() {
           </Link>
 
           <nav className="raji-nav-center" aria-label="primary">
-            {NAV_LINKS.map((l) => (
+            {data.links.map((l) => (
               <Link key={l.label} href={l.href} className="raji-nav-link">
                 {l.label}
               </Link>
@@ -33,9 +27,9 @@ export default function Nav() {
           </nav>
 
           <div className="raji-nav-actions">
-            <Link href="#" className="raji-nav-signin">Sign in</Link>
-            <Link href="/contact" className="raji-nav-cta">
-              Book a call <span aria-hidden="true">→</span>
+            <Link href={data.signInHref} className="raji-nav-signin">{data.signInLabel}</Link>
+            <Link href={data.ctaHref} className="raji-nav-cta">
+              {data.ctaLabel} <span aria-hidden="true">→</span>
             </Link>
           </div>
 
@@ -53,7 +47,7 @@ export default function Nav() {
       <MobileNavOverlay
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        links={NAV_LINKS}
+        links={data.links}
       />
     </>
   );

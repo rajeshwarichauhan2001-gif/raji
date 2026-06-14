@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/layout/Nav";
-import Footer from "@/components/layout/Footer";
-import CookieStrip from "@/components/layout/CookieStrip";
-import FloatingCTA from "@/components/layout/FloatingCTA";
-import Preloader from "@/components/layout/Preloader";
+import SiteChrome from "@/components/layout/SiteChrome";
+import { getDoc } from "@/lib/store";
+import { DEFAULT_SITE } from "@/lib/site";
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
@@ -27,16 +25,12 @@ export const metadata: Metadata = {
   description: "Rajeshwari Chauhan, social media strategist for women-led service businesses.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const site = await getDoc("site", DEFAULT_SITE);
   return (
     <html lang="en" className={`${instrumentSerif.variable} ${dmSans.variable}`}>
       <body>
-        <Preloader />
-        <Nav />
-        {children}
-        <Footer />
-        <CookieStrip />
-        <FloatingCTA />
+        <SiteChrome site={site}>{children}</SiteChrome>
       </body>
     </html>
   );

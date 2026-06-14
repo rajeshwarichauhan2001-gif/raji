@@ -6,7 +6,7 @@ const PILLARS = [
   {
     title: "Strategic Content Planning & Calendar Management",
     body: "Purposeful calendars that align every post with brand goals, audience rhythms, and platform behaviour.",
-    img: "photo-1611224885990-ab7363d7f2a9",
+    img: "photo-1542038784456-1ea8e935640e",
   },
   {
     title: "Social Media Advertising & Performance Tracking",

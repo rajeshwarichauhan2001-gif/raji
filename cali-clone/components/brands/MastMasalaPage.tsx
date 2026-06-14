@@ -1,74 +1,24 @@
 "use client";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, type CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-
-/* ─── Image base URL ─────────────────────────────────── */
-const BASE = "https://rajeshwarichauhan.in/wp-content/uploads";
+import { DEFAULT_BRAND, type BrandData } from "@/lib/brand";
+import AnalyticsChartCard from "@/components/brands/AnalyticsChartCard";
 
 /* ─── Types ─────────────────────────────────────────── */
 type Tab = "content" | "social" | "servicing";
-
-/* ─── Stats data ─────────────────────────────────────── */
-const STATS = [
-  { raw: 22,    suffix: "%",  decimals: 0, label: "Reach Growth" },
-  { raw: 29.4,  suffix: "M",  decimals: 1, label: "Impressions" },
-  { raw: 21,    suffix: "%",  decimals: 0, label: "Engagement Rate" },
-  { raw: 4305,  suffix: "",   decimals: 0, label: "Total Followers" },
-];
 
 const DURATION = 1800;
 function easeOutExpo(t: number) {
   return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
-/* ─── Work-done bullets ───────────────────────────────── */
-const WORK_DONE = [
-  "Weekly reporting + action plan",
-  "Execution with creatives + revisions",
-  "Monthly growth strategy updates",
-  "Improved turnaround + consistency",
-];
-
-/* ─── Content-calendar rows ──────────────────────────── */
-const CAL_ROWS = [
-  { type: "Reel",   date: "1/10/2024",  concept: "Diwali",                  copy: "Diwali ki roshni khushiyan ka pal…" },
-  { type: "Static", date: "3/11/2024",  concept: "Bhai Dooj",               copy: "Bhai ko ho khushi ke paas…" },
-  { type: "Reel",   date: "6/11/2024",  concept: "Rajasthani Garam Masala", copy: "Har dish ko de zeeta sting…" },
-];
-
-/* ─── Social analytics cards ─────────────────────────── */
-const ANALYTICS = [
-  { stat: "+22%", label: "Reach Growth",  sub: "29.4M Impressions",    img: `${BASE}/2025/12/reach-growth-8.png`  },
-  { stat: "+21%", label: "Engagement",    sub: "2.1% Engagement Rate", img: `${BASE}/2025/12/engagement-8.png`    },
-  { stat: "+20%", label: "CTR",           sub: "214 Link Clicks",      img: `${BASE}/2025/12/ctrleft-4.png`       },
-  { stat: "+18%", label: "Retention",     sub: "Avg. watch time up",   img: `${BASE}/2025/12/retension-3.png`     },
-];
-
-/* ─── MoM bullets ────────────────────────────────────── */
-const MOM = [
-  "Festive Content Roadmap Ready",
-  "Recipe & Festive Posts Finalised",
-  "High-Engagement Content Plan (Reels, GIFs, interactive posts)",
-  "Celebrating Culture & Traditions",
-  "Clear Posting Plan Set",
-  "Success Metrics Defined",
-];
-
-/* ─── Gallery images ─────────────────────────────────── */
-const GALLERY_IMGS = [
-  { src: `${BASE}/2025/12/Mast-Masala_Gandhi-Jayanti.jpg`, alt: "Gandhi Jayanti post"   },
-  { src: `${BASE}/2025/12/mast-masala-dashera_-2.jpg`,     alt: "Dussehra post"         },
-  { src: `${BASE}/2025/12/Mast-Masala-Dhanteras_1.jpg`,    alt: "Dhanteras post"        },
-  { src: `${BASE}/2025/12/Mast-Masala-Oct-22-post.jpg`,    alt: "October post"          },
-  { src: `${BASE}/2025/12/Mast-Masala-Oct-21-post.jpg`,    alt: "October post 2"        },
-  { src: `${BASE}/2025/12/happy-makar-sankrant.jpg`,        alt: "Makar Sankranti post"  },
-];
-
 
 /* ═══════════════════════════════════════════════════════ */
-export default function MastMasalaPage() {
+export default function MastMasalaPage({ data = DEFAULT_BRAND }: { data?: BrandData & { logo?: string; name?: string } }) {
+
+  const STATS = data.stats;
 
   /* ── Hero: char-by-char GSAP ─────────────────────────── */
   const heroRef      = useRef<HTMLDivElement>(null);
@@ -371,37 +321,51 @@ export default function MastMasalaPage() {
   }, [displayTab]);
 
   /* ── TITLE chars ─────────────────────────────────────── */
-  const TITLE = "MAST MASALA";
+  const TITLE = data.hero.title;
   const chars = TITLE.split("").map((ch, i) =>
     ch === " "
       ? <span key={i} className="bp-char-space" aria-hidden="true">&nbsp;</span>
       : <span key={i} className="bp-char" aria-hidden="true">{ch}</span>
   );
 
+  const pal = data.palette ?? DEFAULT_BRAND.palette;
+  const paletteVars = {
+    "--bp-primary": pal.primary,
+    "--bp-bg": pal.bg,
+    "--bp-bg-soft": pal.bgSoft,
+    "--bp-ink": pal.ink,
+    "--bp-accent": pal.accent,
+  } as CSSProperties;
+
   return (
-    <main className="bp-page">
+    <main className="bp-page" style={paletteVars}>
 
       {/* ── Section 1: Hero ─────────────────────────────── */}
       <section className="bp-hero">
         {/* Decorative BG text */}
-        <div className="bp-hero-bg-text" aria-hidden="true">MM</div>
+        <div className="bp-hero-bg-text" aria-hidden="true">{data.hero.bgText}</div>
 
         <div className="bp-hero-inner" ref={heroRef}>
-          <p className="bp-hero-eyebrow">CLIENT ARCHIVE</p>
+          {data.logo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={data.logo} alt={data.name ?? data.hero.title} className="bp-hero-logo"
+              style={{ height: 72, width: "auto", objectFit: "contain", marginBottom: 18, display: "block" }} />
+          ) : null}
+          <p className="bp-hero-eyebrow">{data.hero.eyebrow}</p>
 
-          <h1 className="bp-hero-title" aria-label="Mast Masala">
+          <h1 className="bp-hero-title" aria-label={data.hero.title}>
             {chars}
           </h1>
 
           {/* Floating accent line */}
           <div className="bp-hero-accent-line" ref={accentLine} />
 
-          <p className="bp-hero-tagline">Masala Ek, Swaad Anek!</p>
+          <p className="bp-hero-tagline">{data.hero.tagline}</p>
 
           <div className="bp-hero-tags">
-            <span className="bp-tag">Content Writing</span>
-            <span className="bp-tag">Social Media</span>
-            <span className="bp-tag">Client Servicing</span>
+            {data.hero.tags.map(t => (
+              <span key={t} className="bp-tag">{t}</span>
+            ))}
           </div>
         </div>
         <div className="bp-hero-divider" />
@@ -438,7 +402,7 @@ export default function MastMasalaPage() {
                   className={`bp-tab-btn${tab === t ? " bp-tab-btn--active" : ""}`}
                   onClick={() => switchTab(t)}
                 >
-                  {t === "content" ? "Content Writing" : t === "social" ? "Social Media" : "Client Servicing"}
+                  {t === "content" ? data.tabs.contentLabel : t === "social" ? data.tabs.socialLabel : data.tabs.servicingLabel}
                 </button>
               ))}
               {/* Sliding indicator */}
@@ -456,9 +420,9 @@ export default function MastMasalaPage() {
             {/* Content Writing */}
             {displayTab === "content" && (
               <div className="bp-tab-panel bp-tab-panel--visible">
-                <WorkDone initReveal={initWorkReveal} itemsRef={workItems} />
+                <WorkDone initReveal={initWorkReveal} itemsRef={workItems} workDone={data.workDone} />
                 <div className="bp-cal-card">
-                  <h3 className="bp-cal-title">Content Calendar Glimpse</h3>
+                  <h3 className="bp-cal-title">{data.calendar.title}</h3>
                   <div className="bp-cal-table-wrap">
                     <table className="bp-cal-table">
                       <thead>
@@ -467,7 +431,7 @@ export default function MastMasalaPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {CAL_ROWS.map(r => (
+                        {data.calendar.rows.map(r => (
                           <tr key={r.date + r.concept}>
                             <td><span className="bp-cal-type">{r.type}</span></td>
                             <td>{r.date}</td>
@@ -485,12 +449,12 @@ export default function MastMasalaPage() {
             {/* Social Media */}
             {displayTab === "social" && (
               <div className="bp-tab-panel bp-tab-panel--visible">
-                <WorkDone initReveal={initWorkReveal} itemsRef={workItems} />
+                <WorkDone initReveal={initWorkReveal} itemsRef={workItems} workDone={data.workDone} />
                 <div className="bp-analytics-grid">
-                  {ANALYTICS.map(a => (
+                  {data.analytics.map(a => (
                     <div key={a.label} className="bp-analytics-card">
-                      <div className="bp-analytics-img-wrap">
-                        <Image src={a.img} alt={a.label} fill style={{ objectFit: "contain" }} />
+                      <div className="bp-analytics-img-wrap" style={{ position: "relative", overflow: "hidden" }}>
+                        <AnalyticsChartCard card={a} brandColor={data.brandColor} />
                       </div>
                       <span className="bp-analytics-stat">{a.stat}</span>
                       <span className="bp-analytics-label">{a.label}</span>
@@ -504,11 +468,11 @@ export default function MastMasalaPage() {
             {/* Client Servicing */}
             {displayTab === "servicing" && (
               <div className="bp-tab-panel bp-tab-panel--visible">
-                <WorkDone initReveal={initWorkReveal} itemsRef={workItems} />
+                <WorkDone initReveal={initWorkReveal} itemsRef={workItems} workDone={data.workDone} />
                 <div className="bp-mom-card">
-                  <h3 className="bp-mom-title">Mast Masala — Festive Content Planning</h3>
+                  <h3 className="bp-mom-title">{data.mom.title}</h3>
                   <ul className="bp-mom-list">
-                    {MOM.map((m, i) => (
+                    {data.mom.bullets.map((m, i) => (
                       <li key={i} className="bp-mom-item">
                         <span className="bp-mom-num">{String(i + 1).padStart(2, "0")}</span>
                         <span>{m}</span>
@@ -525,9 +489,9 @@ export default function MastMasalaPage() {
       {/* ── Section 4: Gallery ──────────────────────────── */}
       <section className="bp-gallery-section">
         <div className="bp-gallery-inner" ref={galleryRef}>
-          <h2 className="bp-section-title">Creative Gallery</h2>
+          <h2 className="bp-section-title">{data.gallery.title}</h2>
           <div className="bp-gallery-grid">
-            {GALLERY_IMGS.map((img, i) => (
+            {data.gallery.images.map((img, i) => (
               <div
                 key={i}
                 className="bp-gallery-box"
@@ -550,16 +514,13 @@ export default function MastMasalaPage() {
       <section className="bp-story-section">
         <div className="bp-story-inner">
           <div className="bp-story-text" ref={storyLeft} style={{ transform: "translateX(-60px)", opacity: 0 }}>
-            <h2 className="bp-section-title">60 Years of Legacy</h2>
+            <h2 className="bp-section-title">{data.story.title}</h2>
             <p className="bp-story-body">
-              Mast Masala has a legacy of over 60 years in the field of spices. Founded by Mr. Kailash
-              Ramanlal Jhaveri, following the legacy of his late father Shri Ramanlal J. Jhaveri from
-              Chorwad, Junagadh, Gujarat. JSPL delivers fresh, pure, and authentic quality products
-              through research, innovation, and technological advancements.
+              {data.story.body}
             </p>
           </div>
           <div className="bp-story-deco" ref={storyRight} aria-hidden="true" style={{ transform: "translateX(60px)", opacity: 0 }}>
-            <span className="bp-story-big-num">60</span>
+            <span className="bp-story-big-num">{data.story.bigNum}</span>
           </div>
         </div>
       </section>
@@ -567,26 +528,19 @@ export default function MastMasalaPage() {
       {/* ── Section 6: Our Approach ─────────────────────── */}
       <section className="bp-approach-section" ref={approachRef}>
         <div className="bp-approach-inner">
-          <p className="bp-approach-eyebrow">HOW WE WORK</p>
-          <h2 className="bp-approach-heading">
-            Crafted for <em>Growth</em>
-          </h2>
+          <p className="bp-approach-eyebrow">{data.approach.eyebrow}</p>
+          <h2
+            className="bp-approach-heading"
+            dangerouslySetInnerHTML={{ __html: data.approach.heading }}
+          />
           <div className="bp-approach-grid">
-            <div className="bp-approach-item">
-              <span className="bp-approach-num">01</span>
-              <h3 className="bp-approach-item-title">Deep Brand Audit</h3>
-              <p className="bp-approach-item-body">We begin by understanding the brand&apos;s voice, audience, and existing content performance before we strategise.</p>
-            </div>
-            <div className="bp-approach-item">
-              <span className="bp-approach-num">02</span>
-              <h3 className="bp-approach-item-title">Content Architecture</h3>
-              <p className="bp-approach-item-body">Every post is mapped to a goal — awareness, engagement, or conversion — and slotted into a structured monthly calendar.</p>
-            </div>
-            <div className="bp-approach-item">
-              <span className="bp-approach-num">03</span>
-              <h3 className="bp-approach-item-title">Execute &amp; Iterate</h3>
-              <p className="bp-approach-item-body">We launch, track performance metrics weekly, and refine based on what the data tells us — no guesswork, only growth.</p>
-            </div>
+            {data.approach.items.map(item => (
+              <div className="bp-approach-item" key={item.num}>
+                <span className="bp-approach-num">{item.num}</span>
+                <h3 className="bp-approach-item-title">{item.title}</h3>
+                <p className="bp-approach-item-body">{item.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -594,22 +548,23 @@ export default function MastMasalaPage() {
       {/* ── Section 7: Featured Video ───────────────────── */}
       <section className="bp-featured-video-section" ref={featuredRef}>
         <div className="bp-featured-video-inner">
-          <p className="bp-featured-eyebrow">CAMPAIGN REEL</p>
-          <h2 className="bp-featured-heading">
-            Campaigns That <em>Convert</em>
-          </h2>
+          <p className="bp-featured-eyebrow">{data.featured.eyebrow}</p>
+          <h2
+            className="bp-featured-heading"
+            dangerouslySetInnerHTML={{ __html: data.featured.heading }}
+          />
           <div className="bp-featured-video-wrap">
             <video
               className="bp-featured-video"
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260402_054547_9875cfc5-155a-4229-8ec8-b7ba7125cbf8.mp4"
+              src={data.featured.video}
               autoPlay
               muted
               loop
               playsInline
             />
             <div className="bp-featured-glass liquid-glass-warm">
-              <p className="bp-featured-glass-label">Featured Work</p>
-              <p className="bp-featured-glass-text">Mast Masala festive campaign — building brand recall through storytelling-led content.</p>
+              <p className="bp-featured-glass-label">{data.featured.glassLabel}</p>
+              <p className="bp-featured-glass-text">{data.featured.glassText}</p>
             </div>
           </div>
         </div>
@@ -625,7 +580,7 @@ export default function MastMasalaPage() {
           >
             <video
               className="bp-philosophy-video"
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4"
+              src={data.philosophy.video}
               autoPlay
               muted
               loop
@@ -637,17 +592,15 @@ export default function MastMasalaPage() {
             ref={philoRight}
             style={{ transform: "translateX(60px)", opacity: 0 }}
           >
-            <p className="bp-philosophy-eyebrow">OUR PHILOSOPHY</p>
-            <h2 className="bp-philosophy-heading">
-              Strategy <em>×</em> Results
-            </h2>
+            <p className="bp-philosophy-eyebrow">{data.philosophy.eyebrow}</p>
+            <h2
+              className="bp-philosophy-heading"
+              dangerouslySetInnerHTML={{ __html: data.philosophy.heading }}
+            />
             <div className="bp-philosophy-divider" />
-            <p className="bp-philosophy-body">
-              Great content isn&apos;t just creative — it&apos;s calculated. For Mast Masala, we merged authentic cultural storytelling with data-driven posting strategies to achieve measurable growth across Instagram and Facebook.
-            </p>
-            <p className="bp-philosophy-body">
-              From festive reels to daily engagement posts, every deliverable was aligned with the brand&apos;s 60-year legacy while connecting with a modern, digital-first audience.
-            </p>
+            {data.philosophy.paragraphs.map((p, i) => (
+              <p className="bp-philosophy-body" key={i}>{p}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -655,45 +608,32 @@ export default function MastMasalaPage() {
       {/* ── Section 9: What We Delivered ────────────────── */}
       <section className="bp-delivered-section" ref={deliveredRef}>
         <div className="bp-delivered-inner">
-          <p className="bp-delivered-eyebrow">DELIVERABLES</p>
-          <h2 className="bp-delivered-heading">
-            What We <em>Delivered</em>
-          </h2>
+          <p className="bp-delivered-eyebrow">{data.delivered.eyebrow}</p>
+          <h2
+            className="bp-delivered-heading"
+            dangerouslySetInnerHTML={{ __html: data.delivered.heading }}
+          />
           <div className="bp-delivered-grid">
-            <div
-              className="bp-delivered-card"
-              ref={el => { if (el) deliveredCards.current[0] = el; }}
-            >
-              <video
-                className="bp-delivered-video"
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-              <div className="bp-delivered-overlay liquid-glass-warm">
-                <h3 className="bp-delivered-card-title">Content Strategy</h3>
-                <p className="bp-delivered-card-body">Monthly calendar, 30+ posts, 6+ reels with cultural hooks and festive themes.</p>
+            {data.delivered.cards.map((card, i) => (
+              <div
+                key={i}
+                className="bp-delivered-card"
+                ref={el => { if (el) deliveredCards.current[i] = el; }}
+              >
+                <video
+                  className="bp-delivered-video"
+                  src={card.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+                <div className="bp-delivered-overlay liquid-glass-warm">
+                  <h3 className="bp-delivered-card-title">{card.title}</h3>
+                  <p className="bp-delivered-card-body">{card.body}</p>
+                </div>
               </div>
-            </div>
-            <div
-              className="bp-delivered-card"
-              ref={el => { if (el) deliveredCards.current[1] = el; }}
-            >
-              <video
-                className="bp-delivered-video"
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_151826_c7188672-6e92-402c-9e45-f1e0f454bdc4.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-              <div className="bp-delivered-overlay liquid-glass-warm">
-                <h3 className="bp-delivered-card-title">Growth &amp; Analytics</h3>
-                <p className="bp-delivered-card-body">+22% reach, 29.4M impressions, and +21% engagement rate in festive quarter.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -701,9 +641,9 @@ export default function MastMasalaPage() {
       {/* ── Section 10: CTA Strip ───────────────────────── */}
       <section className="bp-cta-strip" ref={ctaRef}>
         <div className="bp-cta-inner">
-          <p className="bp-cta-sub">Want results like these?</p>
-          <Link href="/contact" className="bp-cta-btn">
-            Book a discovery call with Raji →
+          <p className="bp-cta-sub">{data.cta.sub}</p>
+          <Link href={data.cta.href} className="bp-cta-btn">
+            {data.cta.label}
           </Link>
         </div>
       </section>
@@ -716,13 +656,14 @@ export default function MastMasalaPage() {
 interface WorkDoneProps {
   initReveal: (el: HTMLUListElement | null) => void;
   itemsRef:   React.MutableRefObject<HTMLLIElement[]>;
+  workDone:   BrandData["workDone"];
 }
-function WorkDone({ initReveal, itemsRef }: WorkDoneProps) {
+function WorkDone({ initReveal, itemsRef, workDone }: WorkDoneProps) {
   return (
     <div className="bp-work-done">
-      <h3 className="bp-work-title">Work Done</h3>
+      <h3 className="bp-work-title">{workDone.title}</h3>
       <ul className="bp-work-list" ref={initReveal}>
-        {WORK_DONE.map((w, i) => (
+        {workDone.bullets.map((w, i) => (
           <li
             key={w}
             className="bp-work-item"

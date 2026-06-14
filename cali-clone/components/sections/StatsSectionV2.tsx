@@ -1,12 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-
-const STATS = [
-  { target: 50,  decimals: 0, suffix: "+",  label: "Completed Projects" },
-  { target: 40,  decimals: 0, suffix: "+",  label: "Happy Clients" },
-  { target: 3,   decimals: 0, suffix: "+",  label: "Years Experience" },
-  { target: 4.5, decimals: 1, suffix: "/5", label: "Client Ratings" },
-];
+import { DEFAULT_CONTENT, StatsContent } from "@/lib/content";
 
 const DURATION = 1800; // ms
 
@@ -14,9 +8,10 @@ function easeOutExpo(t: number) {
   return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
-export default function StatsSectionV2() {
+export default function StatsSectionV2({ data = DEFAULT_CONTENT.stats }: { data?: StatsContent }) {
+  const STATS = data.items;
   const sectionRef = useRef<HTMLElement>(null);
-  const [values, setValues] = useState(STATS.map(() => 0));
+  const [values, setValues] = useState<number[]>(() => STATS.map(() => 0));
   const started = useRef(false);
 
   useEffect(() => {
@@ -49,19 +44,17 @@ export default function StatsSectionV2() {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [STATS]);
 
   return (
     <section ref={sectionRef} className="statsv2-section">
       <div className="statsv2-inner">
-        <h2 className="statsv2-title">
-          Enhance Your Digital Impact with My Expertise
-        </h2>
+        <h2 className="statsv2-title">{data.title}</h2>
         <div className="statsv2-grid">
           {STATS.map((s, i) => (
-            <div key={s.label} className="statsv2-cell">
+            <div key={s.label + i} className="statsv2-cell">
               <span className="statsv2-num">
-                {values[i].toFixed(s.decimals)}{s.suffix}
+                {(values[i] ?? 0).toFixed(s.decimals)}{s.suffix}
               </span>
               <span className="statsv2-label">{s.label}</span>
             </div>
