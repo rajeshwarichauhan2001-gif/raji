@@ -26,11 +26,11 @@ next-env.d.ts
 
 # Old scaffolds (kept locally, not deployed)
 _scrapped_v1/
-src/
-package-lock.json
-package.json
-vite.config.js
-index.html
+_scrapped_v1/src/
+_scrapped_v1/package-lock.json
+_scrapped_v1/package.json
+_scrapped_v1/vite.config.js
+_scrapped_v1/index.html
 
 # Working files
 raji-content.txt
