@@ -6,10 +6,10 @@ const nextConfig: NextConfig = {
     root: path.join(__dirname),
   },
   images: {
+    // Brand logos/galleries can come from any external site (incl. the
+    // scaffold-from-URL admin feature), so allow any https image host.
     remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "cdn.coverr.co" },
-      { protocol: "https", hostname: "rajeshwarichauhan.in" },
+      { protocol: "https", hostname: "**" },
     ],
   },
 };

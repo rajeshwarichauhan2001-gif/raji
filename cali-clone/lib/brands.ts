@@ -2853,6 +2853,483 @@ const IMPORTED_BRANDS: Brand[] = [
       "href": "/contact"
     },
     "logoBg": "#211a16"
+  },
+  {
+    "slug": "finvvritti",
+    "name": "Finvvritti",
+    "logo": "https://finvvritti.com/logo-dark.png",
+    "cardDescription": "CA & CS advisory firm delivering accounting, taxation, compliance and financial guidance for SMEs and startups.",
+    "published": true,
+    "palette": {
+      "primary": "#0f3d3e",
+      "bg": "#eef1f1",
+      "bgSoft": "#e0e6e6",
+      "ink": "#030b0b",
+      "accent": "#6f8b8b"
+    },
+    "brandColor": "linear-gradient(135deg, #0f3d3e, #0c3030)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "FINVVRITTI",
+      "bgText": "FI",
+      "tagline": "Your Finance, Our Responsibility",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Company Incorporation",
+        "Accounting & Bookkeeping",
+        "Virtual CFO Services",
+        "Business Valuation",
+        "Startup Registration",
+        "Compliance Management",
+        "Direct Tax Services",
+        "USA Company Incorporation"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": []
+    },
+    "analytics": [],
+    "mom": {
+      "title": "Finvvritti — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Finvvritti team meeting"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+          "alt": "Financial data insights"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=900&q=80",
+          "alt": "Accounting workspace"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
+          "alt": "Corporate office building"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=900&q=80",
+          "alt": "Business analytics and reporting"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
+          "alt": "Compliance and advisory"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Financial accounts review"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80",
+          "alt": "Consulting session"
+        }
+      ]
+    },
+    "story": {
+      "title": "Your Financial Catalyst",
+      "body": "Finvvritti is a one-stop financial solutions provider that combines Chartered Accountant and Company Secretary expertise under one roof. The firm helps businesses scale through strategy, data-driven insights and expert execution across auditing, accounting, taxation and advisory. It partners closely with SMEs and startups to drive sustainable, compliant growth.",
+      "bigNum": "300+"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Finvvritti — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Finvvritti, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Finvvritti's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Finvvritti."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#ffffff"
+  },
+  {
+    "slug": "envisionedu",
+    "name": "EnvisionEdu",
+    "logo": "https://uk.envisionedu.in/Envision_logo.png",
+    "cardDescription": "UK education consulting for Indian students — free counselling, visa help and scholarship guidance.",
+    "published": true,
+    "palette": {
+      "primary": "#1e3a8a",
+      "bg": "#eff1f7",
+      "bgSoft": "#e2e5f0",
+      "ink": "#050a19",
+      "accent": "#7889b9"
+    },
+    "brandColor": "linear-gradient(135deg, #1e3a8a, #172d6c)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "ENVISIONEDU",
+      "bgText": "EN",
+      "tagline": "Start Your Journey to Study in UK for Indian Students",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "University & course selection",
+        "SOP & application writing",
+        "Scholarship identification & guidance",
+        "IELTS/PTE preparation",
+        "Student visa assistance",
+        "Accommodation & pre-departure support",
+        "Education loan assistance",
+        "Profile gap analysis"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": []
+    },
+    "analytics": [],
+    "mom": {
+      "title": "EnvisionEdu — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?w=1600&q=80&auto=format&fit=crop",
+          "alt": "Study in UK hero"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=70&auto=format&fit=crop",
+          "alt": "London"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1526749837599-b4eba9fd855e?w=600&q=70&auto=format&fit=crop",
+          "alt": "Edinburgh"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=600&q=70&auto=format&fit=crop",
+          "alt": "Manchester"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=600&q=70&auto=format&fit=crop",
+          "alt": "Glasgow"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1543332164-6e82f355badc?w=600&q=70&auto=format&fit=crop",
+          "alt": "Newcastle"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=600&q=70&auto=format&fit=crop",
+          "alt": "Coventry"
+        }
+      ]
+    },
+    "story": {
+      "title": "24 Years of UK Education Expertise",
+      "body": "Envision helps Indian students study in the UK with certified UK counsellors and end-to-end support at zero cost. With 10+ offices across India and 450+ university affiliations, the team guides students from university selection through visa processing. They have placed 2,400+ students with a 97% UK student visa approval rate.",
+      "bigNum": "2,400+"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "EnvisionEdu — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For EnvisionEdu, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to EnvisionEdu's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to EnvisionEdu."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#ffffff"
+  },
+  {
+    "slug": "vamas",
+    "name": "Vamas",
+    "logo": "https://www.vamas.in/cdn/shop/files/Logo_58817fa3-d97a-4f1d-9351-033987ae46c5.png?v=1711731102&width=300",
+    "cardDescription": "Vamas designs premium custom-fitted saree blouses for Indian women, blending classic silhouettes with modern trends.",
+    "published": true,
+    "palette": {
+      "primary": "#8b1e3f",
+      "bg": "#f7eff2",
+      "bgSoft": "#f0e2e6",
+      "ink": "#19050b",
+      "accent": "#b9788c"
+    },
+    "brandColor": "linear-gradient(135deg, #8b1e3f, #6c1731)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "VAMAS",
+      "bgText": "VA",
+      "tagline": "Find Your Perfect Blouse",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Custom-fitted saree blouses with adjustable sizing",
+        "Multiple collections: Wedding, Festive, Casual and Cocktail wear",
+        "Iconic V-Neck and stretchable blouse ranges",
+        "Premium quality fabric sourcing",
+        "Free shipping and secure payments",
+        "7-day returns and exchanges"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": []
+    },
+    "analytics": [],
+    "mom": {
+      "title": "Vamas — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-295-ELB-PINK-FRONT.jpg?width=800",
+          "alt": "Vamas B 295 Elb Pink"
+        },
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-296-ELB-PISTA-GREEN-FRONT.jpg?width=800",
+          "alt": "Vamas B 296 Elb Pista Green"
+        },
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-299-ELB-GOLD-FRONT.jpg?width=800",
+          "alt": "Vamas B 299 Elb Gold"
+        },
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-301-ELB-BLACK-FRONT.jpg?width=800",
+          "alt": "Vamas B 301 Elb Black"
+        },
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-302-ELB-NAVY-BLUE-FRONT.jpg?width=800",
+          "alt": "Vamas B 302 Elb Navy Blue"
+        },
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-303-ELB-SILVER-FRONT.jpg?width=800",
+          "alt": "Vamas B 303 Elb Silver"
+        },
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-305-NS-RED-FRONT.jpg?width=800",
+          "alt": "Vamas B 305 Ns Red"
+        },
+        {
+          "src": "https://www.vamas.in/cdn/shop/files/B-308-NS-MULTI-FRONT.jpg?width=800",
+          "alt": "Vamas B 308 Ns Multi"
+        }
+      ]
+    },
+    "story": {
+      "title": "Sarees, reimagined one blouse at a time",
+      "body": "Founded in Mumbai in the 1960s, Vamas designs premium saree blouses that reimagine classic silhouettes like halter necks and sweetheart necklines for today. The brand sources fine fabrics and follows ethical production practices across its collections. Every blouse is built with adjustable sizing, offering a 1.5-inch margin on both sides and three internal stitching lines for the perfect custom fit. Vamas is on a quest to transform sarees from family heirlooms into fashion firecrackers.",
+      "bigNum": "1960s"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Vamas — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Vamas, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Vamas's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Vamas."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
   }
 ];
 
