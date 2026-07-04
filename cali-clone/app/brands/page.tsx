@@ -60,14 +60,29 @@ export default async function Page() {
             }}
           >
             {brand.logo ? (
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                width={72}
-                height={72}
-                unoptimized
-                style={{ objectFit: "contain", borderRadius: 14 }}
-              />
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: brand.logoBg ? "auto" : 72,
+                  minWidth: 72,
+                  height: 72,
+                  borderRadius: 14,
+                  ...(brand.logoBg
+                    ? { background: brand.logoBg, padding: "10px 16px", boxShadow: "0 4px 14px rgba(0,0,0,0.12)" }
+                    : {}),
+                }}
+              >
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  width={72}
+                  height={72}
+                  unoptimized
+                  style={{ objectFit: "contain", height: 48, width: "auto" }}
+                />
+              </div>
             ) : (
               <div
                 style={{

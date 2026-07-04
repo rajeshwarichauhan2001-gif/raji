@@ -566,9 +566,56 @@ function BrandPagesEditor({ c, set, selected, onSelect }: {
   const idx = Math.min(selected, Math.max(0, c.items.length - 1));
   const brand = c.items[idx];
   const setBrand = (b: Brand) => set({ ...c, items: c.items.map((it, j) => (j === idx ? b : it)) });
-  if (!brand) return <div style={{ color: "#9a958c" }}>No brands yet — add one in Brand Archive.</div>;
+  const [url, setUrl] = useState("");
+  const [scaffolding, setScaffolding] = useState(false);
+  const [scaffoldMsg, setScaffoldMsg] = useState("");
+
+  const scaffold = async () => {
+    if (!url.trim() || scaffolding) return;
+    setScaffolding(true);
+    setScaffoldMsg("");
+    try {
+      const res = await fetch("/api/admin/brands/scaffold", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "Scaffold failed");
+      set({ ...c, items: [...c.items, json.brand as Brand] });
+      onSelect(c.items.length);
+      setUrl("");
+      setScaffoldMsg(`Imported "${json.brand.name}" as a draft — review the fields below, then Save changes.`);
+    } catch (e) {
+      setScaffoldMsg(e instanceof Error ? e.message : "Scaffold failed");
+    } finally {
+      setScaffolding(false);
+    }
+  };
+
   return (
     <>
+      <Card title="Add a brand from its website" hint="Paste a brand's URL — we pull its name, logo, description and colour into a draft. Case-study data (stats, gallery, videos) you fill in below.">
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <input
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter") scaffold(); }}
+            placeholder="https://brand-website.com"
+            style={{ ...S.input, flex: 1, minWidth: 220 }}
+          />
+          <button onClick={scaffold} disabled={scaffolding || !url.trim()}
+            style={{ ...S.smallBtn, opacity: scaffolding || !url.trim() ? 0.6 : 1 }}>
+            {scaffolding ? "Importing…" : "Scaffold from URL"}
+          </button>
+        </div>
+        {scaffoldMsg && (
+          <p style={{ margin: "8px 0 0", fontSize: 13, color: scaffoldMsg.includes("Imported") ? "#7fae7f" : "#d08a8a" }}>
+            {scaffoldMsg}
+          </p>
+        )}
+      </Card>
+      <div style={{ height: 18 }} />
       <Card title="Choose a brand to edit" hint="Pick a brand, or add a new one — it gets its own page at /brands/<slug>.">
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {c.items.map((b, i) => (
@@ -582,7 +629,9 @@ function BrandPagesEditor({ c, set, selected, onSelect }: {
         </div>
       </Card>
       <div style={{ height: 18 }} />
-      <BrandPageFields brand={brand} set={setBrand} />
+      {brand
+        ? <BrandPageFields brand={brand} set={setBrand} />
+        : <div style={{ color: "#9a958c" }}>No brands yet — scaffold one from a URL above, or add one manually.</div>}
     </>
   );
 }

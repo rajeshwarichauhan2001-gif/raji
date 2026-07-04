@@ -37,6 +37,10 @@ export type BrandData = {
   // Any CSS color OR gradient — used as the brand accent (e.g. social-tab media).
   // Solid: "#c0392b" · Gradient: "linear-gradient(135deg,#c0392b,#e74c3c)"
   brandColor: string;
+  // Optional badge background behind the hero logo, for contrast when the logo
+  // is a single-colour (e.g. white) mark. Dark hex for light logos, light hex
+  // for dark logos. Undefined → logo renders bare (no badge).
+  logoBg?: string;
   hero: {
     eyebrow: string;
     title: string;        // animated char-by-char title, e.g. "MAST MASALA"

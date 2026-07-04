@@ -16,758 +16,2850 @@ export type BrandsData = {
   items: Brand[];
 };
 
+// Mast Masala keeps the full hand-authored default case study.
+const MAST_MASALA: Brand = {
+  ...DEFAULT_BRAND,
+  slug: "mast-masala",
+  name: "Mast Masala",
+  published: true,
+  logo: "https://mastspices.com/wp-content/uploads/2025/08/logo-107x104.png",
+  cardDescription: "60 years of spice legacy — festive content and steady social growth.",
+};
+
+// Imported from rajeshwarichauhan.in portfolio (client-servicing / social-media / content-writing).
+// Factual fields (logo, gallery images, history, analytics) are from the source pages;
+// narrative sections use brand-aware templated copy. Media (video) fields left blank.
+const IMPORTED_BRANDS: Brand[] = [
+  {
+    "slug": "intellve",
+    "name": "Intellve",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Intellve.png",
+    "cardDescription": "AI, ML and IoT-driven facility surveillance software brand — social, content and client servicing.",
+    "published": true,
+    "palette": {
+      "primary": "#2b5fd0",
+      "bg": "#f0f4fc",
+      "bgSoft": "#e3eaf9",
+      "ink": "#081125",
+      "accent": "#809fe3"
+    },
+    "brandColor": "linear-gradient(135deg, #2b5fd0, #224aa2)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "INTELLVE",
+      "bgText": "IN",
+      "tagline": "Intelligence Around You",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 1100,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 720,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 175,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 55,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": [
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Ambedkar Jayanti",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Dhanteras",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Dussera",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Earth Day",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Gandhi Jayanti",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Guru Nanak Jayanti",
+          "copy": ""
+        }
+      ]
+    },
+    "analytics": [
+      {
+        "stat": "+1100%",
+        "label": "Reach Growth",
+        "sub": "Sustained upward reach trend",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          12,
+          18,
+          25,
+          34,
+          46,
+          58,
+          70,
+          82,
+          91,
+          98,
+          104,
+          110
+        ],
+        "metricA": {
+          "value": "+1100%",
+          "label": "Reach"
+        },
+        "metricB": {
+          "value": "55%",
+          "label": "Consistency"
+        }
+      },
+      {
+        "stat": "+720%",
+        "label": "Engagement / Leads",
+        "sub": "Rising engagement and inbound leads",
+        "dateRange": "",
+        "chartType": "bar",
+        "points": [
+          8,
+          12,
+          18,
+          24,
+          31,
+          38,
+          45,
+          52,
+          58,
+          63,
+          68,
+          72
+        ],
+        "metricA": {
+          "value": "+720%",
+          "label": "Engagement"
+        },
+        "metricB": {
+          "value": "+175%",
+          "label": "CTR Lift"
+        }
+      },
+      {
+        "stat": "+175%",
+        "label": "CTR Lift",
+        "sub": "Click-through rate improvement",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          5,
+          9,
+          14,
+          20,
+          27,
+          35,
+          44,
+          54,
+          65,
+          77,
+          90,
+          105
+        ],
+        "metricA": {
+          "value": "+175%",
+          "label": "CTR"
+        },
+        "metricB": {
+          "value": "+720%",
+          "label": "Leads"
+        }
+      }
+    ],
+    "mom": {
+      "title": "Intellve — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Ambedkar-jayanti-INTELLVE.jpg",
+          "alt": "Ambedkar Jayanti"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Dhanteras-2-.jpeg",
+          "alt": "Dhanteras"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Dussera.jpg",
+          "alt": "Dussera"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/earth-day-INTELLVE.jpg",
+          "alt": "Earth Day"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Gandhi-Jayanti.jpg",
+          "alt": "Gandhi Jayanti"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Guru-Nanak-Jayanti-.jpeg",
+          "alt": "Guru Nanak Jayanti"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Independence-day.jpg",
+          "alt": "Independence Day"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Intellve_Bhai_Dooj.jpg",
+          "alt": "Bhai Dooj"
+        }
+      ]
+    },
+    "story": {
+      "title": "Smart surveillance, smarter growth",
+      "body": "Intellve is an ISO 9001:2005 and ISO 27001 certified solutions company. It develops software that gathers, visualizes, and analyzes facility data using AI, ML, IoT, and Big Data technologies. The engagement covered social media, content writing, and client servicing.",
+      "bigNum": ""
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Intellve — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Intellve, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Intellve's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Intellve."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "kunuts",
+    "name": "Kunuts",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Kunuts.png",
+    "cardDescription": "Premium dry fruits brand. Served large enterprises for over a decade, now extending premium quality within reach for everyone.",
+    "published": true,
+    "palette": {
+      "primary": "#e08a1e",
+      "bg": "#fdf7ef",
+      "bgSoft": "#fbf0e2",
+      "ink": "#281905",
+      "accent": "#ecb978"
+    },
+    "brandColor": "linear-gradient(135deg, #e08a1e, #af6c17)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "KUNUTS",
+      "bgText": "KU",
+      "tagline": "Excellence should not be accompanied by a high price tag",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 820,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 540,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 212,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 64,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": [
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Crt Left",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Jan Republic Day",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Holi",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Ramdan@2x",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Jan Makarsankrat",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Jan Makarsankrat",
+          "copy": ""
+        }
+      ]
+    },
+    "analytics": [
+      {
+        "stat": "+820%",
+        "label": "Reach Growth",
+        "sub": "Total accounts reached",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          10,
+          22,
+          35,
+          48,
+          60,
+          78,
+          95,
+          120,
+          150,
+          185,
+          230,
+          290
+        ],
+        "metricA": {
+          "value": "+820%",
+          "label": "Reach"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "+540%",
+        "label": "Engagement / Leads",
+        "sub": "Interactions and enquiries",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          8,
+          15,
+          24,
+          33,
+          42,
+          55,
+          68,
+          82,
+          100,
+          125,
+          155,
+          195
+        ],
+        "metricA": {
+          "value": "+540%",
+          "label": "Engagement"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "+212%",
+        "label": "CTR Lift",
+        "sub": "Click-through rate",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          5,
+          9,
+          14,
+          20,
+          27,
+          35,
+          44,
+          54,
+          65,
+          78,
+          92,
+          108
+        ],
+        "metricA": {
+          "value": "+212%",
+          "label": "CTR"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "64%",
+        "label": "Retention / Consistency",
+        "sub": "Audience retention",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          12,
+          18,
+          24,
+          30,
+          36,
+          42,
+          46,
+          50,
+          54,
+          58,
+          61,
+          64
+        ],
+        "metricA": {
+          "value": "64%",
+          "label": "Retention"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      }
+    ],
+    "mom": {
+      "title": "Kunuts — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Crt-Left.png",
+          "alt": "Crt Left"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-republic-day-.jpg",
+          "alt": "Jan Republic Day"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Holi.jpg",
+          "alt": "Holi"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Ramdan@2x-1.jpg",
+          "alt": "Ramdan@2x"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-makarsankrat.png",
+          "alt": "Jan Makarsankrat"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-makarsankrat-1.png",
+          "alt": "Jan Makarsankrat"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-3_.jpg",
+          "alt": "Jan"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-republic-day-1-1.jpg",
+          "alt": "Jan Republic Day"
+        }
+      ]
+    },
+    "story": {
+      "title": "Premium dry fruits, within reach",
+      "body": "Kunuts served large enterprises for over a decade and is now extending to individuals, bringing premium quality dry fruits within reach for everyone. The vision: become a global leader in premium dry fruits, promoting a healthier lifestyle.",
+      "bigNum": "10+ yrs"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Kunuts — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Kunuts, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Kunuts's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Kunuts."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "salus",
+    "name": "Salus",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Salus.png",
+    "cardDescription": "A 50-year-old global group providing trendsetting bathroom fittings, accessories, ceramics, and furniture.",
+    "published": true,
+    "palette": {
+      "primary": "#2f8f6b",
+      "bg": "#f0f7f5",
+      "bgSoft": "#e4f0ec",
+      "ink": "#081a13",
+      "accent": "#82bca6"
+    },
+    "brandColor": "linear-gradient(135deg, #2f8f6b, #257053)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "SALUS",
+      "bgText": "SA",
+      "tagline": "Designer bathrooms worth living",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 1100,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 750,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 185,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 59,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": [
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        }
+      ]
+    },
+    "analytics": [
+      {
+        "stat": "+1100%",
+        "label": "Reach Growth",
+        "sub": "Total accounts reached",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          8,
+          15,
+          24,
+          38,
+          55,
+          78,
+          110,
+          150,
+          205,
+          280,
+          370,
+          480
+        ],
+        "metricA": {
+          "value": "+1100%",
+          "label": "Reach Growth"
+        },
+        "metricB": {
+          "value": "+750%",
+          "label": "Engagement / Leads"
+        }
+      },
+      {
+        "stat": "+185%",
+        "label": "CTR Lift",
+        "sub": "Click-through rate improvement",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          10,
+          18,
+          27,
+          39,
+          52,
+          68,
+          85,
+          104,
+          125,
+          148,
+          168,
+          185
+        ],
+        "metricA": {
+          "value": "+185%",
+          "label": "CTR Lift"
+        },
+        "metricB": {
+          "value": "+59%",
+          "label": "Retention / Consistency"
+        }
+      }
+    ],
+    "mom": {
+      "title": "Salus — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/431977276_410283718245931_7764317246885861589_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/433478734_366351463041248_825631383532726654_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/437939287_444412791420947_1581008568433222134_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/437296980_963829161518959_6682349479197223728_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/440373174_961749555089587_7992986260996373891_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/437981279_7324738997621909_1183900633170419247_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/441181954_750928500201159_5840406652411348696_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/436283118_1533709947360122_9198187085610752614_n.jpg",
+          "alt": "N"
+        }
+      ]
+    },
+    "story": {
+      "title": "Designer bathrooms worth living",
+      "body": "Salus is a 50-year-old group providing bathroom fittings, accessories, ceramics, and furniture. A global market leader specializing in trendsetting bathroom solutions. We drove weekly reporting and action plans, execution with creatives and revisions, monthly growth strategy updates, and improved turnaround and consistency.",
+      "bigNum": "50 yrs"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Salus — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Salus, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Salus's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Salus."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "monarch",
+    "name": "Monarch",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Monarch.png",
+    "cardDescription": "Monarch Bath, established in 1965, offers quality bathroom and kitchen fixtures from global brands combining technology, functionality and comfort.",
+    "published": true,
+    "palette": {
+      "primary": "#b8912f",
+      "bg": "#faf7f0",
+      "bgSoft": "#f6f1e4",
+      "ink": "#211a08",
+      "accent": "#d4bd82"
+    },
+    "brandColor": "linear-gradient(135deg, #b8912f, #907125)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "MONARCH",
+      "bgText": "MO",
+      "tagline": "Quality bath & kitchen fixtures since 1965",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 1050,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 695,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 168,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 52,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": [
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        }
+      ]
+    },
+    "analytics": [
+      {
+        "stat": "+1050%",
+        "label": "Reach Growth",
+        "sub": "Total reach increase",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          8,
+          15,
+          24,
+          38,
+          55,
+          80,
+          120,
+          180,
+          260,
+          400,
+          620,
+          950
+        ],
+        "metricA": {
+          "value": "+1050%",
+          "label": "Reach"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "+695%",
+        "label": "Engagement / Leads",
+        "sub": "Engagement and lead growth",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          6,
+          12,
+          20,
+          32,
+          48,
+          70,
+          100,
+          140,
+          200,
+          300,
+          450,
+          640
+        ],
+        "metricA": {
+          "value": "+695%",
+          "label": "Engagement"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "+168%",
+        "label": "CTR Lift",
+        "sub": "Click-through rate improvement",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          10,
+          18,
+          28,
+          40,
+          55,
+          72,
+          90,
+          110,
+          130,
+          150,
+          165,
+          178
+        ],
+        "metricA": {
+          "value": "+168%",
+          "label": "CTR"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "52%",
+        "label": "Retention / Consistency",
+        "sub": "Content retention and consistency",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          12,
+          18,
+          24,
+          30,
+          34,
+          38,
+          42,
+          45,
+          47,
+          49,
+          51,
+          52
+        ],
+        "metricA": {
+          "value": "52%",
+          "label": "Retention"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      }
+    ],
+    "mom": {
+      "title": "Monarch — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/441175069_1697447383996963_5303440128693367193_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/441129253_460025499780541_4898027462062335074_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/436270261_962201035644999_8047582674078374948_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/436346202_1265801647713538_6708095825783625845_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/447582014_365123279919267_1632428410918691261_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/468322917_18107859313445274_2901932152859157014_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/452870056_2161826644182312_5928892124035476037_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/455224616_476757474990504_8533215241120221454_n.jpg",
+          "alt": "N"
+        }
+      ]
+    },
+    "story": {
+      "title": "Monarch Bath",
+      "body": "Monarch Bath was established in 1965, offering quality products at exceptional rates. An authorised dealership with global brands offering bathroom and kitchen fixtures combining tech, functionality and comfort.",
+      "bigNum": "1965"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Monarch — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Monarch, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Monarch's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Monarch."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "rapoo",
+    "name": "Rapoo",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Rapoo.png",
+    "cardDescription": "Client servicing, social media and content writing for Rapoo India, a leading wireless computer peripherals brand.",
+    "published": true,
+    "palette": {
+      "primary": "#1a6fc4",
+      "bg": "#eff5fb",
+      "bgSoft": "#e1ecf7",
+      "ink": "#051423",
+      "accent": "#76a9dc"
+    },
+    "brandColor": "linear-gradient(135deg, #1a6fc4, #145799)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "RAPOO",
+      "bgText": "RA",
+      "tagline": "Wireless pioneer in innovative, high-quality peripherals",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 900,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 525,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 195,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 48,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": [
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Mt760l",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "V500 Pro",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Vt9pro",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Mousepad",
+          "copy": ""
+        }
+      ]
+    },
+    "analytics": [
+      {
+        "stat": "+900%",
+        "label": "Reach Growth",
+        "sub": "Total reach across social channels",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          40,
+          90,
+          150,
+          230,
+          320,
+          410,
+          520,
+          640,
+          730,
+          810,
+          880,
+          900
+        ],
+        "metricA": {
+          "value": "+900%",
+          "label": "Reach"
+        },
+        "metricB": {
+          "value": "+525%",
+          "label": "Engagement"
+        }
+      },
+      {
+        "stat": "+525%",
+        "label": "Engagement / Leads",
+        "sub": "Engagement and lead generation lift",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          30,
+          70,
+          110,
+          160,
+          210,
+          270,
+          330,
+          390,
+          440,
+          480,
+          510,
+          525
+        ],
+        "metricA": {
+          "value": "+525%",
+          "label": "Engagement"
+        },
+        "metricB": {
+          "value": "+195%",
+          "label": "CTR"
+        }
+      },
+      {
+        "stat": "+195%",
+        "label": "CTR Lift",
+        "sub": "Click-through rate improvement",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          20,
+          45,
+          65,
+          85,
+          105,
+          125,
+          140,
+          155,
+          170,
+          180,
+          190,
+          195
+        ],
+        "metricA": {
+          "value": "+195%",
+          "label": "CTR"
+        },
+        "metricB": {
+          "value": "+48%",
+          "label": "Retention"
+        }
+      },
+      {
+        "stat": "+48%",
+        "label": "Retention / Consistency",
+        "sub": "Content consistency and retention",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          5,
+          10,
+          15,
+          20,
+          25,
+          30,
+          34,
+          38,
+          42,
+          45,
+          47,
+          48
+        ],
+        "metricA": {
+          "value": "+48%",
+          "label": "Retention"
+        },
+        "metricB": {
+          "value": "+900%",
+          "label": "Reach"
+        }
+      }
+    ],
+    "mom": {
+      "title": "Rapoo — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/mt760L-1.png",
+          "alt": "Mt760l"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/V500-Pro.png",
+          "alt": "V500 Pro"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/VT9PRO.png",
+          "alt": "Vt9pro"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/10_Static.jpg",
+          "alt": "Rapoo post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/11-1.jpg",
+          "alt": "Rapoo post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Mousepad.jpg",
+          "alt": "Mousepad"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-02-1.jpg",
+          "alt": "Rapoo post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-03.jpg",
+          "alt": "Rapoo post"
+        }
+      ]
+    },
+    "story": {
+      "title": "The Wireless Pioneer",
+      "body": "Founded in 2002, Rapoo established itself in wireless products, and in 2005 the Rapoo brand was formally launched. The company achieved market leadership by 2010 and was listed on the Shenzhen Stock Exchange in 2011, cementing its reputation for innovative, high-quality computer peripherals.",
+      "bigNum": "2002"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Rapoo — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Rapoo, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Rapoo's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Rapoo."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "rapoo-middle-east",
+    "name": "Rapoo Middle East",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Rapoo.png",
+    "cardDescription": "Wireless peripherals pioneer sold in over 80 countries. Client servicing, social media and content writing driving reach and engagement growth.",
+    "published": true,
+    "palette": {
+      "primary": "#c8102e",
+      "bg": "#fbeef0",
+      "bgSoft": "#f8e0e4",
+      "ink": "#240308",
+      "accent": "#de7082"
+    },
+    "brandColor": "linear-gradient(135deg, #c8102e, #9c0c24)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "RAPOO MIDDLE EAST",
+      "bgText": "RME",
+      "tagline": "Wireless peripherals pioneer, in 80+ countries",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 1050,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 695,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 168,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 52,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": []
+    },
+    "analytics": [
+      {
+        "stat": "+1050%",
+        "label": "Reach Growth",
+        "sub": "Organic reach uplift",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          8,
+          15,
+          24,
+          38,
+          55,
+          78,
+          110,
+          150,
+          205,
+          280,
+          370,
+          480
+        ],
+        "metricA": {
+          "value": "+1050%",
+          "label": "Reach"
+        },
+        "metricB": {
+          "value": "+695%",
+          "label": "Engagement"
+        }
+      },
+      {
+        "stat": "+695%",
+        "label": "Engagement / Leads",
+        "sub": "Engagement and lead growth",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          5,
+          12,
+          20,
+          33,
+          48,
+          66,
+          90,
+          118,
+          152,
+          195,
+          245,
+          300
+        ],
+        "metricA": {
+          "value": "+695%",
+          "label": "Engagement"
+        },
+        "metricB": {
+          "value": "+168%",
+          "label": "CTR Lift"
+        }
+      },
+      {
+        "stat": "+168%",
+        "label": "CTR Lift",
+        "sub": "Click-through rate improvement",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          10,
+          18,
+          27,
+          38,
+          50,
+          63,
+          78,
+          95,
+          112,
+          130,
+          150,
+          168
+        ],
+        "metricA": {
+          "value": "+168%",
+          "label": "CTR"
+        },
+        "metricB": {
+          "value": "+52%",
+          "label": "Retention"
+        }
+      },
+      {
+        "stat": "+52%",
+        "label": "Retention / Consistency",
+        "sub": "Retention and posting consistency",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          5,
+          9,
+          14,
+          19,
+          24,
+          29,
+          34,
+          39,
+          43,
+          47,
+          50,
+          52
+        ],
+        "metricA": {
+          "value": "+52%",
+          "label": "Retention"
+        },
+        "metricB": {
+          "value": "80+",
+          "label": "Countries"
+        }
+      }
+    ],
+    "mom": {
+      "title": "Rapoo Middle East — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/1-1.jpg",
+          "alt": "Rapoo Middle East post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/2-2.jpg",
+          "alt": "Rapoo Middle East post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/3-2.jpg",
+          "alt": "Rapoo Middle East post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/4-2.jpg",
+          "alt": "Rapoo Middle East post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/5-1.jpg",
+          "alt": "Rapoo Middle East post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/6-1.jpg",
+          "alt": "Rapoo Middle East post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/7-1.jpg",
+          "alt": "Rapoo Middle East post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/8-2.jpg",
+          "alt": "Rapoo Middle East post"
+        }
+      ]
+    },
+    "story": {
+      "title": "A wireless pioneer, amplified",
+      "body": "Rapoo is a wireless pioneer founded in 2002. In 2005, the brand Rapoo was established, and its products are sold in over 80 countries. Rapoo is fully ISO-certified. Across client servicing, social media and content writing, the work delivered weekly reporting with action plans, creative execution with revisions, monthly growth strategy updates, and improved turnaround and consistency.",
+      "bigNum": "80+"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Rapoo Middle East — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Rapoo Middle East, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Rapoo Middle East's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Rapoo Middle East."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "furnishing-home",
+    "name": "Furnishing Home",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Furnishing_Home.png",
+    "cardDescription": "Home soft furnishings brand with 55+ years of heritage, brought to life through content, social media and client servicing.",
+    "published": true,
+    "palette": {
+      "primary": "#8a6d3b",
+      "bg": "#f7f5f1",
+      "bgSoft": "#f0ece6",
+      "ink": "#19140b",
+      "accent": "#b9a789"
+    },
+    "brandColor": "linear-gradient(135deg, #8a6d3b, #6c552e)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "FURNISHING HOME",
+      "bgText": "FH",
+      "tagline": "Bringing Homes to Life Since 1970",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 335,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 214,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 262,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 36,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": [
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "N",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Dhanteras",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Bhaidooj Scaled",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Bhaidooj",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Cc",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Cc",
+          "copy": ""
+        }
+      ]
+    },
+    "analytics": [
+      {
+        "stat": "+335%",
+        "label": "Reach Growth",
+        "sub": "Accounts reached",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          40,
+          55,
+          70,
+          88,
+          110,
+          135,
+          165,
+          200,
+          240,
+          280,
+          315,
+          335
+        ],
+        "metricA": {
+          "value": "+335%",
+          "label": "Reach"
+        },
+        "metricB": {
+          "value": "+262%",
+          "label": "CTR Lift"
+        }
+      },
+      {
+        "stat": "+214%",
+        "label": "Engagement / Leads",
+        "sub": "Interactions & inquiries",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          20,
+          35,
+          50,
+          68,
+          85,
+          105,
+          125,
+          148,
+          170,
+          190,
+          205,
+          214
+        ],
+        "metricA": {
+          "value": "+214%",
+          "label": "Engagement"
+        },
+        "metricB": {
+          "value": "+36%",
+          "label": "Retention"
+        }
+      }
+    ],
+    "mom": {
+      "title": "Furnishing Home — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/564987481_18063087149576460_6542216695873398226_n.jpg",
+          "alt": "N"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Dhanteras-.jpeg",
+          "alt": "Dhanteras"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Bhaidooj-scaled.png",
+          "alt": "Bhaidooj Scaled"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Bhaidooj.png",
+          "alt": "Bhaidooj"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/furnishing_home_CC_3.png",
+          "alt": "Cc"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/furnishing_home_CC_6.png",
+          "alt": "Cc"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/furnishing_home_CC_11.png",
+          "alt": "Cc"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/02/Upolstery.png",
+          "alt": "Upolstery"
+        }
+      ]
+    },
+    "story": {
+      "title": "Bringing Homes to Life Since 1970",
+      "body": "For over 55 years, Amratlal & Sons has been more than just a name in home soft furnishings—we've been part of countless homes, adding warmth, elegance, and comfort.",
+      "bigNum": "55+"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Furnishing Home — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Furnishing Home, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Furnishing Home's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Furnishing Home."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "secure-my-shop",
+    "name": "Secure My Shop",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Secure_My_Shop.png",
+    "cardDescription": "An ISO 9001:2005 and ISO 27001 certified solutions company building AI, ML, IoT and Big Data software for security and productivity monitoring.",
+    "published": true,
+    "palette": {
+      "primary": "#c0392b",
+      "bg": "#fbf1f0",
+      "bgSoft": "#f7e5e3",
+      "ink": "#230a08",
+      "accent": "#d98880"
+    },
+    "brandColor": "linear-gradient(135deg, #c0392b, #962c22)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "SECURE MY SHOP",
+      "bgText": "SMS",
+      "tagline": "AI-powered security & productivity monitoring",
+      "tags": [
+        "Content Writing",
+        "Social Media",
+        "Client Servicing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 1100,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 720,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 175,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 55,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": [
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Newyear Resizee2",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Newyear Resizee1",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Christmas Reelsize3",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Slide1",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Slide2",
+          "copy": ""
+        },
+        {
+          "type": "Static",
+          "date": "",
+          "concept": "Slide3",
+          "copy": ""
+        }
+      ]
+    },
+    "analytics": [
+      {
+        "stat": "+1100%",
+        "label": "Reach Growth",
+        "sub": "Total accounts reached",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          8,
+          15,
+          24,
+          38,
+          55,
+          78,
+          105,
+          140,
+          185,
+          240,
+          310,
+          400
+        ],
+        "metricA": {
+          "value": "+1100%",
+          "label": "Reach"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "+720%",
+        "label": "Engagement / Leads",
+        "sub": "Interactions and leads",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          5,
+          11,
+          18,
+          27,
+          39,
+          54,
+          72,
+          95,
+          120,
+          150,
+          185,
+          225
+        ],
+        "metricA": {
+          "value": "+720%",
+          "label": "Engagement"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "+175%",
+        "label": "CTR Lift",
+        "sub": "Click-through rate",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          10,
+          14,
+          19,
+          25,
+          32,
+          40,
+          49,
+          58,
+          68,
+          78,
+          88,
+          98
+        ],
+        "metricA": {
+          "value": "+175%",
+          "label": "CTR"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      },
+      {
+        "stat": "55%",
+        "label": "Retention / Consistency",
+        "sub": "Posting consistency",
+        "dateRange": "",
+        "chartType": "line",
+        "points": [
+          12,
+          18,
+          22,
+          27,
+          31,
+          35,
+          38,
+          42,
+          46,
+          49,
+          52,
+          55
+        ],
+        "metricA": {
+          "value": "55%",
+          "label": "Retention"
+        },
+        "metricB": {
+          "value": "",
+          "label": ""
+        }
+      }
+    ],
+    "mom": {
+      "title": "Secure My Shop — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/newyear_resizee2.png",
+          "alt": "Newyear Resizee2"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/newyear_resizee1.png",
+          "alt": "Newyear Resizee1"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/christmas_reelsize3.png",
+          "alt": "Christmas Reelsize3"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide1-1.png",
+          "alt": "Slide1"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide2.png",
+          "alt": "Slide2"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide3.png",
+          "alt": "Slide3"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide4.png",
+          "alt": "Slide4"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide1.png",
+          "alt": "Slide1"
+        }
+      ]
+    },
+    "story": {
+      "title": "Security-tech, made social",
+      "body": "Secure My Shop is an ISO 9001:2005 and ISO 27001 certified solutions company developing software that gathers and analyzes facility data using AI, ML, IoT and Big Data technologies for security and productivity monitoring. Across client servicing, social media and content writing we delivered weekly reporting with action plans, creative execution with revisions, and monthly growth strategy updates that improved turnaround and consistency.",
+      "bigNum": "+1100%"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Secure My Shop — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Secure My Shop, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Secure My Shop's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Secure My Shop."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "icici",
+    "name": "ICICI",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/ICICI_Pru.png",
+    "cardDescription": "Content writing engagement for ICICI Prudential Life Insurance, including content-calendar planning and copy for the Saksham Pro platform and app UI.",
+    "published": true,
+    "palette": {
+      "primary": "#b02a30",
+      "bg": "#f9f0f1",
+      "bgSoft": "#f5e3e4",
+      "ink": "#200809",
+      "accent": "#d07f83"
+    },
+    "brandColor": "linear-gradient(135deg, #b02a30, #892125)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "ICICI",
+      "bgText": "IC",
+      "tagline": "Among India's leading life insurers since 2001",
+      "tags": [
+        "Content Writing"
+      ]
+    },
+    "stats": [],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Content calendar planning",
+        "Saksham Pro UI content",
+        "App UI content"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": []
+    },
+    "analytics": [],
+    "mom": {
+      "title": "ICICI — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/1.jpeg",
+          "alt": "Icici post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/2.jpeg",
+          "alt": "Icici post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/5.jpeg",
+          "alt": "Icici post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/4.jpeg",
+          "alt": "Icici post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/3-1.jpeg",
+          "alt": "Icici post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/5-1.jpeg",
+          "alt": "Icici post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/6-1.jpeg",
+          "alt": "Icici post"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/7-1.jpeg",
+          "alt": "Icici post"
+        }
+      ]
+    },
+    "story": {
+      "title": "ICICI Prudential Life Insurance",
+      "body": "ICICI Prudential Life Insurance Company Limited (ICICI Prudential Life) is promoted by ICICI Bank Limited and Prudential Corporation Holdings Limited. Operations began in 2001, and it ranks among the top Indian life insurance companies by retail weighted received premium.",
+      "bigNum": "2001"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "ICICI — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For ICICI, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to ICICI's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to ICICI."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  },
+  {
+    "slug": "godrej",
+    "name": "Godrej",
+    "logo": "https://rajeshwarichauhan.in/wp-content/uploads/2025/11/Godrej.png",
+    "cardDescription": "Content writing and social strategy for Godrej Enterprises Group, driving reach and engagement growth.",
+    "published": true,
+    "palette": {
+      "primary": "#005baa",
+      "bg": "#edf4f9",
+      "bgSoft": "#deeaf4",
+      "ink": "#00101f",
+      "accent": "#669dcc"
+    },
+    "brandColor": "linear-gradient(135deg, #005baa, #004785)",
+    "hero": {
+      "eyebrow": "CLIENT ARCHIVE",
+      "title": "GODREJ",
+      "bgText": "GO",
+      "tagline": "Driven by an entrepreneurial spirit since 1897",
+      "tags": [
+        "Content Writing"
+      ]
+    },
+    "stats": [
+      {
+        "raw": 1100,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Reach Growth"
+      },
+      {
+        "raw": 720,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Engagement / Leads"
+      },
+      {
+        "raw": 175,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "CTR Lift"
+      },
+      {
+        "raw": 55,
+        "suffix": "%",
+        "decimals": 0,
+        "label": "Retention / Consistency"
+      }
+    ],
+    "tabs": {
+      "contentLabel": "Content Writing",
+      "socialLabel": "Social Media",
+      "servicingLabel": "Client Servicing"
+    },
+    "workDone": {
+      "title": "Work Done",
+      "bullets": [
+        "Weekly reporting + action plan",
+        "Execution with creatives + revisions",
+        "Monthly growth strategy updates",
+        "Improved turnaround + consistency"
+      ]
+    },
+    "calendar": {
+      "title": "Content Calendar Glimpse",
+      "rows": []
+    },
+    "analytics": [],
+    "mom": {
+      "title": "Godrej — Content Planning",
+      "bullets": [
+        "Content roadmap ready",
+        "Posts finalised across formats",
+        "High-engagement content plan (reels, statics, interactive)",
+        "Clear posting schedule set",
+        "Success metrics defined"
+      ]
+    },
+    "gallery": {
+      "title": "Creative Gallery",
+      "images": [
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM-1.jpeg",
+          "alt": "Whatsapp Image At 9.55.12 Am"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM-2.jpeg",
+          "alt": "Whatsapp Image At 9.55.12 Am"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM.jpeg",
+          "alt": "Whatsapp Image At 9.55.12 Am"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM-1-1.jpeg",
+          "alt": "Whatsapp Image At 9.55.12 Am"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM-2-1.jpeg",
+          "alt": "Whatsapp Image At 9.55.12 Am"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM-3.jpeg",
+          "alt": "Whatsapp Image At 9.55.12 Am"
+        },
+        {
+          "src": "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.13-AM.jpeg",
+          "alt": "Whatsapp Image At 9.55.13 Am"
+        }
+      ]
+    },
+    "story": {
+      "title": "Driven by an entrepreneurial spirit since 1897",
+      "body": "Since 1897, the Godrej Enterprises Group has been driven by an entrepreneurial spirit leading to innovations in locks, safes, and India's space ambitions.",
+      "bigNum": "1897"
+    },
+    "approach": {
+      "eyebrow": "HOW WE WORK",
+      "heading": "Crafted for <em>Growth</em>",
+      "items": [
+        {
+          "num": "01",
+          "title": "Deep Brand Audit",
+          "body": "We start by understanding the brand's voice, audience and existing content performance before we strategise."
+        },
+        {
+          "num": "02",
+          "title": "Content Architecture",
+          "body": "Every post is mapped to a goal — awareness, engagement or conversion — and slotted into a structured monthly calendar."
+        },
+        {
+          "num": "03",
+          "title": "Execute & Iterate",
+          "body": "We launch, track performance weekly and refine based on what the data tells us — no guesswork, only growth."
+        }
+      ]
+    },
+    "featured": {
+      "eyebrow": "CAMPAIGN REEL",
+      "heading": "Campaigns That <em>Convert</em>",
+      "video": "",
+      "glassLabel": "Featured Work",
+      "glassText": "Godrej — building brand recall through content-led storytelling."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "heading": "Strategy <em>×</em> Results",
+      "video": "",
+      "paragraphs": [
+        "For Godrej, we blended brand-aligned storytelling with data-driven posting to drive measurable growth across social platforms.",
+        "Every deliverable was mapped to Godrej's identity while connecting with a modern, digital-first audience."
+      ]
+    },
+    "delivered": {
+      "eyebrow": "DELIVERABLES",
+      "heading": "What We <em>Delivered</em>",
+      "cards": [
+        {
+          "video": "",
+          "title": "Content Strategy",
+          "body": "Monthly calendar with multi-format posts and reels tailored to Godrej."
+        },
+        {
+          "video": "",
+          "title": "Growth & Analytics",
+          "body": "Consistent reporting with measurable reach and engagement lift."
+        }
+      ]
+    },
+    "cta": {
+      "sub": "Want results like these?",
+      "label": "Book a discovery call with Raji →",
+      "href": "/contact"
+    },
+    "logoBg": "#211a16"
+  }
+];
+
 export const DEFAULT_BRANDS: BrandsData = {
   archiveTitle: "Brands",
   archiveIntro: "A selection of brands we've helped grow with strategy, content and community.",
-  items: [
-    {
-      ...DEFAULT_BRAND,
-      slug: "mast-masala",
-      name: "Mast Masala",
-      published: true,
-      logo: "https://mastspices.com/wp-content/uploads/2025/08/logo-107x104.png",
-      cardDescription: "60 years of spice legacy — festive content and steady social growth.",
-    },
-    {
-                ...DEFAULT_BRAND,
-                slug: "intellve",
-                name: "Intellve",
-                published: true,
-                logo: "",
-                cardDescription: "AI-powered security & surveillance software — smart, connected content growth.",
-                palette: { primary: "#1e3a5f", bg: "#eef3f7", bgSoft: "#f7fafc", ink: "#0d1b2a", accent: "#4fc3f7" },
-                brandColor: "linear-gradient(135deg, #1e3a5f, #2c5f8a)",
-                hero: { ...DEFAULT_BRAND.hero, title: "INTELLVE", bgText: "IN", tagline: "Secure. Smart. Connected." },
-                stats: [
-                  { raw: 1100, suffix: "%", decimals: 0, label: "Reach Growth" },
-                  { raw: 720, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-                  { raw: 175, suffix: "%", decimals: 0, label: "CTR Lift" },
-                  { raw: 55, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-                            ],
-                calendar: {
-                              title: "Content Calendar Glimpse",
-                              rows: [
-                                { type: "Static", date: "15/8/2025", concept: "Independence Day", copy: "Saluting the spirit of security and freedom…" },
-                                { type: "Reel", date: "2/10/2025", concept: "Gandhi Jayanti", copy: "Truth, trust and technology…" },
-                                { type: "Static", date: "20/8/2025", concept: "Raksha Bandhan", copy: "Protecting what matters most…" },
-                                            ],
-                },
-                analytics: [
-                  { stat: "+1100%", label: "Reach Growth", sub: "+1100% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+1100%", label: "Reach Growth" }, metricB: { value: "+720%", label: "Engagement / Leads" } },
-                  { stat: "+720%", label: "Engagement / Leads", sub: "+720% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+720%", label: "Engagement / Leads" }, metricB: { value: "+175%", label: "CTR Lift" } },
-                  { stat: "+175%", label: "CTR Lift", sub: "+175% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+175%", label: "CTR Lift" }, metricB: { value: "55%", label: "Retention / Consistency" } },
-                  { stat: "55%", label: "Retention / Consistency", sub: "55% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "55%", label: "Retention" }, metricB: { value: "+1100%", label: "Reach Growth" } },
-                            ],
-                mom: {
-                              title: "Intellve — Content Planning",
-                              bullets: [
-                                              "Content Roadmap Ready",
-                                              "Product & Feature Posts Finalised",
-                                              "High-Engagement Content Plan (Reels, Explainers, interactive posts)",
-                                              "Highlighting Innovation & Trust",
-                                              "Clear Posting Plan Set",
-                                              "Success Metrics Defined",
-                                            ],
-                },
-                gallery: {
-                              title: "Creative Gallery",
-                              images: [
-                                { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Ambedkar-jayanti-INTELLVE.jpg", alt: "Ambedkar Jayanti post" },
-                                { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Dussera.jpg", alt: "Dussehra post" },
-                                { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Gandhi-Jayanti.jpg", alt: "Gandhi Jayanti post" },
-                                { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Independence-day.jpg", alt: "Independence Day post" },
-                                { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Raksha-bandhan.jpg", alt: "Raksha Bandhan post" },
-                                { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Onam.jpg", alt: "Onam post" },
-                                            ],
-                },
-                story: {
-                              title: "Always-On Security Intelligence",
-                              body: "Intellve is an ISO 9001:2005 and ISO 27001 certified technology company building AI, ML and IoT-driven platforms that unify security and productivity data for facilities — bringing video, sensor and analytics feeds into one real-time view.",
-                              bigNum: "24/7",
-                },
-                featured: { ...DEFAULT_BRAND.featured, glassText: "Intellve campaign — building trust through clear, technology-led storytelling." },
-                philosophy: {
-                              ...DEFAULT_BRAND.philosophy,
-                              paragraphs: [
-                                              "For Intellve, we translated complex security technology into clear, trust-building content — helping a technical audience understand AI-driven monitoring without losing the human story behind it.",
-                                              "From festive greetings to feature explainers, every post balanced innovation with approachability, growing reach and engagement across Instagram and Facebook.",
-                                            ],
-                },
-                delivered: {
-                              ...DEFAULT_BRAND.delivered,
-                              cards: [
-                                { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly content calendar with feature explainers, festive posts and trust-building creatives." },
-                                { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+1100% reach growth and +720% engagement across Instagram and Facebook." },
-                                            ],
-                },
-    },
-
-      {
-      ...DEFAULT_BRAND,
-        slug: "kunuts",
-        name: "Kunuts",
-        published: true,
-        logo: "",
-        cardDescription: "Premium dry fruits made accessible — festive content that drives real engagement.",
-        palette: { primary: "#8b5e34", bg: "#faf3e7", bgSoft: "#fdf8f0", ink: "#2e1e0f", accent: "#d9a441" },
-        brandColor: "linear-gradient(135deg, #8b5e34, #c68642)",
-        hero: { ...DEFAULT_BRAND.hero, title: "KUNUTS", bgText: "KU", tagline: "Premium Dry Fruits, Everyday Value" },
-        stats: [
-          { raw: 820, suffix: "%", decimals: 0, label: "Reach Growth" },
-          { raw: 540, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-          { raw: 212, suffix: "%", decimals: 0, label: "CTR Lift" },
-          { raw: 64, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-          ],
-        calendar: {
-          title: "Content Calendar Glimpse",
-          rows: [
-            { type: "Static", date: "26/1/2025", concept: "Republic Day", copy: "Healthy snacking, proud nation…" },
-            { type: "Reel", date: "14/3/2025", concept: "Holi", copy: "Colours of health this Holi…" },
-            { type: "Static", date: "14/1/2025", concept: "Makar Sankranti", copy: "Til-gud sweetness, Kunuts freshness…" },
-            ],
-        },
-        analytics: [
-          { stat: "+820%", label: "Reach Growth", sub: "+820% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+820%", label: "Reach Growth" }, metricB: { value: "+540%", label: "Engagement / Leads" } },
-          { stat: "+540%", label: "Engagement / Leads", sub: "+540% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+540%", label: "Engagement / Leads" }, metricB: { value: "+212%", label: "CTR Lift" } },
-          { stat: "+212%", label: "CTR Lift", sub: "+212% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+212%", label: "CTR Lift" }, metricB: { value: "64%", label: "Retention / Consistency" } },
-          { stat: "64%", label: "Retention / Consistency", sub: "64% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "64%", label: "Retention" }, metricB: { value: "+820%", label: "Reach Growth" } },
-          ],
-        mom: {
-          title: "Kunuts — Festive Content Planning",
-          bullets: [
-            "Festive Content Roadmap Ready",
-            "Recipe & Festive Posts Finalised",
-            "High-Engagement Content Plan (Reels, GIFs, interactive posts)",
-            "Celebrating Health & Freshness",
-            "Clear Posting Plan Set",
-            "Success Metrics Defined",
-            ],
-        },
-        gallery: {
-          title: "Creative Gallery",
-          images: [
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-republic-day-.jpg", alt: "Republic Day post" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Holi.jpg", alt: "Holi post" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-makarsankrat.png", alt: "Makar Sankranti post" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-7.jpg", alt: "Product post" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-4.jpg", alt: "Product post" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/kunuts-jan-13.jpg", alt: "Product post" },
-            ],
-        },
-        story: {
-          title: "A Decade of Premium Quality",
-          body: "For over a decade Kunuts has supplied premium dry fruits to major enterprises, and now brings that same quality directly to everyday customers — proving that excellence doesn't need a premium price tag.",
-          bigNum: "10+",
-        },
-        featured: { ...DEFAULT_BRAND.featured, glassText: "Kunuts festive campaign — making premium dry fruits feel accessible to every home." },
-        philosophy: {
-          ...DEFAULT_BRAND.philosophy,
-          paragraphs: [
-            "Great content isn't just tasty — it's strategic. For Kunuts, we blended festive food storytelling with consistent posting to make premium dry fruits feel accessible to every household.",
-            "From recipe-led reels to seasonal greetings, each deliverable reinforced Kunuts' promise of quality without compromise, driving steady follower and engagement growth.",
-            ],
-        },
-        delivered: {
-          ...DEFAULT_BRAND.delivered,
-          cards: [
-            { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar with recipe-led reels, festive posts and product spotlights." },
-            { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+820% reach growth and +540% engagement across the campaign period." },
-            ],
-        },
-      },
-      {
-    ...DEFAULT_BRAND,
-        slug: "salus",
-        name: "Salus",
-        published: true,
-        logo: "",
-        cardDescription: "Fifty years of designer bathroom fittings — content crafted for lasting impressions.",
-        palette: { primary: "#0f6e8c", bg: "#eaf6f8", bgSoft: "#f4fbfc", ink: "#0a2530", accent: "#7fd4e0" },
-        brandColor: "linear-gradient(135deg, #0f6e8c, #14a3c7)",
-        hero: { ...DEFAULT_BRAND.hero, title: "SALUS", bgText: "SA", tagline: "Designer Bathrooms, Timeless Living" },
-        stats: [
-          { raw: 1100, suffix: "%", decimals: 0, label: "Reach Growth" },
-          { raw: 750, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-          { raw: 185, suffix: "%", decimals: 0, label: "CTR Lift" },
-          { raw: 59, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-          ],
-        calendar: {
-          title: "Content Calendar Glimpse",
-          rows: [
-            { type: "Static", date: "5/6/2025", concept: "Design Spotlight", copy: "Designer bathrooms worth living…" },
-            { type: "Reel", date: "12/7/2025", concept: "Product Launch", copy: "Matchless fittings for modern homes…" },
-            { type: "Static", date: "20/9/2025", concept: "Customer Story", copy: "Every bathroom tells a story…" },
-            ],
-        },
-        analytics: [
-          { stat: "+1100%", label: "Reach Growth", sub: "+1100% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+1100%", label: "Reach Growth" }, metricB: { value: "+750%", label: "Engagement / Leads" } },
-          { stat: "+750%", label: "Engagement / Leads", sub: "+750% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+750%", label: "Engagement / Leads" }, metricB: { value: "+185%", label: "CTR Lift" } },
-          { stat: "+185%", label: "CTR Lift", sub: "+185% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+185%", label: "CTR Lift" }, metricB: { value: "+59%", label: "Retention / Consistency" } },
-          { stat: "+59%", label: "Retention / Consistency", sub: "+59% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "+59%", label: "Retention" }, metricB: { value: "+1100%", label: "Reach Growth" } },
-          ],
-        mom: {
-          title: "Salus — Content Planning",
-          bullets: [
-            "Content Roadmap Ready",
-            "Product & Design Posts Finalised",
-            "High-Engagement Content Plan (Reels, Carousels, interactive posts)",
-            "Showcasing Design & Craftsmanship",
-            "Clear Posting Plan Set",
-            "Success Metrics Defined",
-            ],
-        },
-        gallery: {
-          title: "Creative Gallery",
-          images: [
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Salus-8-1.jpg", alt: "Product showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Salus-9.jpg", alt: "Product showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Salus-6.jpg", alt: "Product showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Salus-2.jpg", alt: "Product showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Salus-1.jpg", alt: "Product showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/7159-6.jpg", alt: "Bathroom fittings showcase" },
-            ],
-        },
-        story: {
-          title: "50 Years of Bathroom Design Expertise",
-          body: "Backed by a fifty-year-old group, Salus designs bathroom fittings, accessories and sanitary ceramics that turn everyday bathrooms into designer spaces — a one-stop range built by a team of dedicated experts.",
-          bigNum: "50",
-        },
-        featured: { ...DEFAULT_BRAND.featured, glassText: "Salus campaign — showcasing fifty years of designer bathroom craftsmanship." },
-        philosophy: {
-          ...DEFAULT_BRAND.philosophy,
-          paragraphs: [
-            "For Salus, we paired striking product visuals with a design-forward voice — positioning fifty years of bathroom expertise as effortlessly modern and aspirational.",
-            "Every post, from product highlights to festive greetings, was built to showcase craftsmanship while steadily growing reach and engagement across platforms.",
-            ],
-        },
-        delivered: {
-          ...DEFAULT_BRAND.delivered,
-          cards: [
-            { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar of product showcases, design spotlights and festive creatives." },
-            { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+1100% reach growth and +750% engagement across the campaign period." },
-            ],
-        },
-      },
-        {
-            ...DEFAULT_BRAND,
-          slug: "monarch",
-          name: "Monarch",
-          published: true,
-          logo: "",
-          cardDescription: "Modern bath & kitchen fixtures since 1965 — content built for functional elegance.",
-          palette: { primary: "#5b2a86", bg: "#f3edf9", bgSoft: "#f9f5fc", ink: "#241033", accent: "#c9a227" },
-          brandColor: "linear-gradient(135deg, #5b2a86, #8e44ad)",
-          hero: { ...DEFAULT_BRAND.hero, title: "MONARCH", bgText: "MO", tagline: "Modern Fixtures, Timeless Comfort" },
-          stats: [
-            { raw: 1050, suffix: "%", decimals: 0, label: "Reach Growth" },
-            { raw: 695, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-            { raw: 168, suffix: "%", decimals: 0, label: "CTR Lift" },
-            { raw: 52, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-            ],
-          calendar: {
-            title: "Content Calendar Glimpse",
-            rows: [
-              { type: "Static", date: "10/4/2025", concept: "Product Highlight", copy: "Fixtures that blend tech and comfort…" },
-              { type: "Reel", date: "18/6/2025", concept: "Kitchen Makeover", copy: "Modern kitchens, timeless design…" },
-              { type: "Static", date: "25/8/2025", concept: "Feature Spotlight", copy: "Functionality meets elegance…" },
-              ],
-          },
-          analytics: [
-            { stat: "+1050%", label: "Reach Growth", sub: "+1050% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+1050%", label: "Reach Growth" }, metricB: { value: "+695%", label: "Engagement / Leads" } },
-            { stat: "+695%", label: "Engagement / Leads", sub: "+695% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+695%", label: "Engagement / Leads" }, metricB: { value: "+168%", label: "CTR Lift" } },
-            { stat: "+168%", label: "CTR Lift", sub: "+168% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+168%", label: "CTR Lift" }, metricB: { value: "52%", label: "Retention / Consistency" } },
-            { stat: "52%", label: "Retention / Consistency", sub: "52% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "52%", label: "Retention" }, metricB: { value: "+1050%", label: "Reach Growth" } },
-            ],
-          mom: {
-            title: "Monarch — Content Planning",
-            bullets: [
-              "Content Roadmap Ready",
-              "Product & Design Posts Finalised",
-              "High-Engagement Content Plan (Reels, Carousels, interactive posts)",
-              "Showcasing Modern Fixtures & Functionality",
-              "Clear Posting Plan Set",
-              "Success Metrics Defined",
-              ],
-          },
-          gallery: {
-            title: "Creative Gallery",
-            images: [
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/1.jpg", alt: "Social media post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/2.jpg", alt: "Social media post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/3-1.jpg", alt: "Social media post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/4-1.jpg", alt: "Social media post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/5.jpg", alt: "Social media post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/6.jpg", alt: "Social media post" },
-              ],
-          },
-          story: {
-            title: "60+ Years of Modern Fixtures",
-            body: "Established in 1965, Monarch Bath pairs authorised dealerships with global brands to deliver modern, functional bath and kitchen fixtures — blending technology, comfort and constantly updated design.",
-            bigNum: "60+",
-          },
-          featured: { ...DEFAULT_BRAND.featured, glassText: "Monarch campaign — blending heritage with modern bath & kitchen design." },
-          philosophy: {
-            ...DEFAULT_BRAND.philosophy,
-            paragraphs: [
-              "For Monarch, content strategy meant showing how heritage and modern design meet — presenting bath and kitchen fixtures as both functional and beautifully current.",
-              "Consistent posting and a clear content calendar helped Monarch maintain steady growth in reach, engagement and audience retention.",
-              ],
-          },
-          delivered: {
-            ...DEFAULT_BRAND.delivered,
-            cards: [
-              { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar featuring product highlights, kitchen makeovers and design spotlights." },
-              { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+1050% reach growth and +695% engagement across the campaign period." },
-              ],
-          },
-        },
-  {
-      ...DEFAULT_BRAND,
-    slug: "rapoo",
-    name: "Rapoo",
-    published: true,
-    logo: "",
-    cardDescription: "Wireless peripherals pioneer since 2002 — content that keeps pace with innovation.",
-    palette: { primary: "#d81f26", bg: "#f7f0f0", bgSoft: "#fbf5f5", ink: "#1a0d0d", accent: "#f2a900" },
-    brandColor: "linear-gradient(135deg, #d81f26, #a3161c)",
-    hero: { ...DEFAULT_BRAND.hero, title: "RAPOO", bgText: "RP", tagline: "Wireless Innovation Since 2002" },
-    stats: [
-      { raw: 900, suffix: "%", decimals: 0, label: "Reach Growth" },
-      { raw: 525, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-      { raw: 195, suffix: "%", decimals: 0, label: "CTR Lift" },
-      { raw: 48, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-      ],
-    calendar: {
-      title: "Content Calendar Glimpse",
-      rows: [
-        { type: "Static", date: "3/3/2025", concept: "Rapoo X Mi Collab", copy: "Wireless innovation, better together…" },
-        { type: "Reel", date: "22/5/2025", concept: "Product Launch", copy: "Precision built for performance…" },
-        { type: "Static", date: "14/7/2025", concept: "Feature Spotlight", copy: "5GHz stability, zero lag…" },
-        ],
-    },
-    analytics: [
-      { stat: "+900%", label: "Reach Growth", sub: "+900% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+900%", label: "Reach Growth" }, metricB: { value: "+525%", label: "Engagement / Leads" } },
-      { stat: "+525%", label: "Engagement / Leads", sub: "+525% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+525%", label: "Engagement / Leads" }, metricB: { value: "+195%", label: "CTR Lift" } },
-      { stat: "+195%", label: "CTR Lift", sub: "+195% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+195%", label: "CTR Lift" }, metricB: { value: "+48%", label: "Retention / Consistency" } },
-      { stat: "+48%", label: "Retention / Consistency", sub: "+48% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "+48%", label: "Retention" }, metricB: { value: "+900%", label: "Reach Growth" } },
-      ],
-    mom: {
-      title: "Rapoo — Content Planning",
-      bullets: [
-        "Content Roadmap Ready",
-        "Product & Feature Posts Finalised",
-        "High-Engagement Content Plan (Reels, Explainers, interactive posts)",
-        "Highlighting Innovation & Performance",
-        "Clear Posting Plan Set",
-        "Success Metrics Defined",
-        ],
-    },
-    gallery: {
-      title: "Creative Gallery",
-      images: [
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-02-1.jpg", alt: "Rapoo X Mi collab post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-03.jpg", alt: "Rapoo X Mi collab post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-04-1.jpg", alt: "Rapoo X Mi collab post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-07.jpg", alt: "Rapoo X Mi collab post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-09.jpg", alt: "Rapoo X Mi collab post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Copy-of-11.png", alt: "Rapoo X Mi collab post" },
-        ],
-    },
-    story: {
-      title: "Two Decades of Wireless Innovation",
-      body: "Founded in 2002, Rapoo pioneered wireless peripherals — from the first 2.4GHz devices to becoming China's market leader, and later a 5GHz innovator listed on the Shenzhen Stock Exchange.",
-      bigNum: "2002",
-    },
-    featured: { ...DEFAULT_BRAND.featured, glassText: "Rapoo campaign — turning two decades of wireless innovation into engaging content." },
-    philosophy: {
-      ...DEFAULT_BRAND.philosophy,
-      paragraphs: [
-        "For Rapoo, we highlighted two decades of wireless innovation through crisp, tech-forward content — turning product specs into stories audiences actually want to engage with.",
-        "From collaboration campaigns to feature spotlights, every post reinforced Rapoo's reputation for performance and reliability.",
-        ],
-    },
-    delivered: {
-      ...DEFAULT_BRAND.delivered,
-      cards: [
-        { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar with collaboration campaigns, feature spotlights and product launches." },
-        { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+900% reach growth and +525% engagement across the campaign period." },
-        ],
-    },
-  },
-  {
-      ...DEFAULT_BRAND,
-    slug: "rapoo-middle-east",
-    name: "Rapoo Middle East",
-    published: true,
-    logo: "",
-    cardDescription: "Rapoo's regional wireless launch — content strategy built for a new market.",
-    palette: { primary: "#b8161c", bg: "#f8f1e9", bgSoft: "#fdf8f2", ink: "#201010", accent: "#d4af37" },
-    brandColor: "linear-gradient(135deg, #b8161c, #7a1116)",
-    hero: { ...DEFAULT_BRAND.hero, title: "RAPOO MIDDLE EAST", bgText: "RM", tagline: "Wireless Innovation, Regional Reach" },
-    stats: [
-      { raw: 1050, suffix: "%", decimals: 0, label: "Reach Growth" },
-      { raw: 695, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-      { raw: 168, suffix: "%", decimals: 0, label: "CTR Lift" },
-      { raw: 52, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-      ],
-    calendar: {
-      title: "Content Calendar Glimpse",
-      rows: [
-        { type: "Static", date: "9/2/2025", concept: "Middle East Launch", copy: "Rapoo goes regional…" },
-        { type: "Reel", date: "30/4/2025", concept: "Product Showcase", copy: "Engineered for every desk…" },
-        { type: "Static", date: "11/9/2025", concept: "Feature Spotlight", copy: "Performance without wires…" },
-        ],
-    },
-    analytics: [
-      { stat: "+1050%", label: "Reach Growth", sub: "+1050% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+1050%", label: "Reach Growth" }, metricB: { value: "+695%", label: "Engagement / Leads" } },
-      { stat: "+695%", label: "Engagement / Leads", sub: "+695% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+695%", label: "Engagement / Leads" }, metricB: { value: "+168%", label: "CTR Lift" } },
-      { stat: "+168%", label: "CTR Lift", sub: "+168% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+168%", label: "CTR Lift" }, metricB: { value: "52%", label: "Retention / Consistency" } },
-      { stat: "52%", label: "Retention / Consistency", sub: "52% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "52%", label: "Retention" }, metricB: { value: "+1050%", label: "Reach Growth" } },
-      ],
-    mom: {
-      title: "Rapoo Middle East — Content Planning",
-      bullets: [
-        "Content Roadmap Ready",
-        "Product & Feature Posts Finalised",
-        "High-Engagement Content Plan (Reels, Explainers, interactive posts)",
-        "Highlighting Regional Launches & Performance",
-        "Clear Posting Plan Set",
-        "Success Metrics Defined",
-        ],
-    },
-    gallery: {
-      title: "Creative Gallery",
-      images: [
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/1-1.jpg", alt: "Middle East campaign post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/2-2.jpg", alt: "Middle East campaign post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/3-2.jpg", alt: "Middle East campaign post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/4-2.jpg", alt: "Middle East campaign post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/5-1.jpg", alt: "Middle East campaign post" },
-        { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/6-1.jpg", alt: "Middle East campaign post" },
-        ],
-    },
-    story: {
-      title: "Countries Reached Worldwide",
-      body: "Rapoo's wireless innovation — from 2.4GHz to 5GHz technology and a fully ISO-certified global factory — now reaches the Middle East, serving a growing network across 80+ countries.",
-      bigNum: "80+",
-    },
-    featured: { ...DEFAULT_BRAND.featured, glassText: "Rapoo Middle East campaign — introducing wireless innovation to a new region." },
-    philosophy: {
-      ...DEFAULT_BRAND.philosophy,
-      paragraphs: [
-        "Entering a new market meant adapting Rapoo's innovation story for a regional audience — content that felt local while staying true to the brand's global reputation.",
-        "Consistent creative and reporting helped establish Rapoo's presence and engagement across the Middle East market.",
-        ],
-    },
-    delivered: {
-      ...DEFAULT_BRAND.delivered,
-      cards: [
-        { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar introducing Rapoo's wireless range to a new regional audience." },
-        { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+1050% reach growth and +695% engagement across the campaign period." },
-        ],
-    },
-  },
-      {
-    ...DEFAULT_BRAND,
-        slug: "furnishing-home",
-        name: "Furnishing Home",
-        published: true,
-        logo: "",
-        cardDescription: "55 years of home furnishings by Amratlal & Sons — festive storytelling that connects.",
-        palette: { primary: "#a44a3f", bg: "#f7ede6", bgSoft: "#fbf5f0", ink: "#2b160f", accent: "#e0b98d" },
-        brandColor: "linear-gradient(135deg, #a44a3f, #c97a5e)",
-        hero: { ...DEFAULT_BRAND.hero, title: "FURNISHING HOME", bgText: "FH", tagline: "Bringing Homes to Life Since 1970" },
-        stats: [
-          { raw: 335, suffix: "%", decimals: 0, label: "Reach Growth" },
-          { raw: 214, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-          { raw: 262, suffix: "%", decimals: 0, label: "CTR Lift" },
-          { raw: 36, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-          ],
-        calendar: {
-          title: "Content Calendar Glimpse",
-          rows: [
-            { type: "Static", date: "1/11/2025", concept: "Dhanteras", copy: "Bringing warmth home this Dhanteras…" },
-            { type: "Reel", date: "3/11/2025", concept: "Bhai Dooj", copy: "Comfort woven with tradition…" },
-            { type: "Static", date: "20/12/2025", concept: "Collection Spotlight", copy: "Elegance, curated for every room…" },
-            ],
-        },
-        analytics: [
-          { stat: "+335%", label: "Reach Growth", sub: "+335% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+335%", label: "Reach Growth" }, metricB: { value: "+214%", label: "Engagement / Leads" } },
-          { stat: "+214%", label: "Engagement / Leads", sub: "+214% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+214%", label: "Engagement / Leads" }, metricB: { value: "+262%", label: "CTR Lift" } },
-          { stat: "+262%", label: "CTR Lift", sub: "+262% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+262%", label: "CTR Lift" }, metricB: { value: "+36%", label: "Retention / Consistency" } },
-          { stat: "+36%", label: "Retention / Consistency", sub: "+36% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "+36%", label: "Retention" }, metricB: { value: "+335%", label: "Reach Growth" } },
-          ],
-        mom: {
-          title: "Furnishing Home — Festive Content Planning",
-          bullets: [
-            "Festive Content Roadmap Ready",
-            "Collection & Festive Posts Finalised",
-            "High-Engagement Content Plan (Reels, Carousels, interactive posts)",
-            "Celebrating Home & Tradition",
-            "Clear Posting Plan Set",
-            "Success Metrics Defined",
-            ],
-        },
-        gallery: {
-          title: "Creative Gallery",
-          images: [
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Dhanteras-.jpeg", alt: "Dhanteras post" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/Bhaidooj-scaled.png", alt: "Bhai Dooj post" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/furnishing_home_CC_3.png", alt: "Collection showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/furnishing_home_CC_6.png", alt: "Collection showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/furnishing_home_CC_11.png", alt: "Collection showcase" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/564987481_18063087149576460_6542216695873398226_n.jpg", alt: "Festive post" },
-            ],
-        },
-        story: {
-          title: "55 Years of Home Furnishing Craft",
-          body: "Furnishing Home by Amratlal & Sons has shaped homes for over 55 years, blending tradition, craftsmanship and contemporary style into every soft-furnishing collection.",
-          bigNum: "55",
-        },
-        featured: { ...DEFAULT_BRAND.featured, glassText: "Furnishing Home festive campaign — celebrating 55 years of home craftsmanship." },
-        philosophy: {
-          ...DEFAULT_BRAND.philosophy,
-          paragraphs: [
-            "For Furnishing Home, we wove tradition and craftsmanship into every festive post — honoring 55 years of heritage while speaking to a modern home-owning audience.",
-            "From Diwali to Bhai Dooj, each piece of content celebrated the warmth Amratlal & Sons brings to every home.",
-            ],
-        },
-        delivered: {
-          ...DEFAULT_BRAND.delivered,
-          cards: [
-            { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar with festive posts, collection spotlights and heritage storytelling." },
-            { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+335% reach growth and +214% engagement across the campaign period." },
-            ],
-        },
-      },
-  {
-      ...DEFAULT_BRAND,
-          slug: "secure-my-shop",
-          name: "Secure My Shop",
-          published: true,
-          logo: "",
-          cardDescription: "Retail security solutions — always-on content for always-on protection.",
-          palette: { primary: "#124559", bg: "#eaf2f3", bgSoft: "#f4f9fa", ink: "#071a21", accent: "#2f9c95" },
-          brandColor: "linear-gradient(135deg, #124559, #01596e)",
-          hero: { ...DEFAULT_BRAND.hero, title: "SECURE MY SHOP", bgText: "SM", tagline: "Round-the-Clock Shop Security" },
-          stats: [
-            { raw: 1100, suffix: "%", decimals: 0, label: "Reach Growth" },
-            { raw: 720, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-            { raw: 175, suffix: "%", decimals: 0, label: "CTR Lift" },
-            { raw: 55, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-            ],
-          calendar: {
-            title: "Content Calendar Glimpse",
-            rows: [
-              { type: "Static", date: "25/12/2025", concept: "Christmas", copy: "Secure celebrations this Christmas…" },
-              { type: "Reel", date: "1/1/2026", concept: "New Year", copy: "A safer start to the new year…" },
-              { type: "Static", date: "15/1/2026", concept: "Feature Spotlight", copy: "Round-the-clock shop security…" },
-              ],
-          },
-          analytics: [
-            { stat: "+1100%", label: "Reach Growth", sub: "+1100% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+1100%", label: "Reach Growth" }, metricB: { value: "+720%", label: "Engagement / Leads" } },
-            { stat: "+720%", label: "Engagement / Leads", sub: "+720% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+720%", label: "Engagement / Leads" }, metricB: { value: "+175%", label: "CTR Lift" } },
-            { stat: "+175%", label: "CTR Lift", sub: "+175% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+175%", label: "CTR Lift" }, metricB: { value: "55%", label: "Retention / Consistency" } },
-            { stat: "55%", label: "Retention / Consistency", sub: "55% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "55%", label: "Retention" }, metricB: { value: "+1100%", label: "Reach Growth" } },
-            ],
-          mom: {
-            title: "Secure My Shop — Content Planning",
-            bullets: [
-              "Content Roadmap Ready",
-              "Feature & Trust-Building Posts Finalised",
-              "High-Engagement Content Plan (Reels, Explainers, interactive posts)",
-              "Highlighting Security & Trust",
-              "Clear Posting Plan Set",
-              "Success Metrics Defined",
-              ],
-          },
-          gallery: {
-            title: "Creative Gallery",
-            images: [
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/newyear_resizee2.png", alt: "New Year post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/newyear_resizee1.png", alt: "New Year post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/christmas_reelsize3.png", alt: "Christmas post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide1-1.png", alt: "Feature slide" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide2.png", alt: "Feature slide" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/slide3.png", alt: "Feature slide" },
-              ],
-          },
-          story: {
-            title: "Round-the-Clock Retail Security",
-            body: "Secure My Shop brings ISO-certified, AI and IoT-powered security intelligence to retail spaces — unifying video, sensor and alert data into one real-time view for round-the-clock protection.",
-            bigNum: "24/7",
-        },
-          featured: { ...DEFAULT_BRAND.featured, glassText: "Secure My Shop campaign — building trust through round-the-clock security storytelling." },
-          philosophy: {
-            ...DEFAULT_BRAND.philosophy,
-            paragraphs: [
-              "For Secure My Shop, content had to build trust fast — clear, reassuring posts that made advanced retail security feel simple and dependable.",
-              "Festive and everyday content alike reinforced round-the-clock protection, growing engagement steadily across the year.",
-              ],
-          },
-          delivered: {
-            ...DEFAULT_BRAND.delivered,
-            cards: [
-              { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar with festive posts, feature spotlights and trust-building creatives." },
-              { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+1100% reach growth and +720% engagement across the campaign period." },
-              ],
-          },
-        },
-      {
-      ...DEFAULT_BRAND,
-        slug: "icici-prudential",
-        name: "ICICI Prudential",
-        published: true,
-        logo: "",
-        cardDescription: "Saksham Pro app UI — insurance experience design, simplified for advisors.",
-        palette: { primary: "#b7202e", bg: "#fbeff0", bgSoft: "#fdf6f6", ink: "#2a0a0d", accent: "#e8a33d" },
-        brandColor: "linear-gradient(135deg, #b7202e, #8c1c26)",
-        hero: { ...DEFAULT_BRAND.hero, title: "ICICI PRUDENTIAL", bgText: "IP", tagline: "Saksham Pro — Insurance, Simplified" },
-        stats: [
-          { raw: 8, suffix: "+", decimals: 0, label: "UI Screens Designed" },
-          { raw: 100, suffix: "%", decimals: 0, label: "Advisor-Ready Experience" },
-          { raw: 2, suffix: "", decimals: 0, label: "Design Iterations" },
-          { raw: 1, suffix: "", decimals: 0, label: "Unified App Experience" },
-          ],
-        calendar: {
-          title: "Content Calendar Glimpse",
-          rows: [
-            { type: "Static", date: "10/1/2026", concept: "App UI Spotlight", copy: "Saksham Pro — simplified for advisors…" },
-            { type: "Static", date: "18/1/2026", concept: "Feature Walkthrough", copy: "Every screen designed for clarity…" },
-            { type: "Static", date: "25/1/2026", concept: "UX Update", copy: "Insurance made intuitive…" },
-            ],
-        },
-        analytics: [
-          { stat: "8+", label: "UI Screens", sub: "Saksham Pro app screens designed", dateRange: "Jan 2026", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "8+", label: "Screens Designed" }, metricB: { value: "100%", label: "Advisor-Ready" } },
-          { stat: "100%", label: "Advisor-Ready UI", sub: "Fully advisor-ready experience", dateRange: "Jan 2026", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "100%", label: "Advisor-Ready" }, metricB: { value: "2", label: "Design Iterations" } },
-          { stat: "2", label: "Design Iterations", sub: "Iterated for clarity", dateRange: "Jan 2026", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "2", label: "Iterations" }, metricB: { value: "8+", label: "Screens Designed" } },
-          { stat: "1", label: "Unified App Experience", sub: "One seamless advisor app", dateRange: "Jan 2026", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "1", label: "Unified Experience" }, metricB: { value: "100%", label: "Advisor-Ready" } },
-          ],
-        mom: {
-          title: "ICICI Prudential — App Design Planning",
-          bullets: [
-            "App UI Roadmap Ready",
-            "Screen-by-Screen Design Finalised",
-            "Advisor-Focused Interaction Flows",
-            "Showcasing App Experience & Trust",
-            "Clear Design Handoff Plan",
-            "Success Metrics Defined",
-            ],
-        },
-        gallery: {
-          title: "Creative Gallery",
-          images: [
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/1.jpeg", alt: "Saksham Pro app screen" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/2.jpeg", alt: "Saksham Pro app screen" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/5.jpeg", alt: "Saksham Pro app screen" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/4.jpeg", alt: "Saksham Pro app screen" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/3-1.jpeg", alt: "App UI screen" },
-            { src: "https://rajeshwarichauhan.in/wp-content/uploads/2025/12/5-1.jpeg", alt: "App UI screen" },
-            ],
-        },
-        story: {
-          title: "Two Decades of Trusted Insurance",
-          body: "ICICI Prudential Life, promoted by ICICI Bank and Prudential Corporation, has ranked among India's top life insurers since starting operations in 2001 — the Saksham Pro app UI was designed to simplify that experience for advisors.",
-          bigNum: "2001",
-        },
-        featured: { ...DEFAULT_BRAND.featured, glassText: "Saksham Pro campaign — simplifying insurance through intuitive app design." },
-        philosophy: {
-          ...DEFAULT_BRAND.philosophy,
-          paragraphs: [
-            "For the Saksham Pro app, our focus was clarity — presenting a complex insurance advisor tool through clean, intuitive UI storytelling.",
-            "Every screen and interaction was designed to make a two-decade-old institution feel approachable in a digital-first format.",
-            ],
-        },
-        delivered: {
-          ...DEFAULT_BRAND.delivered,
-          cards: [
-            { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "UI walkthroughs and feature spotlights designed for the Saksham Pro advisor app." },
-            { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "A cleaner, more intuitive advisor experience across every screen." },
-            ],
-        },
-      },
-        {
-            ...DEFAULT_BRAND,
-          slug: "godrej",
-          name: "Godrej",
-          published: true,
-          logo: "",
-          cardDescription: "128 years of Indian engineering legacy — content honoring innovation and trust.",
-          palette: { primary: "#003a70", bg: "#edf1f6", bgSoft: "#f6f8fb", ink: "#071322", accent: "#e0212b" },
-          brandColor: "linear-gradient(135deg, #003a70, #0057a3)",
-          hero: { ...DEFAULT_BRAND.hero, title: "GODREJ", bgText: "GJ", tagline: "125+ Years of Trust & Innovation" },
-          stats: [
-            { raw: 1100, suffix: "%", decimals: 0, label: "Reach Growth" },
-            { raw: 720, suffix: "%", decimals: 0, label: "Engagement / Leads" },
-            { raw: 175, suffix: "%", decimals: 0, label: "CTR Lift" },
-            { raw: 55, suffix: "%", decimals: 0, label: "Retention / Consistency" },
-            ],
-          calendar: {
-            title: "Content Calendar Glimpse",
-            rows: [
-             { type: "Static", date: "4/1/2026", concept: "Legacy Spotlight", copy: "128 years of trust and innovation…" },
-              { type: "Reel", date: "12/1/2026", concept: "Product Showcase", copy: "Engineering India's progress…" },
-              { type: "Static", date: "20/1/2026", concept: "Feature Spotlight", copy: "Built for generations…" },
-              ],
-          },
-          analytics: [
-            { stat: "+1100%", label: "Reach Growth", sub: "+1100% reach growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [4, 5, 6, 7, 9, 11, 13, 15, 18, 22, 26, 30], metricA: { value: "+1100%", label: "Reach Growth" }, metricB: { value: "+720%", label: "Engagement / Leads" } },
-            { stat: "+720%", label: "Engagement / Leads", sub: "+720% engagement growth", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [4, 4.4, 4.7, 5, 5.6, 6, 6.6, 7.2, 8, 8.8, 9.4, 10], metricA: { value: "+720%", label: "Engagement / Leads" }, metricB: { value: "+175%", label: "CTR Lift" } },
-            { stat: "+175%", label: "CTR Lift", sub: "+175% CTR lift", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "line", points: [2, 3, 3.5, 4, 5, 5.5, 6, 7, 7.5, 8.5, 9, 10], metricA: { value: "+175%", label: "CTR Lift" }, metricB: { value: "55%", label: "Retention / Consistency" } },
-            { stat: "55%", label: "Retention / Consistency", sub: "55% retention / consistency", dateRange: "Jan 1, 2025 – Dec 31, 2025", chartType: "bar", points: [5, 5.4, 5.6, 6, 6.4, 6.8, 7.1, 7.6, 8, 8.5, 9, 9.6], metricA: { value: "55%", label: "Retention" }, metricB: { value: "+1100%", label: "Reach Growth" } },
-            ],
-          mom: {
-            title: "Godrej — Content Planning",
-            bullets: [
-              "Content Roadmap Ready",
-              "Product & Legacy Posts Finalised",
-              "High-Engagement Content Plan (Reels, Carousels, interactive posts)",
-              "Celebrating Legacy & Innovation",
-              "Clear Posting Plan Set",
-              "Success Metrics Defined",
-              ],
-          },
-          gallery: {
-            title: "Creative Gallery",
-            images: [
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM-1.jpeg", alt: "Product post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM-2.jpeg", alt: "Product post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-04-at-9.55.12-AM.jpeg", alt: "Product post" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/ChatGPT-Image-Jan-3-2026-12_51_55-PM.png", alt: "Social media creative" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/ChatGPT-Image-Jan-3-2026-12_50_16-PM.png", alt: "Social media creative" },
-              { src: "https://rajeshwarichauhan.in/wp-content/uploads/2026/01/ChatGPT-Image-Jan-3-2026-12_48_38-PM.png", alt: "Social media creative" },
-              ],
-          },
-          story: {
-            title: "125+ Years of Indian Innovation",
-            body: "Since 1897, the Godrej Enterprises Group has driven Indian innovation — from the world's first springless locks to engineering that supported India's space ambitions.",
-            bigNum: "125+",
-          },
-          featured: { ...DEFAULT_BRAND.featured, glassText: "Godrej campaign — honoring 125+ years of Indian innovation." },
-          philosophy: {
-            ...DEFAULT_BRAND.philosophy,
-            paragraphs: [
-              "For Godrej, we translated 125+ years of engineering legacy into content that feels both proud and current — honoring history while speaking to today's audience.",
-              "From heritage spotlights to product features, every post reinforced Godrej's role in shaping India's progress.",
-              ],
-          },
-          delivered: {
-            ...DEFAULT_BRAND.delivered,
-            cards: [
-              { ...DEFAULT_BRAND.delivered.cards[0], title: "Content Strategy", body: "Monthly calendar with heritage spotlights, product features and legacy storytelling." },
-              { ...DEFAULT_BRAND.delivered.cards[1], title: "Growth & Analytics", body: "+1100% reach growth and +720% engagement across the campaign period." },
-              ],
-          },
-        },
-    
-    
-        
-            
-    
-  
-    
-    
-  ],
+  items: [MAST_MASALA, ...IMPORTED_BRANDS],
 };
 
 export function findBrand(d: BrandsData, slug: string): Brand | undefined {

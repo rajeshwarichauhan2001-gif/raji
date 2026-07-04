@@ -347,9 +347,28 @@ export default function MastMasalaPage({ data = DEFAULT_BRAND }: { data?: BrandD
 
         <div className="bp-hero-inner" ref={heroRef}>
           {data.logo ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={data.logo} alt={data.name ?? data.hero.title} className="bp-hero-logo"
-              style={{ height: 72, width: "auto", objectFit: "contain", marginBottom: 18, display: "block" }} />
+            <div
+              className="bp-hero-logo-badge"
+              style={{
+                marginBottom: 18,
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                ...(data.logoBg
+                  ? {
+                      background: data.logoBg,
+                      padding: "16px 24px",
+                      borderRadius: 18,
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.14)",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                    }
+                  : {}),
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={data.logo} alt={data.name ?? data.hero.title} className="bp-hero-logo"
+                style={{ height: 60, width: "auto", objectFit: "contain", display: "block" }} />
+            </div>
           ) : null}
           <p className="bp-hero-eyebrow">{data.hero.eyebrow}</p>
 
@@ -546,6 +565,7 @@ export default function MastMasalaPage({ data = DEFAULT_BRAND }: { data?: BrandD
       </section>
 
       {/* ── Section 7: Featured Video ───────────────────── */}
+      {data.featured.video && (
       <section className="bp-featured-video-section" ref={featuredRef}>
         <div className="bp-featured-video-inner">
           <p className="bp-featured-eyebrow">{data.featured.eyebrow}</p>
@@ -569,8 +589,10 @@ export default function MastMasalaPage({ data = DEFAULT_BRAND }: { data?: BrandD
           </div>
         </div>
       </section>
+      )}
 
       {/* ── Section 8: Philosophy ───────────────────────── */}
+      {data.philosophy.video && (
       <section className="bp-philosophy-section">
         <div className="bp-philosophy-inner">
           <div
@@ -604,8 +626,10 @@ export default function MastMasalaPage({ data = DEFAULT_BRAND }: { data?: BrandD
           </div>
         </div>
       </section>
+      )}
 
       {/* ── Section 9: What We Delivered ────────────────── */}
+      {data.delivered.cards.some(c => c.video) && (
       <section className="bp-delivered-section" ref={deliveredRef}>
         <div className="bp-delivered-inner">
           <p className="bp-delivered-eyebrow">{data.delivered.eyebrow}</p>
@@ -637,6 +661,7 @@ export default function MastMasalaPage({ data = DEFAULT_BRAND }: { data?: BrandD
           </div>
         </div>
       </section>
+      )}
 
       {/* ── Section 10: CTA Strip ───────────────────────── */}
       <section className="bp-cta-strip" ref={ctaRef}>
