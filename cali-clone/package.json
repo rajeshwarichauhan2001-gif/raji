@@ -9,6 +9,8 @@
           "lint": "eslint"
     },
     "dependencies": {
+            "@gsap/react": "latest",
+            "lucide-react": "latest",
           "gsap": "latest",
           "next": "latest",
           "react": "latest",
